@@ -1,0 +1,24 @@
+{
+  "slug": "homesync-ai",
+  "title_en": "Homesync AI - Smart Home Assistant Automation",
+  "title_he": "Homesync AI - עוזר ביתי חכם לניהול משימות ורשימת קניות",
+  "description_en": "An intelligent home-assistant automation built with Make.com that turns Telegram voice notes and text messages into structured household actions. An AI agent understands intent and routes each request into shopping-list updates, task management, or calendar scheduling.",
+  "description_he": "מערכת אוטומציה חכמה לעוזר ביתי שנבנתה ב-Make.com והופכת הודעות טקסט והודעות קוליות מטלגרם לפעולות ביתיות מובנות. סוכן AI מבין את כוונת המשתמש ומנתב כל בקשה לעדכון רשימת קניות, ניהול משימות או תזמון ביומן.",
+  "outcome_en": "Reduces household admin friction by converting casual voice and text messages into structured updates across Airtable and Google Calendar, with a synced mobile-friendly dashboard for managing shopping items and family tasks.",
+  "outcome_he": "מצמצמת חיכוך אדמיניסטרטיבי בניהול הבית על ידי המרת הודעות קוליות וטקסט חופשיות לעדכונים מובנים ב-Airtable וב-Google Calendar, עם דשבורד מסונכרן וידידותי למובייל לניהול קניות ומשימות משפחתיות.",
+  "tools": [
+    "Make.com",
+    "Telegram Bot",
+    "OpenAI Whisper API",
+    "Gemini",
+    "Airtable",
+    "Google Calendar",
+    "Claude Code"
+  ],
+  "tags": ["automation", "ai-agent", "telegram", "household", "shopping-list"],
+  "status": "live",
+  "featured": true,
+  "order": 2,
+  "thumbnail": "/assets/homeAssistant_make.png",
+  "video_url": "https://www.youtube.com/embed/iwiRP9SnWAc"
+}

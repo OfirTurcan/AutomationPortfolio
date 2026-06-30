@@ -1,0 +1,36 @@
+{
+  "title_en": "Accessibility Statement",
+  "title_he": "הצהרת נגישות",
+  "intro_en": "This website is committed to making its content accessible to people with disabilities, in the belief that every person has the right to live with dignity, equality, comfort, and independence.",
+  "intro_he": "אתר זה רואה חשיבות רבה במתן שירות שוויוני לכלל המשתמשים ובשיפור השירות הניתן לאנשים עם מוגבלות, מתוך אמונה כי לכל אדם מגיעה הזכות לחיות בכבוד, בשוויון, בנוחות ובעצמאות.",
+  "compliance_en": "We strive to comply with the requirements of the Equal Rights for Persons with Disabilities Regulations (Service Accessibility Adjustments), 2013, and with Israeli Standard IS 5568, which is based on the international WCAG 2.0 guidelines at conformance Level AA.",
+  "compliance_he": "אנו פועלים להנגיש את האתר בהתאם לתקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), התשע\"ג-2013, ולתקן הישראלי ת\"י 5568 המבוסס על הנחיות WCAG 2.0 של ארגון W3C ברמת התאמה AA.",
+  "measures_en": [
+    "Semantic HTML structure with landmarks and headings for screen readers.",
+    "Full keyboard operability with a visible focus indicator and a 'skip to main content' link.",
+    "An on-site accessibility menu: text resizing, high-contrast mode, link highlighting, a readable font, and the ability to pause animations.",
+    "Descriptive alternative text for meaningful images and titles for embedded videos.",
+    "Right-to-left (RTL) Hebrew support and respect for the operating system's reduced-motion preference.",
+    "Color contrast aimed at WCAG 2.0 AA on text and interactive elements."
+  ],
+  "measures_he": [
+    "מבנה HTML סמנטי עם אזורי ניווט (landmarks) וכותרות לקוראי מסך.",
+    "תפעול מלא במקלדת, חיווי פוקוס ברור וקישור \"דילוג לתוכן הראשי\".",
+    "תפריט נגישות באתר: הגדלת טקסט, מצב ניגודיות גבוהה, הדגשת קישורים, גופן קריא ועצירת אנימציות.",
+    "טקסט חלופי לתמונות בעלות משמעות וכותרות לסרטונים המוטמעים.",
+    "תמיכה מלאה בעברית מימין לשמאל (RTL) וכיבוד העדפת הפחתת תנועה של מערכת ההפעלה.",
+    "ניגודיות צבעים בהתאם לרמת AA של WCAG 2.0 בטקסט וברכיבים אינטראקטיביים."
+  ],
+  "limitations_en": "Despite our efforts, some content may not yet be fully accessible — in particular third-party embedded videos (e.g. YouTube), whose player is controlled by the external provider. We continue to improve accessibility on an ongoing basis. If you encounter an accessibility issue, please contact our accessibility coordinator.",
+  "limitations_he": "על אף מאמצינו, ייתכן שחלקים מסוימים באתר טרם הונגשו במלואם — בפרט סרטונים מוטמעים של צד שלישי (כגון YouTube), שהנגן שלהם נשלט על ידי הספק החיצוני. אנו ממשיכים לשפר את נגישות האתר באופן שוטף. אם נתקלתם בבעיית נגישות, נשמח שתפנו אל רכז הנגישות.",
+  "coordinator_label_en": "Accessibility coordinator",
+  "coordinator_label_he": "רכז הנגישות",
+  "coordinator_name": "Ofir Turcan",
+  "coordinator_email": "ofir.turcan@gmail.com",
+  "coordinator_phone": "+972544415871",
+  "response_en": "We make every effort to respond to accessibility requests within a reasonable time.",
+  "response_he": "נעשה כל מאמץ להשיב לפניות בנושא נגישות בתוך זמן סביר.",
+  "updated_label_en": "Statement last updated",
+  "updated_label_he": "הצהרת הנגישות עודכנה לאחרונה",
+  "updated_date": "2026-06-30"
+}

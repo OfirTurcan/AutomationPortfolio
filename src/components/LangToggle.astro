@@ -1,0 +1,14 @@
+---
+// Hebrew <-> English toggle. Default render is Hebrew, so the button offers "EN".
+// Falls back gracefully: if JS is off the button simply does nothing.
+---
+
+<button
+  type="button"
+  onclick="window.__toggleLang && window.__toggleLang()"
+  class="chip !text-[0.8rem] !px-3 !py-1.5 hover:!border-[var(--color-cyan)] hover:!text-[var(--color-cyan)] transition cursor-pointer"
+  aria-label="Toggle language / החלפת שפה"
+>
+  <span aria-hidden="true">🌐</span>
+  <span data-lang-label>EN</span>
+</button>

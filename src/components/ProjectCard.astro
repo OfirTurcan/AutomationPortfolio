@@ -1,0 +1,151 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  project: CollectionEntry<"projects">["data"];
+}
+
+const { project: p } = Astro.props;
+
+const statusStyles: Record<string, string> = {
+  live: "text-[var(--color-lime)] border-[color-mix(in_srgb,var(--color-lime)_45%,transparent)] bg-[color-mix(in_srgb,var(--color-lime)_12%,transparent)]",
+  "in-progress":
+    "text-[var(--color-cyan)] border-[color-mix(in_srgb,var(--color-cyan)_45%,transparent)] bg-[color-mix(in_srgb,var(--color-cyan)_12%,transparent)]",
+  prototype:
+    "text-[var(--color-magenta)] border-[color-mix(in_srgb,var(--color-magenta)_45%,transparent)] bg-[color-mix(in_srgb,var(--color-magenta)_12%,transparent)]",
+};
+const badgeClass = statusStyles[p.status] ?? statusStyles.live;
+const hasVideo = !!p.video_url && p.video_url.trim() !== "";
+const links = [
+  { url: p.link_live, key: "label_view_live" },
+  { url: p.link_caseStudy, key: "label_case" },
+  { url: p.link_repo, key: "label_repo" },
+].filter((l) => l.url && l.url.trim() !== "");
+---
+
+<article class="glass reveal group flex flex-col overflow-hidden rounded-2xl transition hover:-translate-y-1 hover:glow-ring">
+  <!-- Media -->
+  <div class="relative aspect-video w-full overflow-hidden bg-[var(--color-bg-soft)]">
+    {
+      hasVideo ? (
+        <iframe
+          class="h-full w-full"
+          src={p.video_url}
+          title={p.title_he}
+          loading="lazy"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        />
+      ) : (
+        <>
+          <img
+            src={p.thumbnail}
+            alt={p.title_he}
+            loading="lazy"
+            class="h-full w-full object-cover opacity-90 transition group-hover:scale-105"
+          />
+          <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent p-3">
+            <span
+              class="chip !bg-black/40 !text-[var(--color-text)]"
+              data-i18n="demo_note"
+            >
+              פרוטוטייפ פרטי / דמו זמין לפי בקשה
+            </span>
+          </div>
+        </>
+      )
+    }
+    <span
+      class={`chip absolute top-3 ${badgeClass}`}
+      style="inset-inline-end: 0.75rem;"
+    >
+      <span data-i18n={`status_${p.status}`}>{p.status}</span>
+    </span>
+    {
+      p.featured && (
+        <span
+          class="chip absolute top-3 !border-[var(--color-violet)] !bg-[color-mix(in_srgb,var(--color-violet)_16%,transparent)] !text-[var(--color-text)]"
+          style="inset-inline-start: 0.75rem;"
+        >
+          <span aria-hidden="true">★</span>
+          <span data-i18n="label_featured">מומלץ</span>
+        </span>
+      )
+    }
+  </div>
+
+  <!-- Body -->
+  <div class="flex flex-1 flex-col gap-4 p-5">
+    <div>
+      <h3 class="text-xl font-extrabold text-[var(--color-text)]" data-i18n={`proj_${p.slug}_title`}>
+        {p.title_he}
+      </h3>
+      {
+        (p.tagline_he || p.tagline_en) && (
+          <p
+            class="mt-1 text-sm text-[var(--color-cyan)]"
+            data-i18n={`proj_${p.slug}_tagline`}
+          >
+            {p.tagline_he}
+          </p>
+        )
+      }
+    </div>
+
+    <p class="text-sm leading-relaxed text-[var(--color-muted)]" data-i18n={`proj_${p.slug}_description`}>
+      {p.description_he}
+    </p>
+
+    {
+      p.highlights_he && p.highlights_he.length > 0 && (
+        <ul class="flex flex-col gap-1.5">
+          {p.highlights_he.map((_h, i) => (
+            <li class="flex gap-2 text-sm text-[var(--color-muted)]">
+              <span class="mt-1 text-[var(--color-cyan)]" aria-hidden="true">▸</span>
+              <span data-i18n={`proj_${p.slug}_hl_${i}`}>{p.highlights_he?.[i]}</span>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+
+    <!-- Tools -->
+    <div class="flex flex-wrap gap-1.5">
+      {p.tools.map((tool) => <span class="chip">{tool}</span>)}
+    </div>
+
+    <!-- Outcome -->
+    <div class="mt-auto rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-soft)]/60 p-3">
+      <div class="mb-1 text-[0.7rem] font-bold uppercase tracking-wider text-[var(--color-violet)]" data-i18n="label_outcome">
+        תוצאה
+      </div>
+      <p class="text-sm text-[var(--color-text)]" data-i18n={`proj_${p.slug}_outcome`}>
+        {p.outcome_he}
+      </p>
+    </div>
+
+    <!-- Tags + links -->
+    <div class="flex flex-wrap items-center gap-1.5">
+      {p.tags.map((tag) => <span class="text-xs text-[var(--color-muted)]">#{tag}</span>)}
+    </div>
+
+    {
+      links.length > 0 && (
+        <div class="flex flex-wrap gap-3 pt-1">
+          {links.map((l) => (
+            <a
+              href={l.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sm font-semibold text-[var(--color-cyan)] hover:underline"
+              data-i18n={l.key}
+            >
+              {l.key === "label_view_live" ? "צפייה באתר" : l.key === "label_case" ? "מקרה בוחן" : "מאגר קוד"}
+            </a>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</article>

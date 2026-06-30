@@ -1,0 +1,16 @@
+{
+  "slug": "gym-triage",
+  "title_en": "Gym Triage - AI Message Management for a Fitness Studio",
+  "title_he": "Gym Triage - אוטומציה לניהול הודעות עבור חדר כושר",
+  "description_en": "An automated triage system for gym inquiries that captures form submissions, classifies each request with an AI agent, and routes it to the right next step. Depending on urgency and context, the workflow can send a direct customer response or escalate the issue to the team through Slack.",
+  "description_he": "מערכת אוטומטית למיון פניות של חדר כושר, הקולטת הודעות מטופס, מסווגת כל פנייה בעזרת סוכן AI, ומנתבת אותה להמשך הטיפול המתאים. בהתאם לדחיפות ולהקשר, המערכת יכולה להשיב ישירות ללקוח או להסלים את הטיפול לצוות דרך Slack.",
+  "outcome_en": "Reduces manual handling of inbound gym inquiries by automatically classifying requests, updating the database, and routing each case either to an automated email response or to the service team in Slack.",
+  "outcome_he": "מצמצמת טיפול ידני בפניות נכנסות לחדר כושר על ידי סיווג אוטומטי של כל פנייה, עדכון בסיס הנתונים, וניתוב כל מקרה למענה אוטומטי במייל או לטיפול של צוות השירות ב-Slack.",
+  "tools": ["Make.com", "Tally", "AI Agent", "Google Sheets", "Slack", "Email"],
+  "tags": ["automation", "ai-agent", "triage", "customer-support", "fitness"],
+  "status": "live",
+  "featured": true,
+  "order": 3,
+  "thumbnail": "/assets/Gym_triage.jpg",
+  "video_url": "https://www.youtube.com/embed/0P7TbcZn6g8"
+}

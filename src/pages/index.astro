@@ -1,0 +1,40 @@
+---
+import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import Skills from "../components/Skills.astro";
+import Portfolio from "../components/Portfolio.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+import { getCollection } from "astro:content";
+import { coreDict } from "../lib/dict";
+import type { Dict } from "../lib/i18n";
+
+// Shared base dictionary (settings + about + skills + static UI labels + SEO).
+const dict: Dict = coreDict();
+
+// Project text fields (page-specific).
+const projectEntries = await getCollection("projects");
+for (const { data: p } of projectEntries) {
+  dict[`proj_${p.slug}_title`] = { he: p.title_he, en: p.title_en };
+  if (p.tagline_he || p.tagline_en) {
+    dict[`proj_${p.slug}_tagline`] = { he: p.tagline_he ?? "", en: p.tagline_en ?? "" };
+  }
+  dict[`proj_${p.slug}_description`] = { he: p.description_he, en: p.description_en };
+  dict[`proj_${p.slug}_outcome`] = { he: p.outcome_he, en: p.outcome_en };
+  (p.highlights_he ?? []).forEach((h, i) => {
+    dict[`proj_${p.slug}_hl_${i}`] = { he: h, en: p.highlights_en?.[i] ?? h };
+  });
+}
+---
+
+<Base dict={dict}>
+  <Hero />
+  <main id="main" tabindex="-1">
+    <About />
+    <Skills />
+    <Portfolio />
+    <Contact />
+  </main>
+  <Footer />
+</Base>

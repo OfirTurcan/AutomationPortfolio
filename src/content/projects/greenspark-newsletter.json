@@ -1,0 +1,26 @@
+{
+  "slug": "greenspark-newsletter-automation",
+  "title_en": "GreenSpark Newsletter Automation",
+  "title_he": "GreenSpark - אוטומציה ליצירת ניוזלטר בתחום הקיימות",
+  "description_en": "A fully automated weekly newsletter system built with n8n that gathers fresh sustainability and evergreen content from multiple online sources, filters duplicates, generates AI-assisted newsletter copy, and delivers a polished email to subscribers.",
+  "description_he": "מערכת אוטומטית מלאה ליצירת ניוזלטר שבועי שנבנתה ב-n8n, אוספת תוכן עדכני מעולמות הקיימות וה-evergreen ממקורות שונים ברשת, מסננת כפילויות, מייצרת טקסטים בעזרת AI, ושולחת ניוזלטר מעוצב לרשימת המנויים.",
+  "outcome_en": "Automates the full newsletter lifecycle: subscriber registration, fresh content aggregation, deduplication, AI-generated copy, cover image generation, email delivery, and archiving for future runs.",
+  "outcome_he": "ממכנת את כל מחזור החיים של הניוזלטר: רישום מנויים, איסוף תוכן עדכני, מניעת כפילויות, יצירת טקסטים בעזרת AI, יצירת תמונת קאבר, שליחה במייל, ושמירת ארכיון לריצות הבאות.",
+  "tools": [
+    "n8n",
+    "RSS Feeds",
+    "HTTP Requests",
+    "Gmail",
+    "Google Drive",
+    "AI Copywriting",
+    "Nano-Banana Pro",
+    "JavaScript",
+    "WebHook"
+  ],
+  "tags": ["automation", "newsletter", "content-pipeline", "sustainability", "ai-content"],
+  "status": "live",
+  "featured": true,
+  "order": 4,
+  "thumbnail": "/assets/newletter.jpg",
+  "video_url": "https://www.youtube.com/embed/QyKkSHEwKDE"
+}

@@ -1,0 +1,167 @@
+---
+// Native accessibility menu (not a third-party overlay). Each control maps to a
+// real CSS change on <html>, persisted in localStorage. Fully keyboard operable.
+const icon = `<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false" fill="currentColor"><circle cx="12" cy="3.6" r="2"/><path d="M12 7c-2.2 0-4.3-.3-6.2-.9a1 1 0 1 0-.6 1.9c1.3.4 2.7.7 4.1.8l-.6 4.3-1.7 6.2a1.05 1.05 0 0 0 2 .56L11 16.9c.2-.6 1-.6 1.2 0l1.9 4a1.05 1.05 0 0 0 2-.56l-1.7-6.2-.6-4.3c1.4-.1 2.8-.4 4.1-.8a1 1 0 1 0-.6-1.9c-1.9.6-4 .9-6.2.9z"/></svg>`;
+---
+
+<!-- Floating toggle button -->
+<button
+  id="a11y-toggle"
+  type="button"
+  class="a11y-fab"
+  aria-haspopup="dialog"
+  aria-expanded="false"
+  aria-controls="a11y-panel"
+  data-i18n-attr="aria-label:a11y_button,title:a11y_button"
+  aria-label="תפריט נגישות"
+  title="תפריט נגישות"
+>
+  <Fragment set:html={icon} />
+</button>
+
+<!-- Panel -->
+<div
+  id="a11y-panel"
+  class="a11y-panel"
+  role="dialog"
+  aria-modal="false"
+  aria-labelledby="a11y-panel-title"
+  hidden
+>
+  <div class="a11y-panel-head">
+    <h2 id="a11y-panel-title" class="text-base font-extrabold" data-i18n="a11y_title">נגישות</h2>
+    <button id="a11y-close" type="button" class="a11y-close" data-i18n-attr="aria-label:a11y_close" aria-label="סגירה">✕</button>
+  </div>
+
+  <div class="a11y-row">
+    <button id="a11y-font-dec" type="button" class="a11y-item" data-i18n-attr="aria-label:a11y_font_decrease" aria-label="הקטן טקסט">
+      <span aria-hidden="true" class="text-sm">A−</span>
+      <span data-i18n="a11y_font_decrease">הקטן טקסט</span>
+    </button>
+    <button id="a11y-font-inc" type="button" class="a11y-item" data-i18n-attr="aria-label:a11y_font_increase" aria-label="הגדל טקסט">
+      <span aria-hidden="true" class="text-lg">A+</span>
+      <span data-i18n="a11y_font_increase">הגדל טקסט</span>
+    </button>
+  </div>
+
+  <button id="a11y-contrast" type="button" class="a11y-item a11y-toggle" aria-pressed="false">
+    <span aria-hidden="true">◐</span><span data-i18n="a11y_contrast">ניגודיות גבוהה</span>
+  </button>
+  <button id="a11y-links" type="button" class="a11y-item a11y-toggle" aria-pressed="false">
+    <span aria-hidden="true">🔗</span><span data-i18n="a11y_links">הדגשת קישורים</span>
+  </button>
+  <button id="a11y-readable" type="button" class="a11y-item a11y-toggle" aria-pressed="false">
+    <span aria-hidden="true">🅰</span><span data-i18n="a11y_readable">גופן קריא</span>
+  </button>
+  <button id="a11y-motion" type="button" class="a11y-item a11y-toggle" aria-pressed="false">
+    <span aria-hidden="true">⏸</span><span data-i18n="a11y_pause_motion">עצירת אנימציות</span>
+  </button>
+
+  <button id="a11y-reset" type="button" class="a11y-item a11y-reset">
+    <span aria-hidden="true">↺</span><span data-i18n="a11y_reset">איפוס הגדרות</span>
+  </button>
+
+  <a href="/accessibility" class="a11y-statement-link" data-i18n="a11y_statement_link">
+    להצהרת הנגישות המלאה
+  </a>
+</div>
+
+<script is:inline>
+  (function () {
+    var html = document.documentElement;
+    var KEY = "a11y";
+    var state = { font: 0, contrast: false, links: false, readable: false, motion: false };
+
+    try {
+      var saved = JSON.parse(localStorage.getItem(KEY) || "null");
+      if (saved) state = Object.assign(state, saved);
+    } catch (e) {}
+
+    var SIZES = [null, "112.5%", "125%", "140%"];
+
+    function apply() {
+      html.style.fontSize = state.font ? SIZES[state.font] : "";
+      html.classList.toggle("a11y-contrast", !!state.contrast);
+      html.classList.toggle("a11y-links", !!state.links);
+      html.classList.toggle("a11y-readable", !!state.readable);
+      html.classList.toggle("a11y-pause-motion", !!state.motion);
+      pressed("a11y-contrast", state.contrast);
+      pressed("a11y-links", state.links);
+      pressed("a11y-readable", state.readable);
+      pressed("a11y-motion", state.motion);
+    }
+    function pressed(id, on) {
+      var el = document.getElementById(id);
+      if (el) el.setAttribute("aria-pressed", on ? "true" : "false");
+    }
+    function save() {
+      try {
+        localStorage.setItem(KEY, JSON.stringify(state));
+      } catch (e) {}
+    }
+    function set(patch) {
+      state = Object.assign(state, patch);
+      apply();
+      save();
+    }
+
+    // Apply persisted settings as early as this script runs.
+    apply();
+
+    var toggle = document.getElementById("a11y-toggle");
+    var panel = document.getElementById("a11y-panel");
+
+    function openMenu() {
+      panel.hidden = false;
+      toggle.setAttribute("aria-expanded", "true");
+      var first = panel.querySelector("button, a");
+      if (first) first.focus();
+      document.addEventListener("keydown", onKey);
+      document.addEventListener("click", onOutside, true);
+    }
+    function closeMenu(focusBack) {
+      panel.hidden = true;
+      toggle.setAttribute("aria-expanded", "false");
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("click", onOutside, true);
+      if (focusBack !== false) toggle.focus();
+    }
+    function onKey(e) {
+      if (e.key === "Escape") closeMenu();
+    }
+    function onOutside(e) {
+      if (!panel.contains(e.target) && e.target !== toggle && !toggle.contains(e.target)) {
+        closeMenu(false);
+      }
+    }
+
+    toggle.addEventListener("click", function () {
+      panel.hidden ? openMenu() : closeMenu();
+    });
+    document.getElementById("a11y-close").addEventListener("click", function () {
+      closeMenu();
+    });
+
+    document.getElementById("a11y-font-inc").addEventListener("click", function () {
+      set({ font: Math.min(3, state.font + 1) });
+    });
+    document.getElementById("a11y-font-dec").addEventListener("click", function () {
+      set({ font: Math.max(0, state.font - 1) });
+    });
+    document.getElementById("a11y-contrast").addEventListener("click", function () {
+      set({ contrast: !state.contrast });
+    });
+    document.getElementById("a11y-links").addEventListener("click", function () {
+      set({ links: !state.links });
+    });
+    document.getElementById("a11y-readable").addEventListener("click", function () {
+      set({ readable: !state.readable });
+    });
+    document.getElementById("a11y-motion").addEventListener("click", function () {
+      set({ motion: !state.motion });
+    });
+    document.getElementById("a11y-reset").addEventListener("click", function () {
+      set({ font: 0, contrast: false, links: false, readable: false, motion: false });
+    });
+  })();
+</script>

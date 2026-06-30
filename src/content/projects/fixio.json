@@ -1,0 +1,46 @@
+{
+  "slug": "fixio",
+  "title_en": "Fixio",
+  "title_he": "פיקסיו",
+  "tagline_en": "AI-powered contractor platform for onboarding, tenders, field ops, and smarter customer-contractor matching.",
+  "tagline_he": "פלטפורמת AI לניהול קבלנים — onboarding, מכרזים, תפעול שטח והתאמה חכמה בין לקוח לקבלן.",
+  "description_en": "Fixio is a Hebrew-first contractor platform prototype designed for the Israeli market. It brings together AI-assisted contractor matching, structured onboarding, multi-role product flows, and real-world service operations in a single experience.",
+  "description_he": "Fixio הוא פרוטוטייפ לפלטפורמת קבלנים בעברית-תחילה, שנבנתה עבור השוק הישראלי. היא מחברת בין התאמת קבלנים בעזרת AI, onboarding מובנה, זרימות מרובות-פרסונות ותפעול שירות אמיתי בתוך חוויה אחת.",
+  "outcome_en": "A polished prototype that demonstrates how AI, operations, and multilingual UX can come together in a contractor marketplace product.",
+  "outcome_he": "פרוטוטייפ מלוטש שמדגים איך AI, תפעול וחוויית משתמש רב-לשונית יכולים להתחבר למוצר אחד עבור שוק הקבלנים.",
+  "tools": [
+    "React 19",
+    "TypeScript",
+    "Vite",
+    "Tailwind CSS v4",
+    "Express",
+    "SQLite",
+    "Firebase",
+    "Google Gemini"
+  ],
+  "tags": [
+    "AI Matching",
+    "Contractor Onboarding",
+    "Tender Management",
+    "Hebrew RTL",
+    "Multilingual UX",
+    "Service Marketplace"
+  ],
+  "status": "prototype",
+  "featured": true,
+  "order": 1,
+  "thumbnail": "/assets/initial_load.png",
+  "gallery": ["/assets/initial_load.png", "/assets/missing_validation.png"],
+  "highlights_en": [
+    "Hebrew-first multilingual UX with RTL/LTR support.",
+    "Structured contractor onboarding with document collection.",
+    "AI-assisted tender and contractor matching flows.",
+    "Multi-role product design for customers, contractors, admins, and field teams."
+  ],
+  "highlights_he": [
+    "חוויית משתמש רב-לשונית בעברית-תחילה עם תמיכה ב-RTL/LTR.",
+    "תהליך onboarding מובנה לקבלנים עם העלאת מסמכים.",
+    "זרימות התאמה ומכרזים מבוססות AI.",
+    "תכנון מוצר מרובה-פרסונות ללקוחות, קבלנים, אדמינים וצוותי שטח."
+  ]
+}

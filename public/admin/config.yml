@@ -1,0 +1,165 @@
+# Decap CMS configuration.
+# Editors save through GitHub commits (Git-based workflow) which trigger a Netlify rebuild.
+backend:
+  name: github
+  repo: OfirTurcan/AutomationPortfolio
+  branch: main
+  # OAuth handled by the bundled Netlify Functions (/auth, /callback).
+  # `base_url` MUST be your live Netlify site origin (no trailing slash).
+  base_url: https://automation-portfolio.netlify.app
+  auth_endpoint: auth
+
+# Lets you edit locally with `npx decap-server` (no GitHub login needed in dev).
+local_backend: true
+
+# Uploaded media lands in public/assets and is referenced from the site root as /assets/...
+media_folder: public/assets
+public_folder: /assets
+
+publish_mode: simple
+
+collections:
+  # ---------------------------------------------------------------- Portfolio
+  - name: projects
+    label: Portfolio
+    label_singular: Project
+    folder: src/content/projects
+    create: true
+    format: json
+    extension: json
+    identifier_field: slug
+    slug: "{{fields.slug}}"
+    summary: "{{title_en}}  —  {{status}}"
+    sortable_fields: [order, title_en, status]
+    fields:
+      - { label: Slug (filename / URL id), name: slug, widget: string, hint: "lowercase, hyphenated. Also the file name." }
+      - { label: Title (EN), name: title_en, widget: string }
+      - { label: Title (HE), name: title_he, widget: string }
+      - { label: Tagline (EN), name: tagline_en, widget: string, required: false }
+      - { label: Tagline (HE), name: tagline_he, widget: string, required: false }
+      - { label: Description (EN), name: description_en, widget: text }
+      - { label: Description (HE), name: description_he, widget: text }
+      - { label: Outcome (EN), name: outcome_en, widget: text }
+      - { label: Outcome (HE), name: outcome_he, widget: text }
+      - { label: Tools, name: tools, widget: list, hint: "Comma-separated list of tool/tech names." }
+      - { label: Tags, name: tags, widget: list, hint: "Comma-separated tags." }
+      - label: Status
+        name: status
+        widget: select
+        default: live
+        options:
+          - { label: Live, value: live }
+          - { label: In progress, value: in-progress }
+          - { label: Prototype, value: prototype }
+      - { label: Featured, name: featured, widget: boolean, default: false }
+      - { label: Order (lower = earlier), name: order, widget: number, required: false, value_type: int }
+      - { label: Thumbnail, name: thumbnail, widget: image, hint: "Shown when there is no video." }
+      - { label: Video URL (YouTube embed), name: video_url, widget: string, required: false, hint: "Use the /embed/ form, e.g. https://www.youtube.com/embed/XXXX. Leave empty to show the 'demo on request' note." }
+      - { label: Gallery image paths, name: gallery, widget: list, required: false, hint: "Optional. e.g. /assets/shot1.png" }
+      - { label: Live link, name: link_live, widget: string, required: false }
+      - { label: Repository link, name: link_repo, widget: string, required: false }
+      - { label: Case study link, name: link_caseStudy, widget: string, required: false }
+      - { label: Highlights (EN), name: highlights_en, widget: list, required: false }
+      - { label: Highlights (HE), name: highlights_he, widget: list, required: false }
+
+  # ----------------------------------------------------------------- Settings
+  - name: site
+    label: Site Content
+    files:
+      # ------------------------------------------------------------ About Me
+      - name: about
+        label: About Me
+        file: src/content/about.json
+        format: json
+        fields:
+          - { label: Name, name: name, widget: string }
+          - { label: Catchphrase (EN), name: catchphrase_en, widget: string }
+          - { label: Catchphrase (HE), name: catchphrase_he, widget: string }
+          - { label: Headline (EN), name: headline_en, widget: string }
+          - { label: Headline (HE), name: headline_he, widget: string }
+          - { label: About text (EN), name: about_en, widget: text }
+          - { label: About text (HE), name: about_he, widget: text }
+          - { label: Profile image, name: profile_image, widget: image }
+          - { label: LinkedIn URL, name: linkedin_url, widget: string }
+          - { label: Email, name: email, widget: string }
+          - { label: Location (EN), name: location_en, widget: string }
+          - { label: Location (HE), name: location_he, widget: string }
+          - label: Skill groups
+            name: skills
+            widget: list
+            fields:
+              - { label: Group title (EN), name: title_en, widget: string }
+              - { label: Group title (HE), name: title_he, widget: string }
+              - { label: Items, name: items, widget: list }
+
+      # -------------------------------------------------------- Site Settings
+      - name: settings
+        label: Site Settings & Text
+        file: src/content/settings.json
+        format: json
+        fields:
+          - { label: SEO title (EN), name: site_title_en, widget: string }
+          - { label: SEO title (HE), name: site_title_he, widget: string }
+          - { label: SEO description (EN), name: site_description_en, widget: text }
+          - { label: SEO description (HE), name: site_description_he, widget: text }
+          - { label: Hero kicker (EN), name: hero_kicker_en, widget: string }
+          - { label: Hero kicker (HE), name: hero_kicker_he, widget: string }
+          - { label: Hero subheading (EN), name: hero_subheading_en, widget: text }
+          - { label: Hero subheading (HE), name: hero_subheading_he, widget: text }
+          - { label: Hero primary CTA (EN), name: hero_cta_primary_en, widget: string }
+          - { label: Hero primary CTA (HE), name: hero_cta_primary_he, widget: string }
+          - { label: Hero secondary CTA (EN), name: hero_cta_secondary_en, widget: string }
+          - { label: Hero secondary CTA (HE), name: hero_cta_secondary_he, widget: string }
+          - { label: Nav · About (EN), name: nav_about_en, widget: string }
+          - { label: Nav · About (HE), name: nav_about_he, widget: string }
+          - { label: Nav · Skills (EN), name: nav_skills_en, widget: string }
+          - { label: Nav · Skills (HE), name: nav_skills_he, widget: string }
+          - { label: Nav · Portfolio (EN), name: nav_portfolio_en, widget: string }
+          - { label: Nav · Portfolio (HE), name: nav_portfolio_he, widget: string }
+          - { label: Nav · Contact (EN), name: nav_contact_en, widget: string }
+          - { label: Nav · Contact (HE), name: nav_contact_he, widget: string }
+          - { label: About section title (EN), name: about_title_en, widget: string }
+          - { label: About section title (HE), name: about_title_he, widget: string }
+          - { label: Skills title (EN), name: skills_title_en, widget: string }
+          - { label: Skills title (HE), name: skills_title_he, widget: string }
+          - { label: Skills subtitle (EN), name: skills_subtitle_en, widget: text }
+          - { label: Skills subtitle (HE), name: skills_subtitle_he, widget: text }
+          - { label: Portfolio title (EN), name: portfolio_title_en, widget: string }
+          - { label: Portfolio title (HE), name: portfolio_title_he, widget: string }
+          - { label: Portfolio subtitle (EN), name: portfolio_subtitle_en, widget: text }
+          - { label: Portfolio subtitle (HE), name: portfolio_subtitle_he, widget: text }
+          - { label: Contact title (EN), name: contact_title_en, widget: string }
+          - { label: Contact title (HE), name: contact_title_he, widget: string }
+          - { label: Contact subtitle (EN), name: contact_subtitle_en, widget: text }
+          - { label: Contact subtitle (HE), name: contact_subtitle_he, widget: text }
+          - { label: Contact CTA (EN), name: contact_cta_en, widget: string }
+          - { label: Contact CTA (HE), name: contact_cta_he, widget: string }
+          - { label: Footer (EN), name: footer_en, widget: string }
+          - { label: Footer (HE), name: footer_he, widget: string }
+
+      # --------------------------------------------------- Accessibility (IS 5568)
+      - name: accessibility
+        label: Accessibility Statement
+        file: src/content/accessibility.json
+        format: json
+        fields:
+          - { label: Title (EN), name: title_en, widget: string }
+          - { label: Title (HE), name: title_he, widget: string }
+          - { label: Intro (EN), name: intro_en, widget: text }
+          - { label: Intro (HE), name: intro_he, widget: text }
+          - { label: Compliance statement (EN), name: compliance_en, widget: text }
+          - { label: Compliance statement (HE), name: compliance_he, widget: text }
+          - { label: Measures taken (EN), name: measures_en, widget: list }
+          - { label: Measures taken (HE), name: measures_he, widget: list }
+          - { label: Known limitations (EN), name: limitations_en, widget: text }
+          - { label: Known limitations (HE), name: limitations_he, widget: text }
+          - { label: Coordinator section label (EN), name: coordinator_label_en, widget: string }
+          - { label: Coordinator section label (HE), name: coordinator_label_he, widget: string }
+          - { label: Coordinator name, name: coordinator_name, widget: string }
+          - { label: Coordinator email, name: coordinator_email, widget: string }
+          - { label: Coordinator phone, name: coordinator_phone, widget: string, required: false, hint: "Recommended for the Israeli accessibility statement." }
+          - { label: Response note (EN), name: response_en, widget: text }
+          - { label: Response note (HE), name: response_he, widget: text }
+          - { label: 'Updated label (EN)', name: updated_label_en, widget: string }
+          - { label: 'Updated label (HE)', name: updated_label_he, widget: string }
+          - { label: Last updated date, name: updated_date, widget: string }

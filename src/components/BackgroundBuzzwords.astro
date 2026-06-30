@@ -1,0 +1,38 @@
+---
+// Ambient, decorative automation/AI buzzwords drifting behind the content.
+// Purely visual — not translated, and disabled under prefers-reduced-motion.
+const WORDS = [
+  "Automation", "AI Agent", "n8n", "Make.com", "Claude Code", "Workflow",
+  "Webhook", "LLM", "Gemini", "Whisper", "Orchestration", "Airtable",
+  "Vibe Coding", "Prompt", "Pipeline", "Trigger", "Integration", "Agentic",
+  "RAG", "API", "No-Code", "Slack", "Telegram", "Scheduler",
+];
+
+// Deterministic pseudo-random so the layout is stable per build.
+function rand(seed: number) {
+  const x = Math.sin(seed * 999.13) * 10000;
+  return x - Math.floor(x);
+}
+
+const items = WORDS.map((word, i) => {
+  const top = Math.round(rand(i + 1) * 92) + 2;
+  const left = Math.round(rand(i + 7) * 90) + 2;
+  const size = (rand(i + 3) * 2.4 + 1.1).toFixed(2);
+  const duration = (rand(i + 5) * 22 + 18).toFixed(1);
+  const delay = (rand(i + 9) * -30).toFixed(1);
+  return { word, top, left, size, duration, delay };
+});
+---
+
+<div class="buzz-layer" aria-hidden="true">
+  {
+    items.map((it) => (
+      <span
+        class="buzz-word"
+        style={`top:${it.top}%; left:${it.left}%; font-size:${it.size}rem; animation-duration:${it.duration}s; animation-delay:${it.delay}s;`}
+      >
+        {it.word}
+      </span>
+    ))
+  }
+</div>

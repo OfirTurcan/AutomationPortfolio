@@ -1,0 +1,32 @@
+---
+import { getCollection } from "astro:content";
+import settings from "../content/settings.json";
+import ProjectCard from "./ProjectCard.astro";
+
+const entries = await getCollection("projects");
+// Featured first, then by explicit `order`, then alphabetically.
+const projects = entries
+  .map((e) => e.data)
+  .sort((a, b) => {
+    if (a.featured !== b.featured) return a.featured ? -1 : 1;
+    const ao = a.order ?? 999;
+    const bo = b.order ?? 999;
+    if (ao !== bo) return ao - bo;
+    return a.title_en.localeCompare(b.title_en);
+  });
+---
+
+<section id="portfolio" class="mx-auto max-w-6xl scroll-mt-20 px-5 py-16 md:py-24">
+  <div class="mb-10 text-center">
+    <h2 class="text-3xl font-extrabold md:text-4xl">
+      <span class="text-gradient" data-i18n="portfolio_title">{settings.portfolio_title_he}</span>
+    </h2>
+    <p class="mx-auto mt-3 max-w-2xl text-[var(--color-muted)]" data-i18n="portfolio_subtitle">
+      {settings.portfolio_subtitle_he}
+    </p>
+  </div>
+
+  <div class="grid gap-6 md:grid-cols-2">
+    {projects.map((project) => <ProjectCard project={project} />)}
+  </div>
+</section>

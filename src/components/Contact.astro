@@ -1,0 +1,34 @@
+---
+import settings from "../content/settings.json";
+import about from "../content/about.json";
+---
+
+<section id="contact" class="mx-auto max-w-4xl scroll-mt-20 px-5 py-16 md:py-24">
+  <div class="glass reveal relative overflow-hidden rounded-3xl p-8 text-center md:p-14">
+    <div class="decor-glow absolute -top-24 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full bg-[var(--color-violet)] opacity-30 blur-3xl"></div>
+    <h2 class="relative text-3xl font-extrabold md:text-4xl">
+      <span class="text-gradient" data-i18n="contact_title">{settings.contact_title_he}</span>
+    </h2>
+    <p class="relative mx-auto mt-4 max-w-xl text-[var(--color-muted)]" data-i18n="contact_subtitle">
+      {settings.contact_subtitle_he}
+    </p>
+    <div class="relative mt-8 flex flex-wrap items-center justify-center gap-3">
+      <a
+        href={`mailto:${about.email}`}
+        class="rounded-xl bg-gradient-to-r from-[var(--color-cyan)] to-[var(--color-violet)] px-7 py-3 font-bold text-[#05060e] transition hover:opacity-90"
+        data-i18n="contact_cta"
+      >
+        {settings.contact_cta_he}
+      </a>
+      <a
+        href={about.linkedin_url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="glass rounded-xl px-7 py-3 font-bold text-[var(--color-text)] transition hover:border-[var(--color-cyan)]"
+      >
+        LinkedIn ↗
+      </a>
+    </div>
+    <div class="relative mt-6 text-sm text-[var(--color-muted)]">{about.email}</div>
+  </div>
+</section>

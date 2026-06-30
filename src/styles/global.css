@@ -1,0 +1,378 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Theme tokens — futuristic vibrant dark
+   ============================================================ */
+@theme {
+  --color-bg: #05060e;
+  --color-bg-soft: #0a0c1b;
+  --color-surface: #0e1124;
+  --color-border: #1d2344;
+  --color-text: #e8ecff;
+  --color-muted: #9aa3cf;
+  --color-cyan: #28e0ff;
+  --color-violet: #8b5cff;
+  --color-magenta: #ff43c8;
+  --color-lime: #59ffb0;
+
+  --font-sans: "Heebo", "Rubik", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-bg);
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background:
+    radial-gradient(1200px 700px at 80% -10%, rgba(139, 92, 255, 0.18), transparent 60%),
+    radial-gradient(1000px 600px at -10% 10%, rgba(40, 224, 255, 0.14), transparent 55%),
+    radial-gradient(900px 700px at 50% 120%, rgba(255, 67, 200, 0.12), transparent 60%),
+    var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Subtle moving grid behind everything */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(120, 140, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 140, 255, 0.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(circle at 50% 30%, black, transparent 75%);
+  pointer-events: none;
+}
+
+/* Logical-property helpers so layout mirrors correctly in RTL */
+.flip-x {
+  transform: scaleX(1);
+}
+[dir="rtl"] .flip-x {
+  transform: scaleX(-1);
+}
+
+/* ============================================================
+   Reusable bits
+   ============================================================ */
+.glass {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+  border: 1px solid var(--color-border);
+  backdrop-filter: blur(10px);
+}
+
+.text-gradient {
+  background: linear-gradient(100deg, var(--color-cyan), var(--color-violet) 55%, var(--color-magenta));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glow-ring {
+  box-shadow:
+    0 0 0 1px rgba(139, 92, 255, 0.4),
+    0 0 40px rgba(139, 92, 255, 0.35),
+    0 0 90px rgba(40, 224, 255, 0.18);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  border: 1px solid var(--color-border);
+  background: rgba(40, 224, 255, 0.06);
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   Ambient buzzwords
+   ============================================================ */
+.buzz-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.buzz-word {
+  position: absolute;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: transparent;
+  background: linear-gradient(120deg, var(--color-cyan), var(--color-violet), var(--color-magenta));
+  -webkit-background-clip: text;
+  background-clip: text;
+  opacity: 0.1;
+  white-space: nowrap;
+  animation: buzz-drift linear infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes buzz-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.9);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.14;
+  }
+  50% {
+    transform: translate3d(2vw, -8vh, 0) scale(1.05);
+    opacity: 0.2;
+  }
+  90% {
+    opacity: 0.1;
+  }
+  100% {
+    transform: translate3d(-2vw, -18vh, 0) scale(1.1);
+    opacity: 0;
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .buzz-word,
+  .animate-float-slow { animation: none !important; }
+  .buzz-word { opacity: 0.12; }
+}
+
+/* Reveal-on-scroll (progressive — visible by default if JS/IO unavailable) */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+.no-js .reveal {
+  opacity: 1;
+  transform: none;
+}
+
+/* ============================================================
+   Accessibility (IS 5568 / WCAG 2.0 AA)
+   ============================================================ */
+
+/* Visible keyboard focus everywhere */
+:focus-visible {
+  outline: 3px solid var(--color-cyan);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Skip-to-content link (visible only when focused) */
+.skip-link {
+  position: fixed;
+  inset-block-start: 0.5rem;
+  inset-inline-start: 0.5rem;
+  z-index: 100;
+  transform: translateY(-200%);
+  background: var(--color-cyan);
+  color: #05060e;
+  font-weight: 700;
+  padding: 0.6rem 1rem;
+  border-radius: 0.6rem;
+  transition: transform 0.15s ease;
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* ---- Accessibility menu (floating button + panel) ---- */
+.a11y-fab {
+  position: fixed;
+  inset-block-end: 1rem;
+  inset-inline-start: 1rem;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 999px;
+  color: #05060e;
+  background: linear-gradient(135deg, var(--color-cyan), var(--color-violet));
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+.a11y-fab:hover {
+  filter: brightness(1.08);
+}
+
+.a11y-panel {
+  position: fixed;
+  inset-block-end: 5rem;
+  inset-inline-start: 1rem;
+  z-index: 95;
+  width: min(20rem, calc(100vw - 2rem));
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.9rem;
+  border-radius: 1rem;
+  background: #0e1124;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+}
+.a11y-panel[hidden] {
+  display: none;
+}
+.a11y-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.3rem;
+}
+.a11y-close {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+}
+.a11y-row {
+  display: flex;
+  gap: 0.4rem;
+}
+.a11y-row .a11y-item {
+  flex: 1;
+  justify-content: center;
+}
+.a11y-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.6rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-soft);
+  color: var(--color-text);
+  font-size: 0.92rem;
+  text-align: start;
+  cursor: pointer;
+}
+.a11y-item:hover {
+  border-color: var(--color-cyan);
+}
+.a11y-toggle[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--color-cyan) 22%, transparent);
+  border-color: var(--color-cyan);
+  color: var(--color-text);
+}
+.a11y-reset {
+  justify-content: center;
+  color: var(--color-muted);
+}
+.a11y-statement-link {
+  margin-top: 0.2rem;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-cyan);
+  text-decoration: underline;
+}
+
+/* ---- User-activated accessibility modes ---- */
+
+/* Highlight links */
+.a11y-links a {
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+  outline: 1px dashed currentColor;
+  outline-offset: 2px;
+}
+
+/* Readable font: legible family + looser spacing */
+.a11y-readable,
+.a11y-readable body {
+  font-family: Arial, "Heebo", "Segoe UI", sans-serif !important;
+  letter-spacing: 0.02em;
+  line-height: 1.75;
+  word-spacing: 0.08em;
+}
+
+/* Pause animations (in addition to prefers-reduced-motion) */
+.a11y-pause-motion *,
+.a11y-pause-motion *::before,
+.a11y-pause-motion *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+.a11y-pause-motion .buzz-layer {
+  display: none;
+}
+
+/* High-contrast mode: maximal legibility, drop decorative gradients/effects */
+.a11y-contrast {
+  --color-bg: #000000;
+  --color-bg-soft: #000000;
+  --color-surface: #000000;
+  --color-border: #ffffff;
+  --color-text: #ffffff;
+  --color-muted: #ffffff;
+  --color-cyan: #ffff00;
+  --color-violet: #ffff00;
+  --color-magenta: #ffff00;
+  --color-lime: #00ff00;
+}
+.a11y-contrast body {
+  background: #000000 !important;
+}
+.a11y-contrast body::before,
+.a11y-contrast .buzz-layer {
+  display: none !important;
+}
+.a11y-contrast .text-gradient {
+  background: none !important;
+  -webkit-text-fill-color: currentColor;
+  color: #ffff00 !important;
+}
+.a11y-contrast .glass,
+.a11y-contrast .chip {
+  background: #000000 !important;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+  backdrop-filter: none !important;
+}
+.a11y-contrast a {
+  color: #ffff00 !important;
+}
+.a11y-contrast .glow-ring {
+  box-shadow: 0 0 0 2px #ffffff !important;
+}
+.a11y-contrast .decor-glow {
+  display: none !important;
+}
