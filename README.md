@@ -123,10 +123,12 @@ Each project is one file in `src/content/projects/*.json` with this normalized s
 
 GitHub → **Settings → Developer settings → OAuth Apps → New OAuth App**:
 
-- **Homepage URL:** `https://YOUR-SITE.netlify.app`
-- **Authorization callback URL:** `https://YOUR-SITE.netlify.app/callback`
+- **Homepage URL:** `https://ofir-turcan-portfolio.netlify.app`
+- **Authorization callback URL:** `https://ofir-turcan-portfolio.netlify.app/callback`
 
 Copy the **Client ID** and generate a **Client Secret**.
+
+> **Full step-by-step (with troubleshooting):** [docs/github-oauth-setup.md](docs/github-oauth-setup.md)
 
 ### 2. Connect the repo to Netlify
 
@@ -146,12 +148,13 @@ OAUTH_GITHUB_CLIENT_SECRET  = <from step 1>
 
 ### 4. Point the CMS at your live origin
 
-In `public/admin/config.yml` set `backend.base_url` to your final Netlify URL, and update
-`site` in `astro.config.mjs` to match. Commit and let Netlify redeploy.
+`backend.base_url` in `public/admin/config.yml` and `site` in `astro.config.mjs` are set to
+`https://ofir-turcan-portfolio.netlify.app`. If your final domain differs, update both and
+redeploy.
 
 ### 5. Verify the OAuth flow
 
-Visit `https://YOUR-SITE.netlify.app/admin` → **Login with GitHub** → consent →
+Visit `https://ofir-turcan-portfolio.netlify.app/admin` → **Login with GitHub** → consent →
 you should land back in the CMS authenticated. Make a test edit → confirm a commit appears
 on `main` and Netlify rebuilds.
 

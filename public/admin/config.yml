@@ -6,7 +6,7 @@ backend:
   branch: main
   # OAuth handled by the bundled Netlify Functions (/auth, /callback).
   # `base_url` MUST be your live Netlify site origin (no trailing slash).
-  base_url: https://automation-portfolio.netlify.app
+  base_url: https://ofir-turcan-portfolio.netlify.app
   auth_endpoint: auth
 
 # Lets you edit locally with `npx decap-server` (no GitHub login needed in dev).
