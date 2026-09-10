@@ -1,8 +1,8 @@
 {
   "skills": [
     {
-      "title_en": "Automation Platforms",
-      "title_he": "פלטפורמות אוטומציה",
+      "title_en": "Process & Automation",
+      "title_he": "אפיון ואוטומציה",
       "items": [
         "Make.com",
         "n8n",
@@ -26,8 +26,8 @@
       ]
     },
     {
-      "title_en": "Engineering",
-      "title_he": "הנדסה",
+      "title_en": "Software & Integrations",
+      "title_he": "פיתוח ואינטגרציות",
       "items": [
         "TypeScript",
         "React 19",
@@ -40,7 +40,7 @@
     },
     {
       "title_en": "Data & Delivery",
-      "title_he": "נתונים ומסירה",
+      "title_he": "נתונים והטמעה",
       "items": [
         "SQL Server",
         "Oracle",
@@ -58,7 +58,7 @@
   "linkedin_url": "https://www.linkedin.com/in/ofir-turcan",
   "about_he": "אני עוזר לעסקים להפוך תהליכים ידניים, מסורבלים וגוזלי זמן למערכות עבודה חכמות ואמינות. אני משלב אפיון תהליכים, אוטומציה עסקית, סוכני AI ופיתוח מותאם כדי לצמצם עבודה חוזרת, לחבר בין מערכות ולבנות תהליכי עבודה שמתאימים לאופן שבו העסק באמת עובד.\n\nאני מביא איתי יותר מ־20 שנות ניסיון בהנדסת תוכנה, מערכות SaaS ארגוניות, בסיסי נתונים וניהול תוכניות טכנולוגיות. הניסיון הזה מאפשר לי לחבר בין הצורך העסקי לביצוע הטכנולוגי בפועל — מהבנת התהליך וזיהוי ההזדמנויות, דרך תכנון הפתרון ועד לאוטומציה והטמעה.\n\nאני עובד עם כלים כמו n8n, Make, APIs, Google Workspace, Claude וטכנולוגיות AI מתקדמות, ובוחר את הטכנולוגיה שמתאימה לבעיה — במקום לדחוף AI למקומות שבהם לא באמת צריך אותו.",
   "location_en": "Israel · Remote & On-site",
-  "headline_en": "Business Process & Automation Consultant | AI Solutions Builder",
+  "headline_en": "Founder · Business Process & Automation Consultant | AI Solutions Builder",
   "catchphrase_en": "Turning business processes into smart systems that move your business forward.",
   "about_en": "I help businesses turn manual, fragmented, and time-consuming processes into smart, reliable systems. I combine process design, business automation, AI agents, and custom software to reduce repetitive work, connect tools, and create workflows that actually fit the way a business operates.\n\nWith 20+ years of experience in software engineering, enterprise SaaS, databases, and technical program management, I bridge business needs and hands-on technical execution — from understanding the process and identifying opportunities, through solution design, to automation and delivery.\n\nI work with tools such as n8n, Make, APIs, Google Workspace, Claude and modern AI technologies, choosing the right technology for the problem rather than forcing AI where it isn't needed.",
   "email": "ofir.turcan@gmail.com"
