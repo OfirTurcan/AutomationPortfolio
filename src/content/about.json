@@ -1,37 +1,67 @@
 {
   "name": "SyncMoto",
   "founder_name": "Ofir Turcan",
-  "catchphrase_en": "Turning your business DNA into living, autonomous workflows.",
-  "catchphrase_he": "הופך את ה-DNA העסקי שלך לתהליכי עבודה חכמים.",
-  "headline_en": "Senior Technical Program Manager | Full-Stack Engineer | AI Automation Builder",
-  "headline_he": "מנהל תוכניות טכנולוגי בכיר | מהנדס פול-סטאק | בונה אוטומציות ו-AI",
-  "about_en": "With a 20+ year foundation in full-stack software engineering and enterprise SaaS delivery, I am a Senior Technical Program Manager who builds the future of software. My career is defined by bridging the gap between legacy enterprise systems such as SQL Server and Oracle and modern rapid development. Today, I focus on vibe coding and business automation, using Claude Code, agentic AI workflows, n8n, and Make.com to build prototypes and applied products such as Fixio.AI. I bring a unique blend of long-term strategic vision, deep database knowledge, and hands-on technical execution.",
-  "about_he": "עם בסיס של יותר מ-20 שנה בהנדסת תוכנה פול-סטאק ובמסירת מוצרי SaaS ארגוניים, אני מנהל תוכניות טכנולוגי בכיר שבונה את עתיד התוכנה. הקריירה שלי מתאפיינת ביכולת לגשר בין מערכות ארגוניות ותיקות כמו SQL Server ו-Oracle לבין פיתוח מודרני ומהיר. כיום אני מתמקד ב-vibe coding ובאוטומציה עסקית, תוך שימוש ב-Claude Code, בזרימות עבודה agentic AI, ב-n8n וב-Make.com כדי לבנות אבות-טיפוס ומוצרים יישומיים כמו Fixio.AI. אני מביא שילוב ייחודי של ראייה אסטרטגית לטווח ארוך, ידע עמוק במסדי נתונים, ויכולת ביצוע טכנית מעשית.",
-  "profile_image": "/images/ofir_profile.png",
-  "linkedin_url": "https://www.linkedin.com/in/ofir-turcan",
-  "email": "ofir.turcan@gmail.com",
-  "location_en": "Karmiel, Israel",
-  "location_he": "כרמיאל, ישראל",
   "skills": [
     {
-      "title_en": "Automation Platforms",
-      "title_he": "פלטפורמות אוטומציה",
-      "items": ["Make.com", "n8n", "Webhooks", "Tally", "Slack", "Airtable", "Google Workspace"]
+      "title_en": "Process & Automation",
+      "title_he": "אפיון ואוטומציה",
+      "items": [
+        "Make.com",
+        "n8n",
+        "Webhooks",
+        "Tally",
+        "Slack",
+        "Airtable",
+        "Google Workspace"
+      ]
     },
     {
       "title_en": "AI & Agents",
       "title_he": "AI וסוכנים",
-      "items": ["Claude Code", "Agentic AI Workflows", "Google Gemini", "OpenAI Whisper", "AI Copywriting", "Prompt Engineering"]
+      "items": [
+        "Claude Code",
+        "Agentic AI Workflows",
+        "Google Gemini",
+        "OpenAI Whisper",
+        "AI Copywriting",
+        "Prompt Engineering"
+      ]
     },
     {
-      "title_en": "Engineering",
-      "title_he": "הנדסה",
-      "items": ["TypeScript", "React 19", "Node / Express", "Vite", "Tailwind CSS", "Firebase", "REST APIs"]
+      "title_en": "Software & Integrations",
+      "title_he": "פיתוח ואינטגרציות",
+      "items": [
+        "TypeScript",
+        "React 19",
+        "Node / Express",
+        "Vite",
+        "Tailwind CSS",
+        "Firebase",
+        "REST APIs"
+      ]
     },
     {
       "title_en": "Data & Delivery",
-      "title_he": "נתונים ומסירה",
-      "items": ["SQL Server", "Oracle", "SQLite", "Enterprise SaaS Delivery", "Technical Program Management"]
+      "title_he": "נתונים והטמעה",
+      "items": [
+        "SQL Server",
+        "Oracle",
+        "SQLite",
+        "Enterprise SaaS Delivery",
+        "Technical Program Management"
+      ]
     }
-  ]
+  ],
+  "profile_image": "/assets/profile.png",
+  "location_he": "ישראל · מרחוק ובאתר הלקוח",
+  "headline_he": "יועץ לתהליכים ואוטומציה עסקית | בונה פתרונות AI",
+  "catchphrase_he": "הופכים תהליכים עסקיים למערכות חכמות שמניעות את העסק קדימה.",
+  "name": "SyncMoto",
+  "linkedin_url": "https://www.linkedin.com/in/ofir-turcan",
+  "about_he": "אני עוזר לעסקים להפוך תהליכים ידניים, מסורבלים וגוזלי זמן למערכות עבודה חכמות ואמינות. אני משלב אפיון תהליכים, אוטומציה עסקית, סוכני AI ופיתוח מותאם כדי לצמצם עבודה חוזרת, לחבר בין מערכות ולבנות תהליכי עבודה שמתאימים לאופן שבו העסק באמת עובד.\n\nאני מביא איתי יותר מ־20 שנות ניסיון בהנדסת תוכנה, מערכות SaaS ארגוניות, בסיסי נתונים וניהול תוכניות טכנולוגיות. הניסיון הזה מאפשר לי לחבר בין הצורך העסקי לביצוע הטכנולוגי בפועל — מהבנת התהליך וזיהוי ההזדמנויות, דרך תכנון הפתרון ועד לאוטומציה והטמעה.\n\nאני עובד עם כלים כמו n8n, Make, APIs, Google Workspace, Claude וטכנולוגיות AI מתקדמות, ובוחר את הטכנולוגיה שמתאימה לבעיה — במקום לדחוף AI למקומות שבהם לא באמת צריך אותו.",
+  "location_en": "Israel · Remote & On-site",
+  "headline_en": "Founder · Business Process & Automation Consultant | AI Solutions Builder",
+  "catchphrase_en": "Turning business processes into smart systems that move your business forward.",
+  "about_en": "I help businesses turn manual, fragmented, and time-consuming processes into smart, reliable systems. I combine process design, business automation, AI agents, and custom software to reduce repetitive work, connect tools, and create workflows that actually fit the way a business operates.\n\nWith 20+ years of experience in software engineering, enterprise SaaS, databases, and technical program management, I bridge business needs and hands-on technical execution — from understanding the process and identifying opportunities, through solution design, to automation and delivery.\n\nI work with tools such as n8n, Make, APIs, Google Workspace, Claude and modern AI technologies, choosing the right technology for the problem rather than forcing AI where it isn't needed.",
+  "email": "ofir.turcan@gmail.com"
 }
