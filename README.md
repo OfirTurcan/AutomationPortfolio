@@ -1,8 +1,8 @@
-# Ofir Turcan — Bilingual Automation & AI Portfolio
+# SyncMoto — Bilingual Automation & AI Portfolio
 
 A fast, static **Astro + TypeScript** portfolio with a built-in **Decap CMS** at `/admin`.
 Bilingual **Hebrew (default, RTL)** / **English (LTR)** with an instant in-place toggle,
-a futuristic vibrant dark theme, and ambient animated automation/AI buzzwords.
+a clean, bright light theme with navy/teal accents, and ambient animated automation/AI buzzwords.
 
 All content is structured JSON in the repo — no database, no paid backend. Editors save
 through GitHub commits (Git-based workflow), which trigger a Netlify rebuild.

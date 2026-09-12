@@ -16,9 +16,17 @@ import about from "../content/about.json";
           height="300"
           class="relative aspect-square w-64 rounded-full object-cover glow-ring md:w-72"
         />
+        <img
+          src="/images/better_together.png"
+          alt="Better Together"
+          width="360"
+          height="120"
+          class="pointer-events-none absolute -end-6 -top-6 w-28 -rotate-6 drop-shadow-md md:-end-8 md:-top-8 md:w-32"
+        />
       </div>
       <div class="mt-5 text-center">
         <div class="text-lg font-extrabold">{about.name}</div>
+        <div class="mt-0.5 text-sm text-[var(--color-muted)]">{about.founder_name}</div>
         <div class="mt-1 text-sm text-[var(--color-muted)]" data-i18n="location">{about.location_he}</div>
         <a
           href={about.linkedin_url}

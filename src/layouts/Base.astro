@@ -1,6 +1,5 @@
 ---
 import "../styles/global.css";
-import BackgroundBuzzwords from "../components/BackgroundBuzzwords.astro";
 import A11yMenu from "../components/A11yMenu.astro";
 import type { Dict } from "../lib/i18n";
 
@@ -10,7 +9,7 @@ interface Props {
 }
 
 const { dict } = Astro.props;
-const title = dict.__title?.he ?? "Ofir Turcan";
+const title = dict.__title?.he ?? "SyncMoto";
 const description = dict.__desc?.he ?? "";
 ---
 
@@ -26,7 +25,7 @@ const description = dict.__desc?.he ?? "";
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="/images/ofir_profile.png" />
-    <meta name="theme-color" content="#05060e" />
+    <meta name="theme-color" content="#f6faff" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -38,7 +37,6 @@ const description = dict.__desc?.he ?? "";
   <body class="relative">
     <a href="#main" class="skip-link" data-i18n="skip_to_content">דלג לתוכן הראשי</a>
 
-    <BackgroundBuzzwords />
     <A11yMenu />
 
     <div class="relative z-10">
