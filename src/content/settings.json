@@ -36,5 +36,17 @@
   "contact_cta_en": "Let's Talk",
   "contact_cta_he": "בואו נדבר",
   "footer_en": "Built with Astro · Bilingual (HE/EN) · Deployed on Netlify",
-  "footer_he": "נבנה עם Astro · דו-לשוני (עברית/אנגלית) · מתארח ב-Netlify"
+  "footer_he": "נבנה עם Astro · דו-לשוני (עברית/אנגלית) · מתארח ב-Netlify",
+  "methodology_title_en": "Aligning Product, Engineering and Customers",
+  "methodology_title_he": "מיישרים קו בין מוצר, הנדסה ולקוחות",
+  "methodology_subtitle_en": "from ideas to execution",
+  "methodology_subtitle_he": "מרעיון לביצוע",
+  "methodology_step_plan_en": "Plan",
+  "methodology_step_plan_he": "תכנון",
+  "methodology_step_align_en": "Align",
+  "methodology_step_align_he": "יישור קו",
+  "methodology_step_automate_en": "Automate",
+  "methodology_step_automate_he": "אוטומציה",
+  "methodology_step_deliver_en": "Deliver",
+  "methodology_step_deliver_he": "מסירה"
 }

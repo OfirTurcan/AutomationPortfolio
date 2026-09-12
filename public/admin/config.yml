@@ -110,6 +110,18 @@ collections:
           - { label: Hero primary CTA (HE), name: hero_cta_primary_he, widget: string }
           - { label: Hero secondary CTA (EN), name: hero_cta_secondary_en, widget: string }
           - { label: Hero secondary CTA (HE), name: hero_cta_secondary_he, widget: string }
+          - { label: Methodology title (EN), name: methodology_title_en, widget: string }
+          - { label: Methodology title (HE), name: methodology_title_he, widget: string }
+          - { label: Methodology subtitle (EN), name: methodology_subtitle_en, widget: string }
+          - { label: Methodology subtitle (HE), name: methodology_subtitle_he, widget: string }
+          - { label: Methodology step · Plan (EN), name: methodology_step_plan_en, widget: string }
+          - { label: Methodology step · Plan (HE), name: methodology_step_plan_he, widget: string }
+          - { label: Methodology step · Align (EN), name: methodology_step_align_en, widget: string }
+          - { label: Methodology step · Align (HE), name: methodology_step_align_he, widget: string }
+          - { label: Methodology step · Automate (EN), name: methodology_step_automate_en, widget: string }
+          - { label: Methodology step · Automate (HE), name: methodology_step_automate_he, widget: string }
+          - { label: Methodology step · Deliver (EN), name: methodology_step_deliver_en, widget: string }
+          - { label: Methodology step · Deliver (HE), name: methodology_step_deliver_he, widget: string }
           - { label: Nav · About (EN), name: nav_about_en, widget: string }
           - { label: Nav · About (HE), name: nav_about_he, widget: string }
           - { label: Nav · Skills (EN), name: nav_skills_en, widget: string }
