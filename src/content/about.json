@@ -1,6 +1,4 @@
 {
-  "name": "SyncMoto",
-  "founder_name": "Ofir Turcan",
   "skills": [
     {
       "title_en": "Process & Automation",
@@ -55,13 +53,14 @@
   "profile_image": "/assets/profile.png",
   "location_he": "ישראל · מרחוק ובאתר הלקוח",
   "headline_he": "יועץ לתהליכים ואוטומציה עסקית | בונה פתרונות AI",
-  "catchphrase_he": "הופכים תהליכים עסקיים למערכות חכמות שמניעות את העסק קדימה.",
+  "catchphrase_he": "הופך את ה-DNA העסקי שלך לתהליכי עבודה חכמים שמניעים את העסק קדימה",
   "name": "SyncMoto",
   "linkedin_url": "https://www.linkedin.com/in/ofir-turcan",
-  "about_he": "אני עוזר לעסקים להפוך תהליכים ידניים, מסורבלים וגוזלי זמן למערכות עבודה חכמות ואמינות. אני משלב אפיון תהליכים, אוטומציה עסקית, סוכני AI ופיתוח מותאם כדי לצמצם עבודה חוזרת, לחבר בין מערכות ולבנות תהליכי עבודה שמתאימים לאופן שבו העסק באמת עובד.\n\nאני מביא איתי יותר מ־20 שנות ניסיון בהנדסת תוכנה, מערכות SaaS ארגוניות, בסיסי נתונים וניהול תוכניות טכנולוגיות. הניסיון הזה מאפשר לי לחבר בין הצורך העסקי לביצוע הטכנולוגי בפועל — מהבנת התהליך וזיהוי ההזדמנויות, דרך תכנון הפתרון ועד לאוטומציה והטמעה.\n\nאני עובד עם כלים כמו n8n, Make, APIs, Google Workspace, Claude וטכנולוגיות AI מתקדמות, ובוחר את הטכנולוגיה שמתאימה לבעיה — במקום לדחוף AI למקומות שבהם לא באמת צריך אותו.",
+  "about_he": "אני עוזר לעסקים להפוך תהליכים ידניים ומורכבים למערכות עבודה חכמות, מחוברות ואמינות. אני מביא יותר מ־20 שנות ניסיון בחיבור בין טכנולוגיה לתהליכים עסקיים - מעולמות ה־FSM ושירות השטח, דרך ERP, Supply Chain, לוגיסטיקה ו־Reverse Logistics ועד אינטגרציות ותהליכי אישור.\n\nהיתרון שלי הוא שאני לא מתחיל מה־AI או מהכלי, אלא מהתהליך העסקי: מבין איך העבודה באמת מתבצעת, מזהה מה כדאי לייעל או לאוטומט, ואז בונה את הפתרון המתאים באמצעות אוטומציה, APIs וסוכני AI",
   "location_en": "Israel · Remote & On-site",
   "headline_en": "Founder · Business Process & Automation Consultant | AI Solutions Builder",
-  "catchphrase_en": "Turning business processes into smart systems that move your business forward.",
-  "about_en": "I help businesses turn manual, fragmented, and time-consuming processes into smart, reliable systems. I combine process design, business automation, AI agents, and custom software to reduce repetitive work, connect tools, and create workflows that actually fit the way a business operates.\n\nWith 20+ years of experience in software engineering, enterprise SaaS, databases, and technical program management, I bridge business needs and hands-on technical execution — from understanding the process and identifying opportunities, through solution design, to automation and delivery.\n\nI work with tools such as n8n, Make, APIs, Google Workspace, Claude and modern AI technologies, choosing the right technology for the problem rather than forcing AI where it isn't needed.",
+  "catchphrase_en": "Turning your business DNA into smart workflows that drive your business forward.",
+  "founder_name": "Ofir Turcan",
+  "about_en": "I help businesses turn manual, complex, and time-consuming processes into smart, connected, and reliable workflows. I bring more than 20 years of experience bridging technology and business processes - across FSM and field service, ERP, supply chain, logistics, reverse logistics, system integrations, and approval processes.\n\nMy advantage is that I don’t start with AI or a specific tool - I start with the business process. I first understand how the work is actually done, identify what can be improved or automated, and then build the right solution using automation, APIs, and AI agents.",
   "email": "ofir.turcan@gmail.com"
 }
