@@ -1,0 +1,56 @@
+{
+  "description_he": "צימר קטן עונה כל יום על אותן שאלות. העוזר עונה לאורחים מתוך מאגר ידע שהבעלים אישרו, מזהה כמה בקשות בהודעה אחת ורושם כל אחת בנפרד למטבח, לניקיון או לבעלים, ומעביר לבעלים ב-Slack כל שאלה שהוא לא יודע, במקום לנחש. הבעלים עונה ידנית, והתשובה חוזרת לצ'אט של האורח. סוכני AI צרים רצים ב-n8n באירוח עצמי (Docker, מאחורי Cloudflare Tunnel) עם חוקי העסק בקוד, ואפליקציית Next.js משרתת אורחים, צוות ובעלים. זהו אב טיפוס על נתונים מומצאים.",
+  "title_he": "שקט בגליל: עוזר AI ותפעול לצימר",
+  "highlights_en": [
+    "Recognizes several requests in one message and records each one separately",
+    "with its own number Never invents an answer: unknown questions are escalated to the owners in Slack within seconds The owner replies manually in Slack and the answer returns to the guest chat Role-based screens: staff see their day without guest contact details Business rules (assignee",
+    "dates",
+    "verification) live in code",
+    "not in prompts Outputs in Slack and a read-only Google Sheets mirror in Drive"
+  ],
+  "outcome_he": "נבדק מקצה לקצה על נתונים מומצאים: 10 מתוך 10 שאלות שאין להן תשובה במאגר הועברו לבעלים במקום לקבל תשובה מומצאת; כל 23 הבקשות בהודעות עם כמה בקשות זוהו ונרשמו נכון, אף אחת לא נרשמה פעמיים (אחרי תיקונים שנמצאו בבדיקות); דייג'סט הבוקר תאם לספירה ידנית של 7 סועדים; ההודעה ב-Slack הופיעה 1.2 עד 2.5 שניות אחרי רישום ההעברה לבעלים. לא הושג: יעד זמן התגובה של 8 שניות (נמדד p95 של כ-17 שניות). בהקלטת הדמו על n8n באירוח עצמי (26.10.2026) תשובת הבעלים הגיעה לצ'אט של האורח כ-3 שניות אחרי שהופיעה ב-Slack. זהו PoC; מכסת ההרצות של n8n Cloud עצרה את הבדיקות הסופיות, ואחריה המערכת עברה ל-n8n באירוח עצמי.",
+  "slug": "sheket-bagalil-ai-concierge",
+  "video_url": "https://youtu.be/V_5escD-tsc",
+  "thumbnail": "/assets/thumbnail-live.jpg",
+  "description_en": "A small guesthouse answers the same questions every day. This assistant answers guests from an owner-approved knowledge base, recognizes several requests in one message and records each one separately for the kitchen, cleaning or owners, and escalates anything it does not know to the owners in Slack instead of guessing. The owner replies manually and the answer returns to the guest chat. Narrow AI agents run in a self-hosted n8n (Docker, behind a Cloudflare Tunnel) with the business rules in code; a Next.js web app serves guests, staff and owners. It is a prototype on fictional data.",
+  "featured": true,
+  "tagline_he": "עונה לאורחים, מעביר לבעלים מה שהוא לא יודע, ומנתב את השאר.",
+  "order": 2,
+  "title_en": "Sheket BaGalil: AI Concierge and Operations for a Guesthouse",
+  "gallery": [
+    "./assets/sheket"
+  ],
+  "status": "prototype",
+  "outcome_en": "Tested end to end on fictional data: 10 of 10 questions with no answer in the knowledge base were escalated to the owners instead of answered with an invention; all 23 requests in multi-request messages were recognized and recorded correctly, none recorded twice (after fixes found in testing); the morning digest matched a manual count of 7 diners; the Slack message followed the escalation record by 1.2 to 2.5 seconds. Not met: the 8-second response target (measured p95 about 17 seconds). In the recorded demo on self-hosted n8n (26.10.2026) the owner's reply reached the guest chat about 3 seconds after it appeared in Slack. This is a PoC; n8n Cloud's execution limit stopped the final tests, after which the system moved to self-hosted n8n.",
+  "tags": [
+    "n8n",
+    "ai-agents",
+    "hospitality",
+    "slack",
+    "gemini",
+    "nextjs",
+    "automation",
+    "human-in-the-loop"
+  ],
+  "tagline_en": "Answers guests, escalates what it does not know, routes the rest.",
+  "tools": [
+    "n8n (self-hosted",
+    "Docker)",
+    "n8n Data Tables",
+    "Google Gemini 2.5 Flash / Flash-Lite",
+    "Slack",
+    "Gmail",
+    "Google Sheets / Google Drive",
+    "Next.js 16",
+    "Tailwind CSS",
+    "Vercel",
+    "Cloudflare Tunnel"
+  ],
+  "highlights_he": [
+    "מזהה כמה בקשות בהודעה אחת ורושם כל אחת בנפרד",
+    "עם מספר משלה לא ממציא תשובות: שאלה לא מוכרת מועברת לבעלים ב-Slack תוך שניות הבעלים עונה ידנית ב-Slack",
+    "והתשובה חוזרת לצ'אט של האורח מסכים לפי תפקיד: הצוות רואה את היום שלו בלי פרטי קשר של אורחים חוקי העסק (שיוך",
+    "תאריכים",
+    "אימות) נמצאים בקוד ולא בפרומפט פלט ב-Slack וגיבוי לקריאה בלבד ב-Google Sheets ב-Drive"
+  ]
+}
