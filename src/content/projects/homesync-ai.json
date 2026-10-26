@@ -9,7 +9,7 @@
   "featured": true,
   "order": 3,
   "title_en": "Homesync AI - Smart Home Assistant Automation",
-  "status": "live",
+  "status": "prototype",
   "outcome_en": "Reduces household admin friction by converting casual voice and text messages into structured updates across Airtable and Google Calendar, with a synced mobile-friendly dashboard for managing shopping items and family tasks.",
   "tags": [
     "automation",
