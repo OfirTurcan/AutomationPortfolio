@@ -10,7 +10,7 @@
   ],
   "outcome_he": "נבדק מקצה לקצה על נתונים מומצאים: 10 מתוך 10 שאלות שאין להן תשובה במאגר הועברו לבעלים במקום לקבל תשובה מומצאת; כל 23 הבקשות בהודעות עם כמה בקשות זוהו ונרשמו נכון, אף אחת לא נרשמה פעמיים (אחרי תיקונים שנמצאו בבדיקות); דייג'סט הבוקר תאם לספירה ידנית של 7 סועדים; ההודעה ב-Slack הופיעה 1.2 עד 2.5 שניות אחרי רישום ההעברה לבעלים. לא הושג: יעד זמן התגובה של 8 שניות (נמדד p95 של כ-17 שניות). בהקלטת הדמו על n8n באירוח עצמי (26.10.2026) תשובת הבעלים הגיעה לצ'אט של האורח כ-3 שניות אחרי שהופיעה ב-Slack. זהו PoC; מכסת ההרצות של n8n Cloud עצרה את הבדיקות הסופיות, ואחריה המערכת עברה ל-n8n באירוח עצמי.",
   "slug": "sheket-bagalil-ai-concierge",
-  "video_url": "https://youtu.be/V_5escD-tsc",
+  "video_url": "https://www.youtube.com/embed/V_5escD-tsc",
   "thumbnail": "/assets/thumbnail-live.jpg",
   "description_en": "A small guesthouse answers the same questions every day. This assistant answers guests from an owner-approved knowledge base, recognizes several requests in one message and records each one separately for the kitchen, cleaning or owners, and escalates anything it does not know to the owners in Slack instead of guessing. The owner replies manually and the answer returns to the guest chat. Narrow AI agents run in a self-hosted n8n (Docker, behind a Cloudflare Tunnel) with the business rules in code; a Next.js web app serves guests, staff and owners. It is a prototype on fictional data.",
   "featured": true,
