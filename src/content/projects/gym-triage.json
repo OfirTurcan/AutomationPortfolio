@@ -9,7 +9,7 @@
   "featured": true,
   "order": 5,
   "title_en": "Gym Triage - AI Message Management for a Fitness Studio",
-  "status": "live",
+  "status": "prototype",
   "outcome_en": "Reduces manual handling of inbound gym inquiries by automatically classifying requests, updating the database, and routing each case either to an automated email response or to the service team in Slack.",
   "tags": [
     "automation",
