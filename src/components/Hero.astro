@@ -3,16 +3,24 @@ import settings from "../content/settings.json";
 import about from "../content/about.json";
 import LangToggle from "./LangToggle.astro";
 import BackgroundBuzzwords from "./BackgroundBuzzwords.astro";
+import { getCollection } from "astro:content";
 
-const nav = [
+// The Testimonials section only renders when at least one is published, so only link to it then.
+const hasTestimonials = (await getCollection("testimonials")).some((e) => e.data.published);
+
+const nav: { href: string; key: string; he: string; opensContact?: boolean }[] = [
   { href: "#about", key: "nav_about", he: settings.nav_about_he },
   { href: "#skills", key: "nav_skills", he: settings.nav_skills_he },
   { href: "#portfolio", key: "nav_portfolio", he: settings.nav_portfolio_he },
-  { href: "#contact", key: "nav_contact", he: settings.nav_contact_he },
+  ...(hasTestimonials
+    ? [{ href: "#testimonials", key: "nav_testimonials", he: settings.nav_testimonials_he }]
+    : []),
+  // Opens the contact popup; the #contact href is the no-JS fallback.
+  { href: "#contact", key: "nav_contact", he: settings.nav_contact_he, opensContact: true },
 ];
 ---
 
-<header class="sticky top-0 z-50">
+<header class="site-header sticky top-0 z-50">
   <nav class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3" aria-label="Main">
     <a href="#top" class="flex items-center gap-2 font-extrabold tracking-tight">
       <span class="grid h-8 w-8 place-items-center rounded-lg glass text-gradient">SM</span>
@@ -26,6 +34,7 @@ const nav = [
               <a
                 href={n.href}
                 class="rounded-lg px-3 py-1.5 text-sm text-[var(--color-muted)] transition hover:text-[var(--color-text)]"
+                data-open-contact={n.opensContact ? "" : undefined}
                 data-i18n={n.key}
               >
                 {n.he}
@@ -68,6 +77,7 @@ const nav = [
       <a
         href="#contact"
         class="glass rounded-xl px-6 py-3 font-bold text-[var(--color-text)] transition hover:border-[var(--color-cyan)]"
+        data-open-contact
         data-i18n="hero_cta_secondary"
       >
         {settings.hero_cta_secondary_he}

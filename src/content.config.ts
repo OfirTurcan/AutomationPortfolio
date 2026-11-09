@@ -32,4 +32,26 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { projects };
+// Customer testimonials — one JSON file per testimonial in src/content/testimonials/.
+// Edited through Decap CMS (Testimonials collection). `video_url` takes a normal
+// YouTube/Vimeo link (see src/lib/video.ts); photos are uploaded through the CMS.
+const testimonials = defineCollection({
+  loader: glob({ pattern: "**/*.json", base: "./src/content/testimonials" }),
+  schema: z.object({
+    slug: z.string(),
+    name_he: z.string(),
+    name_en: z.string().optional(),
+    role_he: z.string().optional(),
+    role_en: z.string().optional(),
+    rating: z.number().int().min(1).max(5),
+    quote_he: z.string(),
+    quote_en: z.string().optional(),
+    photo: z.string().optional(),
+    video_url: z.string().optional(),
+    featured: z.boolean().default(false),
+    published: z.boolean().default(true),
+    order: z.number().optional(),
+  }),
+});
+
+export const collections = { projects, testimonials };

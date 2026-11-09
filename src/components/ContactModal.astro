@@ -1,0 +1,285 @@
+---
+// Contact popup + floating button, rendered once from the Base layout so it works on
+// every page. Any element with `data-open-contact` opens it.
+//
+// Submit flow: (1) best-effort copy of the lead to Netlify Forms (consent + timestamp
+// kept as a record), (2) WhatsApp opens on wa.me/<number> with a pre-filled Hebrew
+// message. The form is plain HTML first, so Netlify detects it at build time.
+import settings from "../content/settings.json";
+
+const waNumber = String(settings.whatsapp_number ?? "").replace(/\D/g, "");
+const chatIcon = `<svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" focusable="false" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-2.97.78.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.25-.12-1.46-.72-1.69-.8-.23-.09-.39-.12-.56.12-.17.25-.64.8-.78.97-.14.17-.29.19-.54.06a6.7 6.7 0 0 1-3.34-2.92c-.25-.43.25-.4.72-1.33.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.17 1.75 2.67 4.24 3.75 1.57.68 2.19.74 2.98.62.48-.07 1.46-.6 1.67-1.17.2-.58.2-1.07.14-1.17-.06-.1-.23-.17-.48-.29z"/></svg>`;
+---
+
+<!-- Floating button (opposite corner from the accessibility button) -->
+<button
+  type="button"
+  class="cf-fab"
+  data-open-contact
+  aria-haspopup="dialog"
+  data-i18n-attr="aria-label:cf_fab,title:cf_fab"
+  aria-label="בואו נדבר - השאירו פרטים"
+  title="בואו נדבר - השאירו פרטים"
+>
+  <Fragment set:html={chatIcon} />
+</button>
+
+<dialog id="cf-dialog" class="cf-dialog" aria-labelledby="cf-title" data-wa={waNumber}>
+  <div class="cf-panel">
+    <button type="button" class="cf-close" id="cf-close" data-i18n-attr="aria-label:a11y_close,title:a11y_close" aria-label="סגירה" title="סגירה">
+      <span aria-hidden="true">✕</span>
+    </button>
+
+    <div id="cf-form-view">
+      <h2 id="cf-title" class="cf-title"><span class="text-gradient" data-i18n="cf_title">בואו נדבר</span></h2>
+      <p class="cf-subtitle" data-i18n="cf_subtitle">השאירו פרטים ואחזור אליכם לתיאום פגישה.</p>
+
+      <form
+        id="cf-form"
+        name="contact"
+        method="POST"
+        action="/"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        novalidate
+      >
+        <input type="hidden" name="form-name" value="contact" />
+        <input type="hidden" name="lang" value="he" />
+        <input type="hidden" name="page" value="" />
+        <input type="hidden" name="submitted_at" value="" />
+        <input type="hidden" name="consent_text" value="" />
+        <p class="cf-hp" aria-hidden="true">
+          <label>Leave this empty <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label>
+        </p>
+
+        <div class="cf-field">
+          <label for="cf-name" data-i18n="cf_name">שם מלא</label>
+          <input id="cf-name" name="name" type="text" autocomplete="name" required aria-describedby="cf-name-err" />
+          <p class="cf-err" id="cf-name-err" role="alert"></p>
+        </div>
+
+        <div class="cf-field">
+          <label for="cf-email" data-i18n="cf_email">אימייל</label>
+          <input id="cf-email" name="email" type="email" inputmode="email" autocomplete="email" class="cf-ltr" required aria-describedby="cf-email-err" />
+          <p class="cf-err" id="cf-email-err" role="alert"></p>
+        </div>
+
+        <div class="cf-field">
+          <label for="cf-phone" data-i18n="cf_phone">טלפון / וואטסאפ</label>
+          <input id="cf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" class="cf-ltr" required aria-describedby="cf-phone-err" />
+          <p class="cf-err" id="cf-phone-err" role="alert"></p>
+        </div>
+
+        <div class="cf-field">
+          <label for="cf-goal" data-i18n="cf_goal">איזה תהליך חוזר בעסק שלכם גוזל לכם הכי הרבה זמן, כסף וכאבי ראש?</label>
+          <textarea
+            id="cf-goal"
+            name="goal"
+            rows="3"
+            data-i18n-attr="placeholder:cf_goal_ph"
+            placeholder="למשל: העתקת לידים ל-CRM ידנית, הצעות מחיר שלוקחות שעות, דוחות שבועיים, לקוחות שנופלים בין הכיסאות…"></textarea>
+        </div>
+
+        <!-- Optional and unchecked by default: marketing consent must be a free choice. -->
+        <label class="cf-consent" for="cf-consent">
+          <input id="cf-consent" name="marketing_consent" type="checkbox" value="yes" />
+          <span>
+            <span id="cf-consent-a" data-i18n="cf_consent_a">אשמח לקבל מידע נוסף על שירותי SyncMoto | אני כמובן מאשר/ת קבלת דיוור פרסומי למייל ולמספר הטלפון/וואטסאפ, ו/או פנייה טלפונית, בכפוף</span>{" "}<a id="cf-consent-link" href="/privacy" target="_blank" rel="noopener" data-i18n="cf_consent_link">למדיניות הפרטיות</a>
+          </span>
+        </label>
+
+        <button type="submit" class="cf-submit" data-i18n="cf_submit">חזרו אלי בבקשה לתיאום פגישה</button>
+        <p class="cf-note" data-i18n="cf_note">הפרטים ישמשו לחזרה אליכם בלבד, אלא אם סימנתם את התיבה לקבלת מידע נוסף.</p>
+      </form>
+    </div>
+
+    <div id="cf-success" class="cf-success" hidden tabindex="-1">
+      <h2 class="cf-title"><span class="text-gradient" data-i18n="cf_success_title">תודה! פותח עבורכם וואטסאפ…</span></h2>
+      <p class="cf-subtitle" data-i18n="cf_success_body">
+        לחצו על ״שליחה״ בוואטסאפ כדי שההודעה תגיע אליי. אם וואטסאפ לא נפתח, אפשר לפתוח אותו כאן:
+      </p>
+      <a id="cf-wa-link" class="cf-submit cf-submit-link" href="#" target="_blank" rel="noopener noreferrer" data-i18n="cf_success_link">פתיחת וואטסאפ</a>
+    </div>
+  </div>
+</dialog>
+
+<script is:inline>
+  (function () {
+    var dlg = document.getElementById("cf-dialog");
+    var form = document.getElementById("cf-form");
+    if (!dlg || !form) return;
+
+    var formView = document.getElementById("cf-form-view");
+    var success = document.getElementById("cf-success");
+    var waLink = document.getElementById("cf-wa-link");
+    var number = dlg.getAttribute("data-wa") || "";
+    var supportsDialog = typeof dlg.showModal === "function";
+
+    // The dictionary <script> is emitted after this component in the DOM, so read it lazily.
+    var dict = null;
+    function getDict() {
+      if (dict) return dict;
+      try {
+        dict = JSON.parse(document.getElementById("i18n-dict").textContent || "{}");
+      } catch (e) {
+        dict = {};
+      }
+      return dict;
+    }
+
+    function lang() {
+      return document.documentElement.lang === "en" ? "en" : "he";
+    }
+    function t(key) {
+      var entry = getDict()[key];
+      return entry ? entry[lang()] || entry.he || "" : "";
+    }
+
+    // ---------------------------------------------------------------- open / close
+    function showForm() {
+      formView.hidden = false;
+      success.hidden = true;
+    }
+    function open(trigger) {
+      showForm();
+      clearErrors();
+      dlg.showModal();
+      document.documentElement.classList.add("cf-open");
+      var first = document.getElementById("cf-name");
+      if (first) first.focus();
+    }
+
+    document.addEventListener("click", function (e) {
+      var trigger = e.target.closest ? e.target.closest("[data-open-contact]") : null;
+      if (!trigger || !supportsDialog) return; // no <dialog> support: the link keeps its own href
+      e.preventDefault();
+      open(trigger);
+    });
+
+    dlg.addEventListener("click", function (e) {
+      if (e.target === dlg) dlg.close(); // click on the backdrop
+    });
+    document.getElementById("cf-close").addEventListener("click", function () {
+      dlg.close();
+    });
+    dlg.addEventListener("close", function () {
+      document.documentElement.classList.remove("cf-open");
+    });
+
+    // ---------------------------------------------------------------- validation
+    var fields = [
+      { id: "cf-name", err: "cf-name-err", check: function (v) { return v.trim() ? "" : "cf_err_required"; } },
+      {
+        id: "cf-email",
+        err: "cf-email-err",
+        check: function (v) {
+          if (!v.trim()) return "cf_err_required";
+          return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) ? "" : "cf_err_email";
+        },
+      },
+      {
+        id: "cf-phone",
+        err: "cf-phone-err",
+        check: function (v) {
+          if (!v.trim()) return "cf_err_required";
+          var digits = v.replace(/\D/g, "");
+          var shapeOk = /^\+?[\d\s\-().]+$/.test(v.trim());
+          return shapeOk && digits.length >= 8 && digits.length <= 15 ? "" : "cf_err_phone";
+        },
+      },
+    ];
+
+    function clearErrors() {
+      fields.forEach(function (f) {
+        document.getElementById(f.id).removeAttribute("aria-invalid");
+        document.getElementById(f.err).textContent = "";
+      });
+    }
+
+    function validate() {
+      var firstBad = null;
+      fields.forEach(function (f) {
+        var input = document.getElementById(f.id);
+        var errKey = f.check(input.value);
+        document.getElementById(f.err).textContent = errKey ? t(errKey) : "";
+        if (errKey) {
+          input.setAttribute("aria-invalid", "true");
+          if (!firstBad) firstBad = input;
+        } else {
+          input.removeAttribute("aria-invalid");
+        }
+      });
+      if (firstBad) firstBad.focus();
+      return !firstBad;
+    }
+
+    // Clear a field's error as soon as the visitor edits it.
+    fields.forEach(function (f) {
+      document.getElementById(f.id).addEventListener("input", function () {
+        this.removeAttribute("aria-invalid");
+        document.getElementById(f.err).textContent = "";
+      });
+    });
+
+    // ---------------------------------------------------------------- submit
+    function buildMessage(v) {
+      // Labels are always Hebrew: the reader is the site owner, whatever language the visitor used.
+      return [
+        "שלום, אשמח שתחזרו אליי לתיאום פגישה 🙌",
+        "",
+        "שם: " + v.name,
+        "אימייל: " + v.email,
+        "טלפון/וואטסאפ: " + v.phone,
+        "התהליך שהכי גוזל לי זמן וכסף בעסק:",
+        v.goal || "לא צוין",
+        "",
+        "אישור קבלת מידע ודיוור: " + (v.consent ? "כן" : "לא"),
+      ].join("\n");
+    }
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // Honeypot: bots fill it, people never see it. Pretend success, send nothing.
+      if (form.elements["bot-field"].value) return;
+      if (!validate()) return;
+
+      var values = {
+        name: form.elements["name"].value.trim(),
+        email: form.elements["email"].value.trim(),
+        phone: form.elements["phone"].value.trim(),
+        goal: form.elements["goal"].value.trim(),
+        consent: form.elements["marketing_consent"].checked,
+      };
+
+      // Record exactly what the visitor agreed to, in the language they saw.
+      form.elements["lang"].value = lang();
+      form.elements["page"].value = location.pathname;
+      form.elements["submitted_at"].value = new Date().toISOString();
+      form.elements["consent_text"].value = (t("cf_consent_a") + " " + t("cf_consent_link")).trim();
+
+      var waUrl = "https://wa.me/" + number + "?text=" + encodeURIComponent(buildMessage(values));
+
+      // 1) Best-effort copy to Netlify Forms. Never blocks or delays WhatsApp.
+      try {
+        var body = new URLSearchParams(new FormData(form));
+        if (!values.consent) body.append("marketing_consent", "no");
+        fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: body.toString(),
+          keepalive: true,
+        }).catch(function () {});
+      } catch (err) {}
+
+      // 2) Open WhatsApp synchronously inside the click so popup blockers allow it.
+      waLink.setAttribute("href", waUrl);
+      waLink.click();
+
+      formView.hidden = true;
+      success.hidden = false;
+      success.focus();
+      form.reset();
+    });
+  })();
+</script>

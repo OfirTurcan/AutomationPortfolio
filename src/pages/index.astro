@@ -5,6 +5,7 @@ import Methodology from "../components/Methodology.astro";
 import About from "../components/About.astro";
 import Skills from "../components/Skills.astro";
 import Portfolio from "../components/Portfolio.astro";
+import Testimonials from "../components/Testimonials.astro";
 import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
 import { getCollection } from "astro:content";
@@ -27,6 +28,17 @@ for (const { data: p } of projectEntries) {
     dict[`proj_${p.slug}_hl_${i}`] = { he: h, en: p.highlights_en?.[i] ?? h };
   });
 }
+
+// Testimonial text fields. English falls back to the Hebrew text when not provided.
+const testimonialEntries = await getCollection("testimonials");
+for (const { data: t } of testimonialEntries) {
+  if (!t.published) continue;
+  dict[`tst_${t.slug}_name`] = { he: t.name_he, en: t.name_en || t.name_he };
+  dict[`tst_${t.slug}_quote`] = { he: t.quote_he, en: t.quote_en || t.quote_he };
+  if (t.role_he || t.role_en) {
+    dict[`tst_${t.slug}_role`] = { he: t.role_he ?? "", en: t.role_en || t.role_he || "" };
+  }
+}
 ---
 
 <Base dict={dict}>
@@ -36,6 +48,7 @@ for (const { data: p } of projectEntries) {
     <About />
     <Skills />
     <Portfolio />
+    <Testimonials />
     <Contact />
   </main>
   <Footer />

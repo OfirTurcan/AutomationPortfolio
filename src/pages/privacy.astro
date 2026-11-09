@@ -1,0 +1,159 @@
+---
+import Base from "../layouts/Base.astro";
+import Footer from "../components/Footer.astro";
+import BackgroundBuzzwords from "../components/BackgroundBuzzwords.astro";
+import { coreDict } from "../lib/dict";
+import privacy from "../content/privacy.json";
+import about from "../content/about.json";
+import settings from "../content/settings.json";
+import type { Dict } from "../lib/i18n";
+
+// Page dictionary: shared base + this page's text (Hebrew first; English falls back to Hebrew).
+const dict: Dict = { ...coreDict() };
+dict.__title = { he: `${privacy.title_he} — SyncMoto`, en: `${privacy.title_en} — SyncMoto` };
+dict.priv_title = { he: privacy.title_he, en: privacy.title_en };
+dict.priv_intro = { he: privacy.intro_he, en: privacy.intro_en };
+dict.priv_contact_title = { he: privacy.contact_title_he, en: privacy.contact_title_en };
+dict.priv_contact_intro = { he: privacy.contact_intro_he, en: privacy.contact_intro_en };
+
+type Part = "p" | "b" | "c";
+const sections = privacy.sections.map((s, i) => {
+  dict[`priv_s${i}_title`] = { he: s.title_he, en: s.title_en };
+  const lists: Record<Part, { he: string[]; en: string[] }> = {
+    p: { he: s.paragraphs_he, en: s.paragraphs_en },
+    b: { he: s.bullets_he, en: s.bullets_en },
+    c: { he: s.closing_he, en: s.closing_en },
+  };
+  (Object.keys(lists) as Part[]).forEach((part) => {
+    lists[part].he.forEach((text, j) => {
+      dict[`priv_s${i}_${part}${j}`] = { he: text, en: lists[part].en[j] ?? text };
+    });
+  });
+  return { id: `section-${i + 1}`, num: String(i + 1).padStart(2, "0"), key: `priv_s${i}`, s };
+});
+
+const waNumber = String(settings.whatsapp_number ?? "").replace(/\D/g, "");
+---
+
+<Base dict={dict}>
+  <div class="theme-dark priv-page">
+    <BackgroundBuzzwords />
+
+    <div class="relative z-[1]">
+      <header class="mx-auto max-w-6xl px-5 py-6">
+        <a href="/" class="text-sm font-semibold text-[var(--color-cyan)] hover:underline" data-i18n="back_home">
+          ← חזרה לעמוד הבית
+        </a>
+      </header>
+
+      <main id="main" tabindex="-1" class="mx-auto max-w-6xl px-5 pb-20">
+        <!-- Title block -->
+        <div class="mb-10 max-w-3xl">
+          <span class="chip mb-4">
+            <span aria-hidden="true">🔒</span>
+            <span><span data-i18n="priv_updated">עודכן לאחרונה</span>: {privacy.updated_date}</span>
+          </span>
+          <h1 class="text-4xl font-extrabold leading-tight md:text-5xl">
+            <span class="text-gradient" data-i18n="priv_title">{privacy.title_he}</span>
+          </h1>
+          <p class="mt-4 text-lg leading-relaxed text-[var(--color-muted)]" data-i18n="priv_intro">{privacy.intro_he}</p>
+        </div>
+
+        <div class="grid items-start gap-8 lg:grid-cols-[17rem_1fr]">
+          <!-- Table of contents -->
+          <nav class="priv-toc glass rounded-2xl p-5 lg:sticky lg:top-6" aria-labelledby="priv-toc-title">
+            <h2 id="priv-toc-title" class="mb-3 text-sm font-extrabold uppercase tracking-wider text-[var(--color-cyan)]" data-i18n="priv_toc">
+              תוכן עניינים
+            </h2>
+            <ol class="space-y-1">
+              {
+                sections.map(({ id, num, key, s }) => (
+                  <li>
+                    <a href={`#${id}`} class="priv-toc-link">
+                      <span class="priv-toc-num" aria-hidden="true">{num}</span>
+                      <span data-i18n={`${key}_title`}>{s.title_he}</span>
+                    </a>
+                  </li>
+                ))
+              }
+            </ol>
+          </nav>
+
+          <!-- Sections -->
+          <div class="space-y-5">
+            {
+              sections.map(({ id, num, key, s }) => (
+                <section id={id} class="priv-card glass reveal scroll-mt-6 rounded-2xl p-6 md:p-8" aria-labelledby={`${id}-h`}>
+                  <div class="flex items-start gap-4">
+                    <span class="priv-num" aria-hidden="true">{num}</span>
+                    <div class="min-w-0 flex-1">
+                      <h2 id={`${id}-h`} class="text-xl font-extrabold text-[var(--color-text)] md:text-2xl" data-i18n={`${key}_title`}>
+                        {s.title_he}
+                      </h2>
+                      <div class="mt-3 space-y-3 leading-relaxed text-[var(--color-muted)]">
+                        {s.paragraphs_he.map((text, j) => (
+                          <p data-i18n={`${key}_p${j}`}>{text}</p>
+                        ))}
+                        {s.bullets_he.length > 0 && (
+                          <ul class="space-y-2">
+                            {s.bullets_he.map((text, j) => (
+                              <li class="flex gap-2">
+                                <span class="mt-1 text-[var(--color-cyan)]" aria-hidden="true">▸</span>
+                                <span data-i18n={`${key}_b${j}`}>{text}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                        {s.closing_he.map((text, j) => (
+                          <p data-i18n={`${key}_c${j}`}>{text}</p>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              ))
+            }
+
+            <!-- Contact -->
+            <section id="contact-privacy" class="priv-card glass reveal scroll-mt-6 rounded-2xl p-6 md:p-8" aria-labelledby="priv-contact-h">
+              <h2 id="priv-contact-h" class="text-xl font-extrabold text-[var(--color-text)] md:text-2xl" data-i18n="priv_contact_title">
+                {privacy.contact_title_he}
+              </h2>
+              <p class="mt-3 leading-relaxed text-[var(--color-muted)]" data-i18n="priv_contact_intro">{privacy.contact_intro_he}</p>
+              <div class="mt-5 flex flex-wrap items-center gap-3">
+                <a
+                  href={`mailto:${about.email}`}
+                  class="glass rounded-xl px-5 py-2.5 font-bold text-[var(--color-text)] transition hover:border-[var(--color-cyan)]"
+                >
+                  <span aria-hidden="true">✉️</span> {about.email}
+                </a>
+                {
+                  waNumber && (
+                    <a
+                      href={`https://wa.me/${waNumber}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="glass rounded-xl px-5 py-2.5 font-bold text-[var(--color-text)] transition hover:border-[var(--color-cyan)]"
+                    >
+                      <span aria-hidden="true">💬</span> WhatsApp
+                    </a>
+                  )
+                }
+                <a
+                  href="/#contact"
+                  data-open-contact
+                  class="rounded-xl bg-gradient-to-r from-[var(--color-cyan)] to-[var(--color-violet)] px-5 py-2.5 font-bold text-[#05060e] transition hover:opacity-90"
+                  data-i18n="priv_contact_cta"
+                >
+                  שאלה על הפרטיות שלכם? דברו איתי
+                </a>
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
+
+      <Footer />
+    </div>
+  </div>
+</Base>

@@ -1,0 +1,211 @@
+{
+  "title_he": "מדיניות פרטיות",
+  "title_en": "Privacy Policy",
+  "intro_he": "השקיפות חשובה לנו. כאן מוסבר בפשטות איזה מידע נאסף באתר, למה, ומה הזכויות שלכם.",
+  "intro_en": "Transparency matters to us. Here is, in plain language, what information this site collects, why, and what your rights are.",
+  "updated_date": "2026-11-09",
+  "contact_title_he": "יצירת קשר בנושא פרטיות",
+  "contact_title_en": "Contacting us about privacy",
+  "contact_intro_he": "לשאלות, לבקשות לעיון, תיקון או מחיקת מידע, או לביטול הסכמה לדיוור:",
+  "contact_intro_en": "For questions, requests to access, correct or delete your information, or to withdraw your marketing consent:",
+  "sections": [
+    {
+      "title_he": "מי אנחנו",
+      "title_en": "Who we are",
+      "paragraphs_he": [
+        "אתר זה מופעל על ידי SyncMoto (אופיר טורצ'ן), העוסק באפיון תהליכים, אוטומציה ופתרונות AI לעסקים.",
+        "מדיניות זו מסבירה איזה מידע נאסף כשאתם גולשים באתר או יוצרים איתנו קשר, כיצד אנו משתמשים בו, ומהן זכויותיכם. מסירת פרטים באתר כפופה למדיניות זו."
+      ],
+      "paragraphs_en": [
+        "This site is operated by SyncMoto (Ofir Turcan), which provides process design, automation and AI solutions for businesses.",
+        "This policy explains what information is collected when you browse the site or contact us, how we use it, and what your rights are. Submitting details on the site is subject to this policy."
+      ],
+      "bullets_he": [],
+      "bullets_en": [],
+      "closing_he": [],
+      "closing_en": []
+    },
+    {
+      "title_he": "איזה מידע אנו אוספים",
+      "title_en": "What information we collect",
+      "paragraphs_he": [
+        "אנו אוספים רק את המידע הדרוש כדי לחזור אליכם:"
+      ],
+      "paragraphs_en": [
+        "We collect only what we need in order to get back to you:"
+      ],
+      "bullets_he": [
+        "מידע שאתם מוסרים בטופס יצירת הקשר: שם מלא, כתובת אימייל, מספר טלפון/וואטסאפ, ותיאור חופשי של התהליך בעסק שלכם שגוזל לכם הכי הרבה זמן וכסף.",
+        "סימון (או אי-סימון) של התיבה לקבלת מידע נוסף ודיוור, כולל נוסח ההסכמה שהוצג לכם ומועד ההגשה.",
+        "מידע טכני שנוצר אוטומטית בעת הגלישה, כגון כתובת IP, סוג דפדפן ומכשיר ודפים שנצפו, ברשומות (לוגים) של שירות האחסון.",
+        "מידע שתמסרו אם תפנו אלינו באימייל, בוואטסאפ או בלינקדאין."
+      ],
+      "bullets_en": [
+        "Details you enter in the contact form: full name, email address, phone/WhatsApp number, and a free-text description of the process in your business that costs you the most time and money.",
+        "Whether you ticked the box asking for more information and marketing messages, including the exact wording shown to you and the time of submission.",
+        "Technical data created automatically when you browse, such as IP address, browser and device type and pages viewed, in the hosting provider's logs.",
+        "Information you provide if you contact us by email, WhatsApp or LinkedIn."
+      ],
+      "closing_he": [],
+      "closing_en": []
+    },
+    {
+      "title_he": "כיצד אנו אוספים את המידע",
+      "title_en": "How we collect it",
+      "paragraphs_he": [
+        "בלחיצה על שליחת הטופס קורים שני דברים. ראשית, הפרטים מועתקים לשירות הטפסים של האתר (Netlify Forms), כדי שלא יאבדו וכדי לשמור תיעוד של ההסכמה. שנית, נפתחת אפליקציית וואטסאפ במכשיר שלכם עם הודעה מוכנה מראש.",
+        "ההודעה מגיעה אלינו רק אם אתם לוחצים על ״שליחה״ בוואטסאפ. במקרה כזה היא נשלחת מחשבון הוואטסאפ שלכם, ולכן מספר הטלפון שלכם נחשף לנו."
+      ],
+      "paragraphs_en": [
+        "When you submit the form, two things happen. First, your details are copied to the site's form service (Netlify Forms), so they are not lost and so we keep a record of your consent. Second, the WhatsApp app opens on your device with a ready-made message.",
+        "The message reaches us only if you tap Send in WhatsApp. In that case it is sent from your own WhatsApp account, so your phone number is visible to us."
+      ],
+      "bullets_he": [],
+      "bullets_en": [],
+      "closing_he": [],
+      "closing_en": []
+    },
+    {
+      "title_he": "מטרות השימוש במידע",
+      "title_en": "How we use your information",
+      "paragraphs_he": [],
+      "paragraphs_en": [],
+      "bullets_he": [
+        "יצירת קשר איתכם, מענה לפנייתכם ותיאום פגישה.",
+        "משלוח מידע על שירותי SyncMoto והצעות שיווקיות, אך ורק אם סימנתם את תיבת ההסכמה.",
+        "תפעול, אבטחה ושיפור האתר.",
+        "עמידה בדרישות החוק."
+      ],
+      "bullets_en": [
+        "Contacting you, replying to your enquiry and scheduling a meeting.",
+        "Sending information about SyncMoto's services and marketing offers, only if you ticked the consent box.",
+        "Operating, securing and improving the site.",
+        "Complying with legal requirements."
+      ],
+      "closing_he": [
+        "איננו מוכרים או משכירים את המידע האישי שלכם לצדדים שלישיים."
+      ],
+      "closing_en": [
+        "We do not sell or rent your personal information to third parties."
+      ]
+    },
+    {
+      "title_he": "דיוור ופניות שיווקיות",
+      "title_en": "Marketing messages",
+      "paragraphs_he": [
+        "מסירת הפרטים כדי שנחזור אליכם אינה מותנית בהסכמה לקבלת דיוור. תיבת הסימון לקבלת מידע נוסף אינה מסומנת מראש, והסכמה בה היא בחירה חופשית.",
+        "אם סימנתם אותה, אנו עשויים לשלוח אליכם דיוור פרסומי באימייל ובהודעות וואטסאפ וליצור קשר טלפוני, בהתאם לסעיף 30א לחוק התקשורת (בזק ושידורים), התשמ״ב–1982.",
+        "אפשר לבטל את ההסכמה בכל עת וללא צורך בנימוק: בהשבת ההודעה ״הסר״ לכל הודעה, או בפנייה אלינו בפרטי הקשר שבתחתית העמוד. נפסיק לשלוח דיוור בהקדם."
+      ],
+      "paragraphs_en": [
+        "Giving us your details so we can reply to you is not conditional on agreeing to receive marketing. The consent tick box is not pre-ticked, and agreeing is entirely your choice.",
+        "If you tick it, we may send you promotional emails and WhatsApp messages and contact you by phone, in accordance with Section 30A of the Israeli Communications Law (Bezeq and Broadcasting), 1982.",
+        "You can withdraw your consent at any time without giving a reason: reply \"Remove\" to any message, or contact us using the details at the bottom of this page. We will stop sending marketing promptly."
+      ],
+      "bullets_he": [],
+      "bullets_en": [],
+      "closing_he": [],
+      "closing_en": []
+    },
+    {
+      "title_he": "העברת מידע לצדדים שלישיים",
+      "title_en": "Sharing with third parties",
+      "paragraphs_he": [
+        "אנו נעזרים בספקי שירות הדרושים לתפעול האתר ולחזרה אליכם. הם מעבדים מידע בשמנו או לפי תנאיהם שלהם:"
+      ],
+      "paragraphs_en": [
+        "We rely on service providers needed to run the site and get back to you. They process information on our behalf or under their own terms:"
+      ],
+      "bullets_he": [
+        "Netlify: אחסון האתר ושמירת הגשות הטופס. השרתים עשויים להימצא מחוץ לישראל, כולל בארצות הברית.",
+        "WhatsApp (Meta): כשאתם שולחים את ההודעה היא עוברת דרך וואטסאפ, בכפוף לתנאי השירות ולמדיניות הפרטיות שלו.",
+        "Google Fonts: גופני האתר נטענים משירות זה, ולכן כתובת ה-IP שלכם נחשפת ל-Google בעת טעינת הדף.",
+        "YouTube / Vimeo: סרטוני הדגמה של פרויקטים מוטמעים באתר מ-YouTube וטוענים יחד עם הדף, וסרטוני המלצות נטענים רק כשתלחצו על ההפעלה. השירותים הללו עשויים לאסוף מידע ולהציב עוגיות, לפי מדיניות הפרטיות שלהם."
+      ],
+      "bullets_en": [
+        "Netlify: hosts the site and stores form submissions. Its servers may be located outside Israel, including in the United States.",
+        "WhatsApp (Meta): when you send the message it travels through WhatsApp, subject to its terms and privacy policy.",
+        "Google Fonts: the site's fonts are loaded from this service, so your IP address is visible to Google when the page loads.",
+        "YouTube / Vimeo: project demo videos are embedded from YouTube and load with the page, while video testimonials load only when you press play. These services may collect information and set cookies, under their own privacy policies."
+      ],
+      "closing_he": [
+        "מעבר לכך נעביר מידע רק אם החוק או צו שיפוטי מחייבים זאת, או בהסכמתכם."
+      ],
+      "closing_en": [
+        "Beyond that, we share information only where the law or a court order requires it, or with your consent."
+      ]
+    },
+    {
+      "title_he": "עוגיות ואחסון מקומי",
+      "title_en": "Cookies and local storage",
+      "paragraphs_he": [
+        "האתר עצמו אינו משתמש בעוגיות מעקב, בכלי אנליטיקה או בפרסום ממוקד. בדפדפן שלכם נשמרות אך ורק העדפות תפעוליות, שפת האתר והגדרות תפריט הנגישות, והן אינן נשלחות אלינו. תוכן מוטמע של צד שלישי, כגון סרטוני YouTube, עשוי להציב עוגיות משלו, כמפורט בסעיף העברת המידע לצדדים שלישיים."
+      ],
+      "paragraphs_en": [
+        "The site itself does not use tracking cookies, analytics tools or targeted advertising. Only functional preferences, the site language and your accessibility menu settings, are stored in your browser, and they are never sent to us. Embedded third-party content, such as YouTube videos, may set its own cookies, as described in the section on sharing with third parties."
+      ],
+      "bullets_he": [],
+      "bullets_en": [],
+      "closing_he": [],
+      "closing_en": []
+    },
+    {
+      "title_he": "תקופת שמירת המידע",
+      "title_en": "How long we keep it",
+      "paragraphs_he": [
+        "פרטי פנייה נשמרים כל עוד נדרש לטיפול בה ולהמשך ההתקשרות, ולא יותר מ-24 חודשים ממועד הפנייה, אלא אם נוצר קשר עסקי או שהחוק מחייב שמירה ארוכה יותר. פרטים של מי שהסכים לקבל דיוור נשמרים עד לביטול ההסכמה."
+      ],
+      "paragraphs_en": [
+        "Enquiry details are kept for as long as needed to handle the enquiry and any resulting engagement, and for no more than 24 months from the enquiry unless a business relationship begins or the law requires longer retention. Details of people who agreed to receive marketing are kept until consent is withdrawn."
+      ],
+      "bullets_he": [],
+      "bullets_en": [],
+      "closing_he": [],
+      "closing_en": []
+    },
+    {
+      "title_he": "אבטחת המידע",
+      "title_en": "Data security",
+      "paragraphs_he": [
+        "האתר מוגש בחיבור מוצפן (HTTPS) והגישה להגשות הטופס מוגבלת לבעל האתר. אנו נוקטים אמצעים סבירים להגנה על המידע, אך אין מערכת מאובטחת לחלוטין ולא ניתן להבטיח הגנה מלאה."
+      ],
+      "paragraphs_en": [
+        "The site is served over an encrypted connection (HTTPS) and access to form submissions is limited to the site owner. We take reasonable measures to protect your information, but no system is completely secure and full protection cannot be guaranteed."
+      ],
+      "bullets_he": [],
+      "bullets_en": [],
+      "closing_he": [],
+      "closing_en": []
+    },
+    {
+      "title_he": "זכויותיכם",
+      "title_en": "Your rights",
+      "paragraphs_he": [
+        "לפי חוק הגנת הפרטיות, התשמ״א–1981, אתם רשאים לבקש לעיין במידע שנשמר עליכם, לתקן אותו או למחוק אותו. מסירת מידע אישי באתר נעשית מרצונכם החופשי ואינה חובה על פי חוק.",
+        "לבקשה כזו פנו אלינו בפרטי הקשר שבתחתית העמוד, ונשיב בהקדם האפשרי."
+      ],
+      "paragraphs_en": [
+        "Under the Israeli Privacy Protection Law, 1981, you may ask to see the information we hold about you, and to have it corrected or deleted. Providing personal information on the site is voluntary and not required by law.",
+        "To make such a request, contact us using the details at the bottom of this page and we will reply as soon as possible."
+      ],
+      "bullets_he": [],
+      "bullets_en": [],
+      "closing_he": [],
+      "closing_en": []
+    },
+    {
+      "title_he": "שינויים במדיניות",
+      "title_en": "Changes to this policy",
+      "paragraphs_he": [
+        "אנו עשויים לעדכן מדיניות זו מעת לעת. הנוסח העדכני מתפרסם בדף זה, יחד עם תאריך העדכון האחרון."
+      ],
+      "paragraphs_en": [
+        "We may update this policy from time to time. The current version is always published on this page, together with the date it was last updated."
+      ],
+      "bullets_he": [],
+      "bullets_en": [],
+      "closing_he": [],
+      "closing_en": []
+    }
+  ]
+}

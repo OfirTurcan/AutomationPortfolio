@@ -1,0 +1,160 @@
+---
+// Customer testimonials: rating, quote, optional photo and optional short video.
+// Content lives in src/content/testimonials/*.json and is edited in the CMS.
+// The whole section (and its nav link) disappears while nothing is published.
+import { getCollection } from "astro:content";
+import settings from "../content/settings.json";
+import { parseVideoUrl } from "../lib/video";
+
+const items = (await getCollection("testimonials"))
+  .map((e) => e.data)
+  .filter((t) => t.published)
+  .sort((a, b) => {
+    if (a.featured !== b.featured) return a.featured ? -1 : 1;
+    const ao = a.order ?? 999;
+    const bo = b.order ?? 999;
+    if (ao !== bo) return ao - bo;
+    return a.name_he.localeCompare(b.name_he);
+  });
+
+const count = items.length;
+const average = count ? items.reduce((sum, t) => sum + t.rating, 0) / count : 0;
+const averageText = average.toFixed(1).replace(/\.0$/, "");
+
+const playIcon = `<svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" focusable="false" fill="currentColor"><path d="M8 5.14v13.72a1 1 0 0 0 1.52.85l11-6.86a1 1 0 0 0 0-1.7l-11-6.86A1 1 0 0 0 8 5.14z"/></svg>`;
+---
+
+{
+  count > 0 && (
+    <section id="testimonials" class="mx-auto max-w-6xl scroll-mt-20 px-5 py-16 md:py-24">
+      <div class="mb-10 text-center">
+        <h2 class="text-3xl font-extrabold md:text-4xl">
+          <span class="text-gradient" data-i18n="testimonials_title">{settings.testimonials_title_he}</span>
+        </h2>
+        <p class="mx-auto mt-3 max-w-2xl text-[var(--color-muted)]" data-i18n="testimonials_subtitle">
+          {settings.testimonials_subtitle_he}
+        </p>
+
+        <p class="glass mx-auto mt-6 inline-flex flex-wrap items-center justify-center gap-x-3 gap-y-1 rounded-full px-5 py-2 text-sm">
+          <span class="tst-stars" aria-hidden="true">
+            {[1, 2, 3, 4, 5].map((n) => (
+              <span class={n <= Math.round(average) ? "is-on" : ""}>★</span>
+            ))}
+          </span>
+          <span class="font-extrabold text-[var(--color-text)]">{averageText}</span>
+          <span class="text-[var(--color-muted)]">
+            <span data-i18n="tst_avg_label">דירוג ממוצע</span>
+            {" · "}
+            {
+              count === 1 ? (
+                <span data-i18n="tst_count_one">המלצה אחת</span>
+              ) : (
+                <>
+                  <span>{count}</span> <span data-i18n="tst_count_many">המלצות</span>
+                </>
+              )
+            }
+          </span>
+        </p>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {items.map((t) => {
+          const video = parseVideoUrl(t.video_url);
+          const initial = (t.name_en ?? t.name_he).trim().charAt(0).toUpperCase();
+          return (
+            <figure class="glass reveal flex flex-col overflow-hidden rounded-2xl">
+              {video && (
+                <button
+                  type="button"
+                  class="tst-video"
+                  data-embed={video.embedUrl}
+                  data-name={t.name_he}
+                  data-i18n-attr="aria-label:tst_play_video"
+                  aria-label="צפייה בהמלצה בווידאו"
+                  style={t.photo ? `background-image:url('${t.photo}')` : undefined}
+                >
+                  <span class="tst-play" aria-hidden="true">
+                    <Fragment set:html={playIcon} />
+                  </span>
+                </button>
+              )}
+
+              <div class="flex flex-1 flex-col gap-4 p-5">
+                <div>
+                  <span class="tst-stars" aria-hidden="true">
+                    {[1, 2, 3, 4, 5].map((n) => (
+                      <span class={n <= t.rating ? "is-on" : ""}>★</span>
+                    ))}
+                  </span>
+                  <span class="sr-only">
+                    {t.rating} <span data-i18n="tst_of_five">מתוך 5</span>
+                  </span>
+                </div>
+
+                <blockquote class="flex-1 text-[var(--color-text)] leading-relaxed" data-i18n={`tst_${t.slug}_quote`}>
+                  {t.quote_he}
+                </blockquote>
+
+                <figcaption class="flex items-center gap-3 border-t border-[var(--color-border)] pt-4">
+                  {t.photo && !video ? (
+                    <img
+                      src={t.photo}
+                      alt=""
+                      loading="lazy"
+                      class="h-11 w-11 flex-none rounded-full object-cover"
+                    />
+                  ) : (
+                    <span
+                      class="grid h-11 w-11 flex-none place-items-center rounded-full bg-gradient-to-br from-[var(--color-cyan)] to-[var(--color-violet)] font-extrabold text-[#05060e]"
+                      aria-hidden="true"
+                    >
+                      {initial}
+                    </span>
+                  )}
+                  <div class="min-w-0">
+                    <div class="font-extrabold text-[var(--color-text)]" data-i18n={`tst_${t.slug}_name`}>
+                      {t.name_he}
+                    </div>
+                    {t.role_he && (
+                      <div class="text-sm text-[var(--color-muted)]" data-i18n={`tst_${t.slug}_role`}>
+                        {t.role_he}
+                      </div>
+                    )}
+                  </div>
+                </figcaption>
+              </div>
+            </figure>
+          );
+        })}
+      </div>
+    </section>
+  )
+}
+
+<script>
+  // Click-to-play: the YouTube/Vimeo iframe is only created when the visitor presses play,
+  // so just viewing the page loads nothing from (and sets no cookies for) those services.
+  document.addEventListener("click", (e) => {
+    const btn = (e.target as Element | null)?.closest<HTMLButtonElement>(".tst-video");
+    if (!btn) return;
+    const src = btn.dataset.embed;
+    if (!src) return;
+
+    let dict: Record<string, { he: string; en: string }> = {};
+    try {
+      dict = JSON.parse(document.getElementById("i18n-dict")?.textContent ?? "{}");
+    } catch {}
+    const lang = document.documentElement.lang === "en" ? "en" : "he";
+
+    const frame = document.createElement("iframe");
+    frame.className = "tst-frame";
+    frame.src = src;
+    frame.title = `${dict.tst_video_title?.[lang] ?? ""}: ${btn.dataset.name ?? ""}`.trim();
+    frame.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+    frame.allowFullscreen = true;
+    frame.referrerPolicy = "strict-origin-when-cross-origin";
+    btn.replaceWith(frame);
+    frame.focus();
+  });
+</script>

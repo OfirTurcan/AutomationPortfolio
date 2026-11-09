@@ -62,6 +62,33 @@ collections:
       - { label: Highlights (EN), name: highlights_en, widget: list, required: false }
       - { label: Highlights (HE), name: highlights_he, widget: list, required: false }
 
+  # ------------------------------------------------------------ Testimonials
+  - name: testimonials
+    label: Testimonials
+    label_singular: Testimonial
+    folder: src/content/testimonials
+    create: true
+    format: json
+    extension: json
+    identifier_field: slug
+    slug: "{{fields.slug}}"
+    summary: "{{name_he}}  —  {{rating}}/5"
+    sortable_fields: [order, rating, name_he, published]
+    fields:
+      - { label: Slug (filename / id), name: slug, widget: string, hint: "lowercase, hyphenated (e.g. dana-cohen). Also the file name." }
+      - { label: Customer name (HE), name: name_he, widget: string }
+      - { label: Customer name (EN), name: name_en, widget: string, required: false, hint: "Optional. Falls back to the Hebrew name." }
+      - { label: Role / company (HE), name: role_he, widget: string, required: false, hint: "e.g. CEO, Example Ltd" }
+      - { label: Role / company (EN), name: role_en, widget: string, required: false }
+      - { label: Rating (1-5 stars), name: rating, widget: number, value_type: int, min: 1, max: 5, default: 5 }
+      - { label: Quote (HE), name: quote_he, widget: text }
+      - { label: Quote (EN), name: quote_en, widget: text, required: false, hint: "Optional. English visitors see the Hebrew quote if empty." }
+      - { label: Photo, name: photo, widget: image, required: false, hint: "Optional customer photo. Use a small image (under ~300 KB). If there is a video, the photo becomes the video's cover." }
+      - { label: Video link (YouTube or Vimeo), name: video_url, widget: string, required: false, hint: "Optional 1-3 minute clip. Upload it to YouTube (Unlisted) or Vimeo, then paste the normal link here (watch link, youtu.be link or vimeo.com link all work). The video only loads when a visitor presses play." }
+      - { label: Featured (shown first), name: featured, widget: boolean, default: false }
+      - { label: Published, name: published, widget: boolean, default: true, hint: "Untick to hide it from the site without deleting it." }
+      - { label: Order (lower = earlier), name: order, widget: number, required: false, value_type: int }
+
   # ----------------------------------------------------------------- Settings
   - name: site
     label: Site Content
@@ -128,6 +155,8 @@ collections:
           - { label: Nav · Skills (HE), name: nav_skills_he, widget: string }
           - { label: Nav · Portfolio (EN), name: nav_portfolio_en, widget: string }
           - { label: Nav · Portfolio (HE), name: nav_portfolio_he, widget: string }
+          - { label: Nav · Testimonials (EN), name: nav_testimonials_en, widget: string }
+          - { label: Nav · Testimonials (HE), name: nav_testimonials_he, widget: string }
           - { label: Nav · Contact (EN), name: nav_contact_en, widget: string }
           - { label: Nav · Contact (HE), name: nav_contact_he, widget: string }
           - { label: About section title (EN), name: about_title_en, widget: string }
@@ -140,14 +169,49 @@ collections:
           - { label: Portfolio title (HE), name: portfolio_title_he, widget: string }
           - { label: Portfolio subtitle (EN), name: portfolio_subtitle_en, widget: text }
           - { label: Portfolio subtitle (HE), name: portfolio_subtitle_he, widget: text }
+          - { label: Testimonials title (EN), name: testimonials_title_en, widget: string }
+          - { label: Testimonials title (HE), name: testimonials_title_he, widget: string }
+          - { label: Testimonials subtitle (EN), name: testimonials_subtitle_en, widget: text }
+          - { label: Testimonials subtitle (HE), name: testimonials_subtitle_he, widget: text }
           - { label: Contact title (EN), name: contact_title_en, widget: string }
           - { label: Contact title (HE), name: contact_title_he, widget: string }
           - { label: Contact subtitle (EN), name: contact_subtitle_en, widget: text }
           - { label: Contact subtitle (HE), name: contact_subtitle_he, widget: text }
           - { label: Contact CTA (EN), name: contact_cta_en, widget: string }
           - { label: Contact CTA (HE), name: contact_cta_he, widget: string }
+          - { label: WhatsApp number for the contact form, name: whatsapp_number, widget: string, hint: "International format, digits only, no + or spaces. Israel example: 972544415871 (for 054-441-5871)." }
           - { label: Footer (EN), name: footer_en, widget: string }
           - { label: Footer (HE), name: footer_he, widget: string }
+
+      # ----------------------------------------------------------- Privacy policy
+      - name: privacy
+        label: Privacy Policy
+        file: src/content/privacy.json
+        format: json
+        fields:
+          - { label: Title (EN), name: title_en, widget: string }
+          - { label: Title (HE), name: title_he, widget: string }
+          - { label: Intro (EN), name: intro_en, widget: text }
+          - { label: Intro (HE), name: intro_he, widget: text }
+          - { label: Last updated date, name: updated_date, widget: string, hint: "Update whenever the policy text changes. Format: YYYY-MM-DD." }
+          - { label: Contact block title (EN), name: contact_title_en, widget: string }
+          - { label: Contact block title (HE), name: contact_title_he, widget: string }
+          - { label: Contact block intro (EN), name: contact_intro_en, widget: text }
+          - { label: Contact block intro (HE), name: contact_intro_he, widget: text }
+          - label: Sections
+            name: sections
+            widget: list
+            summary: "{{fields.title_en}}"
+            hint: "Each section is a numbered card. Keep the EN and HE lists the same length (same order)."
+            fields:
+              - { label: Section title (EN), name: title_en, widget: string }
+              - { label: Section title (HE), name: title_he, widget: string }
+              - { label: Paragraphs (EN), name: paragraphs_en, widget: list, required: false }
+              - { label: Paragraphs (HE), name: paragraphs_he, widget: list, required: false }
+              - { label: Bullet points (EN), name: bullets_en, widget: list, required: false }
+              - { label: Bullet points (HE), name: bullets_he, widget: list, required: false }
+              - { label: Closing paragraphs after bullets (EN), name: closing_en, widget: list, required: false }
+              - { label: Closing paragraphs after bullets (HE), name: closing_he, widget: list, required: false }
 
       # --------------------------------------------------- Accessibility (IS 5568)
       - name: accessibility

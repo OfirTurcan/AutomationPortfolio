@@ -35,7 +35,9 @@ site/
 ├─ src/
 │  ├─ content/
 │  │  ├─ about.json          # About Me + skills (editable in CMS)
-│  │  ├─ settings.json       # site-level bilingual UI text + SEO (editable in CMS)
+│  │  ├─ settings.json       # site-level bilingual UI text + SEO + WhatsApp number (editable in CMS)
+│  │  ├─ privacy.json        # privacy policy text, bilingual (editable in CMS)
+│  │  ├─ testimonials/*.json # one file per customer testimonial (editable in CMS)
 │  │  └─ projects/*.json     # one normalized JSON file per project (editable in CMS)
 │  ├─ content.config.ts      # Zod schema for the projects collection
 │  ├─ components/            # Hero, About, Skills, Portfolio, ProjectCard, Contact, …
@@ -187,10 +189,51 @@ What this site ships:
 > is expected to include a phone contact; the line is hidden while empty. Also keep
 > `updated_date` current. Re-run an audit if you add new content types (e.g. forms).
 
-> **Privacy:** this site collects no personal data (contact is `mailto:`/LinkedIn; only a
-> functional language/a11y preference is stored locally), so no privacy policy is legally
-> required yet. If you later add a contact form, analytics, or marketing cookies, add a
-> privacy policy and cookie consent per the Protection of Privacy Law (incl. Amendment 13).
+> **Privacy:** the contact form collects personal data, so the site now has a privacy policy at
+> **`/privacy`** (editable in the CMS under **Site Content → Privacy Policy**). If you later add
+> analytics, marketing cookies or new third-party embeds, update that policy (and add cookie
+> consent where needed) per the Protection of Privacy Law (incl. Amendment 13).
+
+---
+
+## Contact popup (WhatsApp + Netlify Forms)
+
+A floating button, the hero "Let's talk" button, the Contact section button and the "Contact" nav
+link all open one popup (`src/components/ContactModal.astro`, rendered from `Base.astro`).
+
+On submit it does two things:
+
+1. Sends a **copy to Netlify Forms** (form name `contact`): name, email, phone, goal, whether the
+   marketing box was ticked, the exact consent wording shown, language, page and timestamp. This
+   is your record of consent. View it in **Netlify → Site → Forms**.
+2. Opens **WhatsApp** (`wa.me/<number>?text=...`) with a pre-filled Hebrew message. It only
+   reaches you if the visitor taps **Send** in WhatsApp, which is why the Netlify copy exists.
+
+Notes:
+
+- The WhatsApp number lives in **Site Settings → WhatsApp number** (`whatsapp_number` in
+  `settings.json`), digits only, e.g. `972544415871`.
+- The marketing-consent checkbox is optional and unticked by default (required for valid consent).
+- Form labels/validation text are in `STATIC_LABELS` in `src/lib/dict.ts` (Hebrew + English).
+- Netlify detects the form from the built HTML. Enable **Forms** for the site in Netlify if it is
+  off (Site → Forms → Enable form detection). Free tier: 100 submissions/month.
+- Locally (`npm run dev`) the Netlify copy is skipped (no Netlify there); WhatsApp still opens.
+
+---
+
+## Testimonials
+
+Add them in the CMS under **Testimonials**. Each one has a 1-5 star rating, a quote (Hebrew,
+optional English), an optional photo and an optional video link.
+
+- **Video:** upload the 1-3 minute clip to YouTube (set to *Unlisted*) or Vimeo and paste the
+  normal link. Watch links, `youtu.be` links and `vimeo.com` links all work. The video only loads
+  when a visitor presses play (privacy-friendly `youtube-nocookie.com` embed).
+- **Photo:** uploaded through the CMS into `public/assets`. Keep it small (under ~300 KB). With a
+  video, the photo is used as the video cover.
+- **Published** untick hides a testimonial without deleting it. **Featured** shows it first.
+- The whole section and its nav link are hidden until at least one testimonial is published.
+- The average rating at the top of the section is calculated automatically.
 
 ---
 

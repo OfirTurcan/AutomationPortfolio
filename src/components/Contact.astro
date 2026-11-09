@@ -16,6 +16,7 @@ import about from "../content/about.json";
       <a
         href={`mailto:${about.email}`}
         class="rounded-xl bg-gradient-to-r from-[var(--color-cyan)] to-[var(--color-violet)] px-7 py-3 font-bold text-[#05060e] transition hover:opacity-90"
+        data-open-contact
         data-i18n="contact_cta"
       >
         {settings.contact_cta_he}
@@ -29,6 +30,14 @@ import about from "../content/about.json";
         LinkedIn ↗
       </a>
     </div>
-    <div class="relative mt-6 text-sm text-[var(--color-muted)]">{about.email}</div>
+    <div class="relative mt-6 text-sm text-[var(--color-muted)]">
+      <a
+        href={`mailto:${about.email}`}
+        class="font-semibold text-[var(--color-violet)] underline underline-offset-4 hover:text-[var(--color-cyan)]"
+        dir="ltr"
+      >
+        {about.email}
+      </a>
+    </div>
   </div>
 </section>

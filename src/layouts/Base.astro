@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import A11yMenu from "../components/A11yMenu.astro";
+import ContactModal from "../components/ContactModal.astro";
 import type { Dict } from "../lib/i18n";
 
 interface Props {
@@ -38,6 +39,7 @@ const description = dict.__desc?.he ?? "";
     <a href="#main" class="skip-link" data-i18n="skip_to_content">דלג לתוכן הראשי</a>
 
     <A11yMenu />
+    <ContactModal />
 
     <div class="relative z-10">
       <slot />
