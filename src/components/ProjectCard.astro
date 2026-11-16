@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { parseVideoUrl } from "../lib/video";
 
 interface Props {
   project: CollectionEntry<"projects">["data"];
@@ -15,7 +16,10 @@ const statusStyles: Record<string, string> = {
     "text-[var(--color-magenta)] border-[color-mix(in_srgb,var(--color-magenta)_45%,transparent)] bg-[color-mix(in_srgb,var(--color-magenta)_12%,transparent)]",
 };
 const badgeClass = statusStyles[p.status] ?? statusStyles.live;
-const hasVideo = !!p.video_url && p.video_url.trim() !== "";
+// Video is shown as the thumbnail + play button; the player only loads on click.
+const video = parseVideoUrl(p.video_url);
+const hasVideo = !!video;
+const playIcon = `<svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>`;
 const links = [
   { url: p.link_live, key: "label_view_live" },
   { url: p.link_caseStudy, key: "label_case" },
@@ -28,21 +32,28 @@ const links = [
   <div class="relative aspect-video w-full overflow-hidden bg-[var(--color-bg-soft)]">
     {
       hasVideo ? (
-        <iframe
-          class="h-full w-full"
-          src={p.video_url}
-          title={p.title_he}
-          loading="lazy"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-        />
+        <button
+          type="button"
+          class="tst-video h-full w-full"
+          data-embed={video!.embedUrl}
+          data-title-key="proj_video_title"
+          data-name-key={`proj_${p.slug}_title`}
+          data-name={p.title_he}
+          data-i18n-attr="aria-label:proj_play_video"
+          aria-label="צפייה בהדגמת הפרויקט"
+          style={`background-image:url('${p.thumbnail}')`}
+        >
+          <span class="tst-play" aria-hidden="true">
+            <Fragment set:html={playIcon} />
+          </span>
+        </button>
       ) : (
         <>
           <img
             src={p.thumbnail}
             alt={p.title_he}
             loading="lazy"
+            decoding="async"
             class="h-full w-full object-cover opacity-90 transition group-hover:scale-105"
           />
           <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent p-3">
@@ -149,3 +160,7 @@ const links = [
     }
   </div>
 </article>
+
+<script>
+  import "../lib/video-facade";
+</script>

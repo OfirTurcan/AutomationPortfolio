@@ -21,6 +21,6 @@
   "status": "live",
   "featured": true,
   "order": 4,
-  "thumbnail": "/assets/newletter.jpg",
+  "thumbnail": "/assets/newletter.webp",
   "video_url": "https://www.youtube.com/embed/QyKkSHEwKDE"
 }

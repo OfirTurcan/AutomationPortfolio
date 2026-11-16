@@ -4,7 +4,7 @@
   "outcome_he": "מצמצמת טיפול ידני בפניות נכנסות לחדר כושר על ידי סיווג אוטומטי של כל פנייה, עדכון בסיס הנתונים, וניתוב כל מקרה למענה אוטומטי במייל או לטיפול של צוות השירות ב-Slack.",
   "slug": "gym-triage",
   "video_url": "https://www.youtube.com/embed/0P7TbcZn6g8",
-  "thumbnail": "/assets/Gym_triage.jpg",
+  "thumbnail": "/assets/Gym_triage.webp",
   "description_en": "An automated triage system for gym inquiries that captures form submissions, classifies each request with an AI agent, and routes it to the right next step. Depending on urgency and context, the workflow can send a direct customer response or escalate the issue to the team through Slack.",
   "featured": true,
   "order": 5,

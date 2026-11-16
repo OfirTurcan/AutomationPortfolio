@@ -133,28 +133,5 @@ const playIcon = `<svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="t
 }
 
 <script>
-  // Click-to-play: the YouTube/Vimeo iframe is only created when the visitor presses play,
-  // so just viewing the page loads nothing from (and sets no cookies for) those services.
-  document.addEventListener("click", (e) => {
-    const btn = (e.target as Element | null)?.closest<HTMLButtonElement>(".tst-video");
-    if (!btn) return;
-    const src = btn.dataset.embed;
-    if (!src) return;
-
-    let dict: Record<string, { he: string; en: string }> = {};
-    try {
-      dict = JSON.parse(document.getElementById("i18n-dict")?.textContent ?? "{}");
-    } catch {}
-    const lang = document.documentElement.lang === "en" ? "en" : "he";
-
-    const frame = document.createElement("iframe");
-    frame.className = "tst-frame";
-    frame.src = src;
-    frame.title = `${dict.tst_video_title?.[lang] ?? ""}: ${btn.dataset.name ?? ""}`.trim();
-    frame.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
-    frame.allowFullscreen = true;
-    frame.referrerPolicy = "strict-origin-when-cross-origin";
-    btn.replaceWith(frame);
-    frame.focus();
-  });
+  import "../lib/video-facade";
 </script>

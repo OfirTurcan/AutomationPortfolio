@@ -46,6 +46,8 @@ const STATIC_LABELS: Dict = {
   tst_count_many: { he: "המלצות", en: "testimonials" },
   tst_play_video: { he: "צפייה בהמלצה בווידאו", en: "Watch the video testimonial" },
   tst_video_title: { he: "המלצת וידאו", en: "Video testimonial" },
+  proj_play_video: { he: "צפייה בהדגמת הפרויקט", en: "Watch the project demo" },
+  proj_video_title: { he: "הדגמת פרויקט", en: "Project demo" },
 
   // Privacy page chrome
   priv_toc: { he: "תוכן עניינים", en: "Contents" },

@@ -4,7 +4,7 @@
   "outcome_he": "מצמצמת חיכוך אדמיניסטרטיבי בניהול הבית על ידי המרת הודעות קוליות וטקסט חופשיות לעדכונים מובנים ב-Airtable וב-Google Calendar, עם דשבורד מסונכרן וידידותי למובייל לניהול קניות ומשימות משפחתיות.",
   "slug": "homesync-ai",
   "video_url": "https://www.youtube.com/embed/iwiRP9SnWAc",
-  "thumbnail": "/assets/homeAssistant_make.png",
+  "thumbnail": "/assets/homeAssistant_make.webp",
   "description_en": "An intelligent home-assistant automation built with Make.com that turns Telegram voice notes and text messages into structured household actions. An AI agent understands intent and routes each request into shopping-list updates, task management, or calendar scheduling.",
   "featured": true,
   "order": 3,

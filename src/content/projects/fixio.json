@@ -29,8 +29,8 @@
   "status": "prototype",
   "featured": true,
   "order": 1,
-  "thumbnail": "/assets/initial_load.png",
-  "gallery": ["/assets/initial_load.png", "/assets/missing_validation.png"],
+  "thumbnail": "/assets/initial_load.webp",
+  "gallery": ["/assets/initial_load.webp", "/assets/missing_validation.png"],
   "highlights_en": [
     "Hebrew-first multilingual UX with RTL/LTR support.",
     "Structured contractor onboarding with document collection.",

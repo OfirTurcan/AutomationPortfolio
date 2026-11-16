@@ -12,6 +12,9 @@ interface Props {
 const { dict } = Astro.props;
 const title = dict.__title?.he ?? "SyncMoto";
 const description = dict.__desc?.he ?? "";
+// Social previews need absolute URLs (WhatsApp/LinkedIn/Facebook ignore relative ones).
+const ogImage = new URL("/images/og-image.jpg", Astro.site).href;
+const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <!doctype html>
@@ -19,13 +22,18 @@ const description = dict.__desc?.he ?? "";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="/images/ofir_profile.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/images/ofir_profile.png" />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#f6faff" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -11,7 +11,7 @@ through GitHub commits (Git-based workflow), which trigger a Netlify rebuild.
 
 ## Tech stack
 
-- **Astro 5** (static output) + **TypeScript**
+- **Astro 7** (static output) + **TypeScript**
 - **Tailwind CSS v4** (via `@tailwindcss/vite`) + a small `global.css` design system
 - **Decap CMS** (the maintained Netlify CMS successor) at `/admin`
 - **Netlify** static hosting + **two Netlify Functions** for GitHub OAuth (`/auth`, `/callback`)
