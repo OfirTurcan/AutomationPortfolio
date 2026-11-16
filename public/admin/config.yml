@@ -93,6 +93,28 @@ collections:
   - name: site
     label: Site Content
     files:
+      # ------------------------------------------------------------------ FAQ
+      - name: faq
+        label: FAQ (also read by search engines & AI assistants)
+        file: src/content/faq.json
+        format: json
+        fields:
+          - { label: Show section on the site, name: show_section, widget: boolean, default: false, hint: "Tick when the questions are ready. Only shown questions are added to the structured data that search engines and AI assistants read." }
+          - { label: Title (HE), name: title_he, widget: string }
+          - { label: Title (EN), name: title_en, widget: string }
+          - { label: Subtitle (HE), name: subtitle_he, widget: text, required: false }
+          - { label: Subtitle (EN), name: subtitle_en, widget: text, required: false }
+          - label: Questions
+            name: items
+            widget: list
+            label_singular: Question
+            summary: "{{fields.question_he}}"
+            hint: "Write the questions a potential client would type into Google or ChatGPT, with short, specific answers (tools, timelines, results). English is optional; English visitors see the Hebrew if it is empty."
+            fields:
+              - { label: Question (HE), name: question_he, widget: string }
+              - { label: Answer (HE), name: answer_he, widget: text }
+              - { label: Question (EN), name: question_en, widget: string, required: false }
+              - { label: Answer (EN), name: answer_en, widget: text, required: false }
       # ------------------------------------------------------------ About Me
       - name: about
         label: About Me
@@ -106,6 +128,8 @@ collections:
           - { label: Headline (HE), name: headline_he, widget: string }
           - { label: About text (EN), name: about_en, widget: text }
           - { label: About text (HE), name: about_he, widget: text }
+          - { label: Short factual summary (EN), name: summary_en, widget: text, hint: "2-3 plain sentences: who you are, what you do, for whom and where. Not shown on the page; search engines and AI assistants read it (structured data and /llms.txt). Facts, not marketing language." }
+          - { label: Short factual summary (HE), name: summary_he, widget: text, hint: "The same summary in Hebrew." }
           - { label: Profile image, name: profile_image, widget: image }
           - { label: LinkedIn URL, name: linkedin_url, widget: string }
           - { label: Email, name: email, widget: string }

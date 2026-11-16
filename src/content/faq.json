@@ -1,0 +1,39 @@
+{
+  "show_section": false,
+  "title_he": "שאלות נפוצות",
+  "title_en": "Frequently asked questions",
+  "subtitle_he": "תשובות קצרות לשאלות שעולות לפני שמתחילים לעבוד יחד.",
+  "subtitle_en": "Short answers to the questions that usually come up before we start working together.",
+  "items": [
+    {
+      "question_he": "במה SyncMoto עוסקת?",
+      "answer_he": "SyncMoto מאפיינת ובונה אוטומציות עסקיות וסוכני AI. אני לא מתחיל מהכלי אלא מהתהליך העסקי: מבין איך העבודה מתבצעת בפועל, מזהה מה כדאי לייעל או לאטמט, ואז בונה את הפתרון באמצעות כלי אוטומציה, חיבורי API וסוכני AI.",
+      "question_en": "What does SyncMoto do?",
+      "answer_en": "SyncMoto designs and builds business automations and AI agents. I don't start with the tool but with the business process: I learn how the work is actually done, identify what is worth improving or automating, and then build the solution with automation platforms, API integrations and AI agents."
+    },
+    {
+      "question_he": "באילו כלים אתם עובדים?",
+      "answer_he": "בעיקר n8n ו-Make.com לבניית תהליכים, לצד Airtable, Slack, Google Workspace, Webhooks וחיבורי API. בצד ה-AI אני עובד עם Claude Code, Google Gemini ו-OpenAI Whisper. כשכלי No-Code לא מספיקים, אני מפתח רכיבים ייעודיים ב-TypeScript, React ו-Node.",
+      "question_en": "Which tools do you work with?",
+      "answer_en": "Mainly n8n and Make.com for building workflows, together with Airtable, Slack, Google Workspace, webhooks and API integrations. On the AI side I work with Claude Code, Google Gemini and OpenAI Whisper. When no-code tools are not enough, I build custom components in TypeScript, React and Node."
+    },
+    {
+      "question_he": "איך מתנהל פרויקט?",
+      "answer_he": "ארבעה שלבים: תכנון – מיפוי התהליך הקיים והגדרת מה רוצים להשיג. יישור קו – הסכמה על הפתרון, הכלים וההיקף לפני שבונים. אוטומציה – בנייה ובדיקה של התהליכים והסוכנים. מסירה – הטמעה, הדרכה ותיעוד כך שהצוות שלכם יכול לעבוד עם המערכת.",
+      "question_en": "How does a project work?",
+      "answer_en": "Four stages. Plan: map the current process and define the goal. Align: agree on the solution, tools and scope before building. Automate: build and test the workflows and agents. Deliver: roll out, train and document so your team can run the system."
+    },
+    {
+      "question_he": "מה ההבדל בין אוטומציה רגילה לסוכן AI?",
+      "answer_he": "אוטומציה רגילה מבצעת רצף קבוע של צעדים: כשקורה X, עשה Y. סוכן AI מסוגל להבין טקסט חופשי, לקבל החלטות בתוך גבולות שהוגדרו לו ולבחור באיזה כלי להשתמש – למשל לענות לפנייה של לקוח, לסווג אותה ולהעביר לגורם הנכון. ברוב הפרויקטים משלבים בין השניים.",
+      "question_en": "What is the difference between a regular automation and an AI agent?",
+      "answer_en": "A regular automation runs a fixed sequence of steps: when X happens, do Y. An AI agent can understand free text, make decisions within limits you set and choose which tool to use - for example answering a customer enquiry, classifying it and routing it to the right person. Most projects combine the two."
+    },
+    {
+      "question_he": "היכן אתם עובדים?",
+      "answer_he": "בכל הארץ – מרחוק או באתר הלקוח, לפי מה שמתאים לפרויקט.",
+      "question_en": "Where do you work?",
+      "answer_en": "Across Israel - remotely or on-site, whichever suits the project."
+    }
+  ]
+}

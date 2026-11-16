@@ -8,9 +8,11 @@ import type { Dict } from "../lib/i18n";
 interface Props {
   /** Full translation dictionary, serialized once for the client toggle. */
   dict: Dict;
+  /** Optional schema.org structured data for this page. */
+  jsonLd?: unknown;
 }
 
-const { dict } = Astro.props;
+const { dict, jsonLd } = Astro.props;
 const title = dict.__title?.he ?? "SyncMoto";
 const description = dict.__desc?.he ?? "";
 // Social previews need absolute URLs (WhatsApp/LinkedIn/Facebook ignore relative ones).
@@ -30,12 +32,22 @@ const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <link rel="canonical" href={pageUrl} />
     <meta property="og:url" content={pageUrl} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#f6faff" />
+    {
+      jsonLd && (
+        <script
+          type="application/ld+json"
+          is:inline
+          set:html={JSON.stringify(jsonLd).replace(/</g, "\\u003c")}
+        />
+      )
+    }
   </head>
   <body class="relative">
     <a href="#main" class="skip-link" data-i18n="skip_to_content">דלג לתוכן הראשי</a>
