@@ -1,12 +1,15 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { parseVideoUrl } from "../lib/video";
+import { coreDict } from "../lib/dict";
 
 interface Props {
   project: CollectionEntry<"projects">["data"];
+  /** Column position, used to stagger the scroll reveal of cards side by side. */
+  index?: number;
 }
 
-const { project: p } = Astro.props;
+const { project: p, index = 0 } = Astro.props;
 
 const statusStyles: Record<string, string> = {
   live: "text-[var(--color-lime)] border-[color-mix(in_srgb,var(--color-lime)_45%,transparent)] bg-[color-mix(in_srgb,var(--color-lime)_12%,transparent)]",
@@ -16,6 +19,8 @@ const statusStyles: Record<string, string> = {
     "text-[var(--color-magenta)] border-[color-mix(in_srgb,var(--color-magenta)_45%,transparent)] bg-[color-mix(in_srgb,var(--color-magenta)_12%,transparent)]",
 };
 const badgeClass = statusStyles[p.status] ?? statusStyles.live;
+// Server-render the Hebrew label (the page defaults to Hebrew); the toggle swaps it.
+const statusLabel = coreDict()[`status_${p.status}`]?.he ?? p.status;
 // Video is shown as the thumbnail + play button; the player only loads on click.
 const video = parseVideoUrl(p.video_url);
 const hasVideo = !!video;
@@ -27,7 +32,9 @@ const links = [
 ].filter((l) => l.url && l.url.trim() !== "");
 ---
 
-<article class="glass reveal group flex flex-col overflow-hidden rounded-2xl transition hover:-translate-y-1 hover:glow-ring">
+<article class="spot glass reveal group relative flex flex-col overflow-hidden rounded-2xl transition hover:-translate-y-1 hover:glow-ring" style={`--i:${index}`}>
+  <span class="spot-layer" aria-hidden="true"></span>
+
   <!-- Media -->
   <div class="relative aspect-video w-full overflow-hidden bg-[var(--color-bg-soft)]">
     {
@@ -71,7 +78,7 @@ const links = [
       class={`chip absolute top-3 ${badgeClass}`}
       style="inset-inline-end: 0.75rem;"
     >
-      <span data-i18n={`status_${p.status}`}>{p.status}</span>
+      <span data-i18n={`status_${p.status}`}>{statusLabel}</span>
     </span>
     {
       p.featured && (
@@ -163,4 +170,5 @@ const links = [
 
 <script>
   import "../lib/video-facade";
+  import "../lib/spotlight";
 </script>

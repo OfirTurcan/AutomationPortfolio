@@ -16,7 +16,7 @@ import about from "../content/about.json";
   <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
     {
       about.skills.map((group, i) => (
-        <div class="glass reveal rounded-2xl p-5">
+        <div class="glass reveal rounded-2xl p-5" style={`--i:${i}`}>
           <h3 class="mb-4 text-base font-extrabold text-[var(--color-cyan)]" data-i18n={`skill_group_${i}`}>
             {group.title_he}
           </h3>

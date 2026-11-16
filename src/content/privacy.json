@@ -3,7 +3,7 @@
   "title_en": "Privacy Policy",
   "intro_he": "השקיפות חשובה לנו. כאן מוסבר בפשטות איזה מידע נאסף באתר, למה, ומה הזכויות שלכם.",
   "intro_en": "Transparency matters to us. Here is, in plain language, what information this site collects, why, and what your rights are.",
-  "updated_date": "2026-11-09",
+  "updated_date": "2026-11-16",
   "contact_title_he": "יצירת קשר בנושא פרטיות",
   "contact_title_en": "Contacting us about privacy",
   "contact_intro_he": "לשאלות, לבקשות לעיון, תיקון או מחיקת מידע, או לביטול הסכמה לדיוור:",
@@ -119,14 +119,12 @@
       "bullets_he": [
         "Netlify: אחסון האתר ושמירת הגשות הטופס. השרתים עשויים להימצא מחוץ לישראל, כולל בארצות הברית.",
         "WhatsApp (Meta): כשאתם שולחים את ההודעה היא עוברת דרך וואטסאפ, בכפוף לתנאי השירות ולמדיניות הפרטיות שלו.",
-        "Google Fonts: גופני האתר נטענים משירות זה, ולכן כתובת ה-IP שלכם נחשפת ל-Google בעת טעינת הדף.",
-        "YouTube / Vimeo: סרטוני הדגמה של פרויקטים מוטמעים באתר מ-YouTube וטוענים יחד עם הדף, וסרטוני המלצות נטענים רק כשתלחצו על ההפעלה. השירותים הללו עשויים לאסוף מידע ולהציב עוגיות, לפי מדיניות הפרטיות שלהם."
+        "YouTube / Vimeo: סרטוני הדגמה של פרויקטים וסרטוני המלצות נטענים מהשירותים הללו רק כשתלחצו על ההפעלה. מרגע זה הם עשויים לאסוף מידע ולהציב עוגיות, לפי מדיניות הפרטיות שלהם."
       ],
       "bullets_en": [
         "Netlify: hosts the site and stores form submissions. Its servers may be located outside Israel, including in the United States.",
         "WhatsApp (Meta): when you send the message it travels through WhatsApp, subject to its terms and privacy policy.",
-        "Google Fonts: the site's fonts are loaded from this service, so your IP address is visible to Google when the page loads.",
-        "YouTube / Vimeo: project demo videos are embedded from YouTube and load with the page, while video testimonials load only when you press play. These services may collect information and set cookies, under their own privacy policies."
+        "YouTube / Vimeo: project demo videos and video testimonials load from these services only when you press play. From that point they may collect information and set cookies, under their own privacy policies."
       ],
       "closing_he": [
         "מעבר לכך נעביר מידע רק אם החוק או צו שיפוטי מחייבים זאת, או בהסכמתכם."

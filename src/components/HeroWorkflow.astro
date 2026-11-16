@@ -1,0 +1,56 @@
+---
+// Animated automation flow under the hero CTAs, echoing the "business DNA" headline:
+// the nodes Trigger → AI Agent → Integrations → Result are joined by a rotating double
+// helix, and a spark of light runs along it, lighting each node as it arrives.
+// Pure CSS; a still helix under prefers-reduced-motion or "pause animations".
+const nodes = [
+  { key: "wf_trigger", he: "טריגר", icon: "M13 2 4 14h7l-1 8 9-12h-7l1-8z" },
+  {
+    key: "wf_agent",
+    he: "סוכן AI",
+    icon: "M12 3l1.8 4.7 4.7 1.8-4.7 1.8L12 16l-1.8-4.7-4.7-1.8 4.7-1.8z M19 15l.8 2.2 2.2.8-2.2.8L19 21l-.8-2.2-2.2-.8 2.2-.8z",
+  },
+  {
+    key: "wf_integrations",
+    he: "אינטגרציות",
+    icon: "M9 15l6-6 M10.5 6.5l1-1a4 4 0 0 1 5.7 5.7l-1 1 M13.5 17.5l-1 1a4 4 0 0 1-5.7-5.7l1-1",
+  },
+  { key: "wf_result", he: "תוצאה", icon: "M20 6 9 17l-5-5" },
+];
+
+// Base pairs per helix segment. `j` is global so the helix twists continuously across nodes.
+const PAIRS = 10;
+---
+
+<div
+  class="wf"
+  role="img"
+  aria-label="תהליך אוטומציה: טריגר, סוכן AI, אינטגרציות, תוצאה"
+  data-i18n-attr="aria-label:wf_aria"
+>
+  {
+    nodes.map((n, i) => (
+      <>
+        <div class:list={["wf-node", { "wf-node--done": i === nodes.length - 1 }]} style={`--i:${i}`}>
+          <span class="wf-icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d={n.icon} />
+            </svg>
+          </span>
+          <span class="wf-label" data-i18n={n.key}>{n.he}</span>
+        </div>
+        {i < nodes.length - 1 && (
+          <span class="wf-link" style={`--i:${i}`}>
+            {Array.from({ length: PAIRS }, (_, k) => (
+              <span class="hx-pair" style={`--j:${i * PAIRS + k};--f:${(k / (PAIRS - 1)).toFixed(3)}`}>
+                <span class="hx-rung" />
+                <span class="hx-dot hx-a" />
+                <span class="hx-dot hx-b" />
+              </span>
+            ))}
+          </span>
+        )}
+      </>
+    ))
+  }
+</div>

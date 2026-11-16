@@ -49,6 +49,13 @@ const STATIC_LABELS: Dict = {
   proj_play_video: { he: "צפייה בהדגמת הפרויקט", en: "Watch the project demo" },
   proj_video_title: { he: "הדגמת פרויקט", en: "Project demo" },
 
+  // Hero workflow animation
+  wf_aria: { he: "תהליך אוטומציה: טריגר, סוכן AI, אינטגרציות, תוצאה", en: "Automation flow: trigger, AI agent, integrations, result" },
+  wf_trigger: { he: "טריגר", en: "Trigger" },
+  wf_agent: { he: "סוכן AI", en: "AI Agent" },
+  wf_integrations: { he: "אינטגרציות", en: "Integrations" },
+  wf_result: { he: "תוצאה", en: "Result" },
+
   // Privacy page chrome
   priv_toc: { he: "תוכן עניינים", en: "Contents" },
   priv_updated: { he: "עודכן לאחרונה", en: "Last updated" },

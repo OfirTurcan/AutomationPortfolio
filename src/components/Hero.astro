@@ -3,6 +3,7 @@ import settings from "../content/settings.json";
 import about from "../content/about.json";
 import LangToggle from "./LangToggle.astro";
 import BackgroundBuzzwords from "./BackgroundBuzzwords.astro";
+import HeroWorkflow from "./HeroWorkflow.astro";
 import { getCollection } from "astro:content";
 
 // The Testimonials section only renders when at least one is published, so only link to it then.
@@ -21,6 +22,7 @@ const nav: { href: string; key: string; he: string; opensContact?: boolean }[] =
 ---
 
 <header class="site-header sticky top-0 z-50">
+  <div class="scroll-progress" aria-hidden="true"></div>
   <nav class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3" aria-label="Main">
     <a href="#top" class="flex items-center gap-2 font-extrabold tracking-tight">
       <span class="grid h-8 w-8 place-items-center rounded-lg glass text-gradient">SM</span>
@@ -83,5 +85,7 @@ const nav: { href: string; key: string; he: string; opensContact?: boolean }[] =
         {settings.hero_cta_secondary_he}
       </a>
     </div>
+
+    <HeroWorkflow />
   </div>
 </section>

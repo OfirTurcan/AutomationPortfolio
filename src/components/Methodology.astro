@@ -39,7 +39,7 @@ const steps = [
     {
       steps.map((step, i) => (
         <>
-          <div class="flex flex-col items-center gap-2 text-center sm:flex-1">
+          <div class="reveal flex flex-col items-center gap-2 text-center sm:flex-1" style={`--i:${i * 2}`}>
             <div class="glass grid h-14 w-14 place-items-center rounded-full text-[var(--color-cyan)]">
               <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d={step.icon} />
@@ -51,7 +51,8 @@ const steps = [
           </div>
           {i < steps.length - 1 && (
             <svg
-              class="flip-x hidden shrink-0 text-[var(--color-border)] sm:block"
+              class="meth-arrow flip-x hidden shrink-0 text-[var(--color-cyan)] sm:block"
+              style={`--i:${i * 2 + 1}`}
               width="32"
               height="16"
               viewBox="0 0 32 16"
@@ -62,7 +63,7 @@ const steps = [
               stroke-linejoin="round"
               aria-hidden="true"
             >
-              <path d="M1 8h27 M22 2l7 6-7 6" />
+              <path d="M1 8h27 M22 2l7 6-7 6" pathLength="1" />
             </svg>
           )}
         </>

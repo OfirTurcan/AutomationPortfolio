@@ -59,11 +59,11 @@ const playIcon = `<svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="t
       </div>
 
       <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {items.map((t) => {
+        {items.map((t, i) => {
           const video = parseVideoUrl(t.video_url);
           const initial = (t.name_en ?? t.name_he).trim().charAt(0).toUpperCase();
           return (
-            <figure class="glass reveal flex flex-col overflow-hidden rounded-2xl">
+            <figure class="glass reveal flex flex-col overflow-hidden rounded-2xl" style={`--i:${i % 3}`}>
               {video && (
                 <button
                   type="button"
