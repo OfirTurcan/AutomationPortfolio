@@ -217,8 +217,15 @@ body::before {
 }
 
 /* ============================================================
-   Language switch cross-fade (view transition, see Base.astro)
+   Page-to-page cross-fade, incl. the Hebrew <-> English switch (now two pages).
+   Cross-document view transitions; browsers without support just navigate.
+   "Pause animations" in the a11y menu skips it (pageswap handler in Base.astro).
    ============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation-duration: 0.35s;

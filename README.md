@@ -69,12 +69,17 @@ npm run preview      # serve the production build locally
 
 ## How the bilingual system works
 
-- The site is **server-rendered in Hebrew (RTL)** — that is the default and needs no JavaScript.
-- A single JSON dictionary (`{ key: { he, en } }`) is embedded once per page.
-- The 🌐 toggle rewrites the text of every `data-i18n` element **in place** and flips
-  `dir`/`lang`. The DOM never holds two languages at once.
-- Language choice is saved to `localStorage` as a **progressive enhancement** (it is applied
-  after load, never blocking first paint).
+- **Hebrew (RTL) lives at `/…`, English (LTR) at `/en/…`** — real pages that search
+  engines and AI assistants can read, linked as translations (`hreflang`, sitemap).
+- Components render Hebrew text; every translatable element carries `data-i18n="<key>"`
+  (and `data-i18n-attr="attr:key"` for attributes like `aria-label`).
+- Each page builds one dictionary (`{ key: { he, en } }`), embedded in the page.
+- `src/pages/en/*` render the same pages; at build time `src/middleware.ts` applies the
+  dictionary to them (`src/lib/translate-html.ts`), editing only the translated spots.
+  So **one set of components and one dictionary serve both languages** — add a new
+  translatable text by giving it a `data-i18n` key and both `he`/`en` entries.
+- The 🌐 toggle is a plain link between the two pages. It keeps the current section and
+  remembers the choice; returning visitors who chose English are sent to `/en/`.
 
 ---
 

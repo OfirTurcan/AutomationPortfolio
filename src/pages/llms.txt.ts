@@ -4,8 +4,8 @@ import about from "../content/about.json";
 import faq from "../content/faq.json";
 
 // /llms.txt: a plain Markdown summary of the site for AI assistants, generated from the
-// same CMS content as the pages (English versions, so the Hebrew-first page is also
-// readable in English). Few AI systems use it yet; it is cheap to keep current.
+// same CMS content as the pages (English). Few AI systems use it yet; it is cheap to
+// keep current.
 export const GET: APIRoute = async ({ site }) => {
   const abs = (p: string) => new URL(p, site).href;
   const projects = (await getCollection("projects"))
@@ -17,7 +17,8 @@ export const GET: APIRoute = async ({ site }) => {
     "",
     `> ${about.summary_en}`,
     "",
-    `- Website: ${abs("/")} (Hebrew by default, English via the language toggle)`,
+    `- Website (English): ${abs("/en/")}`,
+    `- Website (Hebrew): ${abs("/")}`,
     `- LinkedIn: ${about.linkedin_url}`,
     `- Email: ${about.email}`,
     `- Location: ${about.location_en}`,
@@ -50,7 +51,7 @@ export const GET: APIRoute = async ({ site }) => {
     for (const q of items) lines.push(`### ${q.question_en || q.question_he}`, "", q.answer_en || q.answer_he, "");
   }
 
-  lines.push("## Pages", "", `- [Privacy policy](${abs("/privacy/")})`, `- [Accessibility statement](${abs("/accessibility/")})`, "");
+  lines.push("## Pages", "", `- [Privacy policy](${abs("/en/privacy/")})`, `- [Accessibility statement](${abs("/en/accessibility/")})`, "");
 
   return new Response(lines.join("\n"), { headers: { "Content-Type": "text/plain; charset=utf-8" } });
 };

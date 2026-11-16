@@ -1,14 +1,33 @@
 ---
-// Hebrew <-> English toggle. Default render is Hebrew, so the button offers "EN".
-// Falls back gracefully: if JS is off the button simply does nothing.
+// Hebrew <-> English switch. Each language is its own page (/ and /en/), so this is a
+// plain link: it works without JavaScript and search engines can follow it. A tiny
+// script keeps the current section (#hash) and remembers the choice for next visit.
+import { basePath, langOf, localePath } from "../lib/i18n";
+
+const lang = langOf(Astro.url);
+const other = lang === "he" ? "en" : "he";
+const href = localePath(basePath(Astro.url), other);
 ---
 
-<button
-  type="button"
-  onclick="window.__toggleLang && window.__toggleLang()"
+<a
+  href={href}
+  hreflang={other}
+  lang={other}
+  data-lang-switch={other}
   class="chip !text-[0.8rem] !px-3 !py-1.5 hover:!border-[var(--color-cyan)] hover:!text-[var(--color-cyan)] transition cursor-pointer"
-  aria-label="Toggle language / החלפת שפה"
+  aria-label={other === "en" ? "Switch to English" : "מעבר לעברית"}
 >
   <span aria-hidden="true">🌐</span>
-  <span data-lang-label>EN</span>
-</button>
+  <span>{other === "en" ? "EN" : "עברית"}</span>
+</a>
+
+<script is:inline>
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("a[data-lang-switch]");
+    if (!a) return;
+    try {
+      localStorage.setItem("lang", a.getAttribute("data-lang-switch"));
+    } catch (err) {}
+    if (location.hash) a.href = a.pathname + location.hash;
+  });
+</script>

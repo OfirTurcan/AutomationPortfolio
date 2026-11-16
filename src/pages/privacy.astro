@@ -6,7 +6,8 @@ import { coreDict } from "../lib/dict";
 import privacy from "../content/privacy.json";
 import about from "../content/about.json";
 import settings from "../content/settings.json";
-import type { Dict } from "../lib/i18n";
+import { langOf, localePath, type Dict } from "../lib/i18n";
+const lang = langOf(Astro.url);
 
 // Page dictionary: shared base + this page's text (Hebrew first; English falls back to Hebrew).
 const dict: Dict = { ...coreDict() };
@@ -41,7 +42,7 @@ const waNumber = String(settings.whatsapp_number ?? "").replace(/\D/g, "");
 
     <div class="relative z-[1]">
       <header class="mx-auto max-w-6xl px-5 py-6">
-        <a href="/" class="text-sm font-semibold text-[var(--color-cyan)] hover:underline" data-i18n="back_home">
+        <a href={localePath("/", lang)} class="text-sm font-semibold text-[var(--color-cyan)] hover:underline" data-i18n="back_home">
           ← חזרה לעמוד הבית
         </a>
       </header>
@@ -140,7 +141,7 @@ const waNumber = String(settings.whatsapp_number ?? "").replace(/\D/g, "");
                   )
                 }
                 <a
-                  href="/#contact"
+                  href={`${localePath("/", lang)}#contact`}
                   data-open-contact
                   class="rounded-xl bg-gradient-to-r from-[var(--color-cyan)] to-[var(--color-violet)] px-5 py-2.5 font-bold text-[#05060e] transition hover:opacity-90"
                   data-i18n="priv_contact_cta"

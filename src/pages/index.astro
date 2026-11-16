@@ -11,7 +11,7 @@ import FAQ from "../components/FAQ.astro";
 import Footer from "../components/Footer.astro";
 import { getCollection } from "astro:content";
 import { coreDict } from "../lib/dict";
-import type { Dict } from "../lib/i18n";
+import { langOf, type Dict } from "../lib/i18n";
 import faq from "../content/faq.json";
 import { homeJsonLd } from "../lib/structured-data";
 
@@ -50,7 +50,7 @@ dict.faq_subtitle = { he: faq.subtitle_he, en: faq.subtitle_en || faq.subtitle_h
   dict[`faq_a_${i}`] = { he: q.answer_he, en: q.answer_en || q.answer_he };
 });
 
-const jsonLd = homeJsonLd(Astro.site!);
+const jsonLd = homeJsonLd(Astro.site!, langOf(Astro.url));
 ---
 
 <Base dict={dict} jsonLd={jsonLd}>

@@ -1,9 +1,11 @@
 // Lightweight bilingual (Hebrew default / English) helper.
 //
-// Strategy: the page is server-rendered in HEBREW only. Every translatable element
-// carries a `data-i18n="<key>"` attribute, and a single JSON dictionary (emitted once
-// in <Base>) maps each key to { he, en }. The client toggle rewrites textContent in
-// place, so the visible DOM never holds two languages at once.
+// Strategy: components render HEBREW. Every translatable element carries a
+// `data-i18n="<key>"` attribute (and `data-i18n-attr="attr:key,…"` for attributes), and
+// each page builds one dictionary (`{ key: { he, en } }`) that is embedded in the page.
+// Hebrew pages live at `/…`; their English copies at `/en/…` are produced at build time
+// by src/middleware.ts, which applies that same dictionary (see translate-html.ts).
+// So one set of components and one dictionary serve both languages.
 
 export type Lang = "he" | "en";
 export const DEFAULT_LANG: Lang = "he";
@@ -36,4 +38,22 @@ export function pair(obj: Record<string, unknown>, base: string): Bi {
 /** Pick the default-language (Hebrew) text for server render. */
 export function he(b: Bi): string {
   return b.he;
+}
+
+/** Language of a page, from its URL: everything under /en/ is English. */
+export function langOf(url: URL): Lang {
+  return url.pathname === "/en" || url.pathname.startsWith("/en/") ? "en" : "he";
+}
+
+/** Path of a page in a given language, from its Hebrew path (e.g. "/privacy/"). */
+export function localePath(path: string, lang: Lang): string {
+  if (lang === "he") return path;
+  return path === "/" ? "/en/" : `/en${path}`;
+}
+
+/** The Hebrew path of the current page (strips a leading /en). */
+export function basePath(url: URL): string {
+  const p = url.pathname;
+  if (p === "/en" || p === "/en/") return "/";
+  return p.startsWith("/en/") ? p.slice(3) : p;
 }

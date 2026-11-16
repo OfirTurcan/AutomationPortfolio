@@ -3,27 +3,46 @@ import "@fontsource-variable/heebo";
 import "../styles/global.css";
 import A11yMenu from "../components/A11yMenu.astro";
 import ContactModal from "../components/ContactModal.astro";
-import type { Dict } from "../lib/i18n";
+import { basePath, langOf, localePath, type Dict } from "../lib/i18n";
 
 interface Props {
-  /** Full translation dictionary, serialized once for the client toggle. */
+  /** Full translation dictionary for this page (both languages); also embedded for scripts. */
   dict: Dict;
   /** Optional schema.org structured data for this page. */
   jsonLd?: unknown;
 }
 
 const { dict, jsonLd } = Astro.props;
-const title = dict.__title?.he ?? "SyncMoto";
-const description = dict.__desc?.he ?? "";
+// Hebrew at /…, English at /en/… (text translated at build time by src/middleware.ts).
+const lang = langOf(Astro.url);
+const dir = lang === "he" ? "rtl" : "ltr";
+const title = dict.__title?.[lang] ?? "SyncMoto";
+const description = dict.__desc?.[lang] ?? "";
+const hePath = basePath(Astro.url);
+const heUrl = new URL(hePath, Astro.site).href;
+const enUrl = new URL(localePath(hePath, "en"), Astro.site).href;
 // Social previews need absolute URLs (WhatsApp/LinkedIn/Facebook ignore relative ones).
 const ogImage = new URL("/images/og-image.jpg", Astro.site).href;
 const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <!doctype html>
-<html lang="he" dir="rtl" class="no-js">
+<html lang={lang} dir={dir} class="no-js">
   <head>
     <meta charset="UTF-8" />
+    <!-- Returning visitors who chose English go straight to the English page.
+         Runs before anything renders; crawlers have no stored choice, so never redirect. -->
+    <script is:inline>
+      (function () {
+        try {
+          var p = location.pathname;
+          var onEn = p === "/en" || p.indexOf("/en/") === 0;
+          if (!onEn && localStorage.getItem("lang") === "en") {
+            location.replace("/en" + (p === "/" ? "/" : p) + location.search + location.hash);
+          }
+        } catch (e) {}
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png" />
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
@@ -33,6 +52,11 @@ const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <link rel="canonical" href={pageUrl} />
+    <link rel="alternate" hreflang="he" href={heUrl} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="x-default" href={heUrl} />
+    <meta property="og:locale" content={lang === "he" ? "he_IL" : "en_US"} />
+    <meta property="og:locale:alternate" content={lang === "he" ? "en_US" : "he_IL"} />
     <meta property="og:url" content={pageUrl} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
@@ -67,71 +91,19 @@ const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
       set:html={JSON.stringify(dict)}
     />
 
-    <!-- Deferred, non-blocking: language persistence + reveal-on-scroll.
-         Default render is Hebrew/RTL and needs none of this. -->
+    <!-- Deferred, non-blocking enhancements: reveal-on-scroll fallback, hero animation
+         pause, and honouring "pause animations" for page-to-page transitions. -->
     <script is:inline>
       (function () {
         document.documentElement.classList.remove("no-js");
 
-        var dictEl = document.getElementById("i18n-dict");
-        var dict = {};
-        try {
-          dict = JSON.parse(dictEl.textContent || "{}");
-        } catch (e) {}
-
-        function applyLang(lang) {
-          var html = document.documentElement;
-          html.lang = lang;
-          html.dir = lang === "he" ? "rtl" : "ltr";
-
-          document.querySelectorAll("[data-i18n]").forEach(function (el) {
-            var entry = dict[el.getAttribute("data-i18n")];
-            if (entry && entry[lang] != null) el.textContent = entry[lang];
-          });
-
-          // Attribute translations, format: attr1:dictKey,attr2:dictKey (e.g. aria-label + title)
-          document.querySelectorAll("[data-i18n-attr]").forEach(function (el) {
-            el.getAttribute("data-i18n-attr")
-              .split(",")
-              .forEach(function (pair) {
-                var bits = pair.split(":");
-                var entry = dict[bits[1]];
-                if (entry && entry[lang] != null) el.setAttribute(bits[0], entry[lang]);
-              });
-          });
-
-          if (dict.__title && dict.__title[lang]) document.title = dict.__title[lang];
-          var md = document.querySelector('meta[name="description"]');
-          if (md && dict.__desc && dict.__desc[lang]) md.setAttribute("content", dict.__desc[lang]);
-
-          document.querySelectorAll("[data-lang-label]").forEach(function (el) {
-            el.textContent = lang === "he" ? "EN" : "עברית";
-          });
-
-          try {
-            localStorage.setItem("lang", lang);
-          } catch (e) {}
-        }
-
-        window.__setLang = applyLang;
-        // Cross-fade the language switch (RTL <-> LTR) with a view transition where
-        // supported, unless the visitor asked for less motion.
-        window.__toggleLang = function () {
-          var html = document.documentElement;
-          var next = html.lang === "he" ? "en" : "he";
-          var calm =
-            window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
-            html.classList.contains("a11y-pause-motion");
-          if (!document.startViewTransition || calm) return applyLang(next);
-          document.startViewTransition(function () {
-            applyLang(next);
-          });
-        };
-
-        // Progressive enhancement: restore a previously chosen language.
-        try {
-          if (localStorage.getItem("lang") === "en") applyLang("en");
-        } catch (e) {}
+        // Page-to-page cross-fade (CSS @view-transition) is skipped when the accessibility
+        // menu's "pause animations" is on; reduced motion is handled in CSS.
+        window.addEventListener("pageswap", function (e) {
+          if (e.viewTransition && document.documentElement.classList.contains("a11y-pause-motion")) {
+            e.viewTransition.skipTransition();
+          }
+        });
 
         // Reveal-on-scroll fallback: browsers with CSS scroll-driven animations
         // handle .reveal / .meth-arrow in global.css and skip this entirely.
