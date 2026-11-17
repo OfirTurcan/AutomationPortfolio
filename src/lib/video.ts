@@ -4,7 +4,7 @@
 // so no third-party cookies are set just by viewing the page.
 
 export interface ParsedVideo {
-  provider: "youtube" | "vimeo" | "cap";
+  provider: "youtube" | "vimeo" | "cap" | "file";
   id: string;
   /** Iframe src to use once the visitor presses play. */
   embedUrl: string;
@@ -15,6 +15,12 @@ const YT_ID = /^[\w-]{11}$/;
 export function parseVideoUrl(raw: string | undefined | null): ParsedVideo | null {
   const value = (raw ?? "").trim();
   if (!value) return null;
+
+  // ---- Video file hosted on this site, e.g. /assets/project/demo.mp4 --------------
+  // Loaded only when the visitor presses play (no preload), so it costs nothing on page load.
+  if (/^\/[^\s?#]+\.(mp4|webm)$/i.test(value)) {
+    return { provider: "file", id: value, embedUrl: value };
+  }
 
   let url: URL;
   try {

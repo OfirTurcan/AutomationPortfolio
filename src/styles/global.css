@@ -834,6 +834,10 @@ body::before {
   color: #f5a623;
 }
 
+video.tst-frame {
+  height: 100%;
+  background: #000000;
+}
 .tst-video,
 .tst-frame {
   display: block;

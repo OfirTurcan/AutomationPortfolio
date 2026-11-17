@@ -54,7 +54,7 @@ collections:
       - { label: Featured, name: featured, widget: boolean, default: false }
       - { label: Order (lower = earlier), name: order, widget: number, required: false, value_type: int }
       - { label: Thumbnail, name: thumbnail, widget: image, hint: "Always shown: it is the card image, and the video's cover when there is a video. Use a 16:9 JPG or WebP, ideally under 200 KB (around 1280×720)." }
-      - { label: Video link (YouTube, Vimeo or Cap), name: video_url, widget: string, required: false, hint: "Paste the normal link (watch, youtu.be, Shorts, /embed/, vimeo.com or a cap.so share link all work). The video only loads when a visitor presses play. Leave empty to show the 'demo on request' note." }
+      - { label: Video link (YouTube, Vimeo or Cap), name: video_url, widget: string, required: false, hint: "Paste the normal link (watch, youtu.be, Shorts, /embed/, vimeo.com or a cap.so share link all work), or a video file on this site such as /assets/my-project/demo.mp4 (MP4, ideally under ~20 MB). The video only loads when a visitor presses play. Leave empty to show the 'demo on request' note." }
       - { label: Gallery image paths, name: gallery, widget: list, required: false, hint: "Optional. e.g. /assets/shot1.png" }
       - { label: Live link, name: link_live, widget: string, required: false }
       - { label: Repository link, name: link_repo, widget: string, required: false }
