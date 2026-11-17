@@ -1,6 +1,7 @@
 ---
 import settings from "../content/settings.json";
 import about from "../content/about.json";
+import BookingLink from "./BookingLink.astro";
 ---
 
 <section id="contact" class="mx-auto max-w-4xl scroll-mt-20 px-5 py-16 md:py-24">
@@ -29,6 +30,9 @@ import about from "../content/about.json";
       >
         LinkedIn ↗
       </a>
+    </div>
+    <div class="relative mt-4 flex justify-center">
+      <BookingLink variant="secondary" />
     </div>
     <div class="relative mt-6 text-sm text-[var(--color-muted)]">
       <a

@@ -2,6 +2,7 @@ import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
 import about from "../content/about.json";
 import faq from "../content/faq.json";
+import settings from "../content/settings.json";
 
 // /llms.txt: a plain Markdown summary of the site for AI assistants, generated from the
 // same CMS content as the pages (English). Few AI systems use it yet; it is cheap to
@@ -21,6 +22,7 @@ export const GET: APIRoute = async ({ site }) => {
     `- Website (Hebrew): ${abs("/")}`,
     `- LinkedIn: ${about.linkedin_url}`,
     `- Email: ${about.email}`,
+    ...(settings.booking_url ? [`- Book a consultation call: ${settings.booking_url}`] : []),
     `- Location: ${about.location_en}`,
     "",
     "## About",

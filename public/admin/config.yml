@@ -203,6 +203,23 @@ collections:
           - { label: Contact subtitle (HE), name: contact_subtitle_he, widget: text }
           - { label: Contact CTA (EN), name: contact_cta_en, widget: string }
           - { label: Contact CTA (HE), name: contact_cta_he, widget: string }
+          - { label: Consultation booking link (Google Calendar), name: booking_url, widget: string, required: false, hint: "Your Google Calendar booking page link. In Google Calendar on a computer: Create, then Appointment schedule; after saving, open it and copy the booking page link. Leave empty to hide the booking buttons." }
+          - { label: Booking button (HE), name: booking_label_he, widget: string }
+          - { label: Booking button (EN), name: booking_label_en, widget: string }
+          - { label: Booking note under the button (HE), name: booking_note_he, widget: string }
+          - { label: Booking note under the button (EN), name: booking_note_en, widget: string }
+          - { label: "First-task box: title (HE)", name: task_title_he, widget: string }
+          - { label: "First-task box: title (EN)", name: task_title_en, widget: string }
+          - { label: "First-task box: text (HE)", name: task_text_he, widget: text }
+          - { label: "First-task box: text (EN)", name: task_text_en, widget: text }
+          - { label: "First-task box: button (HE)", name: task_cta_he, widget: string, hint: "Opens the contact form." }
+          - { label: "First-task box: button (EN)", name: task_cta_en, widget: string }
+          - { label: "First-task box: point 1 (HE)", name: task_point1_he, widget: string, required: false, hint: "Short facts under the buttons, e.g. call length / free / no commitment. Leave a point empty to hide it." }
+          - { label: "First-task box: point 1 (EN)", name: task_point1_en, widget: string, required: false }
+          - { label: "First-task box: point 2 (HE)", name: task_point2_he, widget: string, required: false }
+          - { label: "First-task box: point 2 (EN)", name: task_point2_en, widget: string, required: false }
+          - { label: "First-task box: point 3 (HE)", name: task_point3_he, widget: string, required: false }
+          - { label: "First-task box: point 3 (EN)", name: task_point3_en, widget: string, required: false }
           - { label: WhatsApp number for the contact form, name: whatsapp_number, widget: string, hint: "International format, digits only, no + or spaces. Israel example: 972544415871 (for 054-441-5871)." }
           - { label: Footer (EN), name: footer_en, widget: string }
           - { label: Footer (HE), name: footer_he, widget: string }

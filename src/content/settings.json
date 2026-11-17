@@ -55,5 +55,22 @@
   "methodology_step_automate_en": "Automate",
   "methodology_step_automate_he": "אוטומציה",
   "methodology_step_deliver_en": "Deliver",
-  "methodology_step_deliver_he": "מסירה"
+  "methodology_step_deliver_he": "מסירה",
+  "booking_url": "",
+  "booking_label_he": "לקביעת שיחת ייעוץ ביומן",
+  "booking_label_en": "Book a consultation call",
+  "booking_note_he": "היומן של Google נפתח בלשונית חדשה",
+  "booking_note_en": "Google Calendar opens in a new tab",
+  "task_title_he": "איזה תהליך הייתם רוצים שירוץ לבד?",
+  "task_title_en": "Which task would you love to stop doing by hand?",
+  "task_text_he": "ספרו לי על משימה אחת שחזרה על עצמה השבוע ולקחה יותר זמן ממה שהיא שווה. נמפה אותה יחד ונבדוק אם ואיך אפשר לאטמט אותה.",
+  "task_text_en": "Tell me about one task that came back this week and took more time than it's worth. We'll map it together and see whether, and how, it can be automated.",
+  "task_cta_he": "בואו נמפה את התהליך הראשון",
+  "task_cta_en": "Let's map your first process",
+  "task_point1_he": "שיחת היכרות של 30 דקות",
+  "task_point1_en": "30-minute intro call",
+  "task_point2_he": "ללא עלות",
+  "task_point2_en": "Free of charge",
+  "task_point3_he": "ללא התחייבות",
+  "task_point3_en": "No commitment"
 }

@@ -1,0 +1,37 @@
+---
+// "Book a consultation call" link to the Google Calendar booking page set in the CMS
+// (Site Settings → Consultation booking link). Renders nothing while the link is empty.
+// Opens Google's page in a new tab; the visible note says so.
+import settings from "../content/settings.json";
+
+interface Props {
+  /** "primary" = gradient button, "secondary" = outlined glass button. */
+  variant?: "primary" | "secondary";
+}
+const { variant = "secondary" } = Astro.props;
+const url = String(settings.booking_url ?? "").trim();
+const calendarIcon = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M16 3v3M8 3v3M3 10h18M8 14h3"/></svg>`;
+const cls =
+  variant === "primary"
+    ? "bg-gradient-to-r from-[var(--color-cyan)] to-[var(--color-violet)] text-[#05060e] hover:opacity-90"
+    : "glass text-[var(--color-text)] hover:border-[var(--color-cyan)]";
+---
+
+{
+  url && (
+    <span class="booking inline-flex flex-col items-center gap-1.5">
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class={`inline-flex items-center gap-2 rounded-xl px-7 py-3 font-bold transition ${cls}`}
+      >
+        <Fragment set:html={calendarIcon} />
+        <span data-i18n="booking_label">{settings.booking_label_he}</span>
+      </a>
+      <span class="text-xs text-[var(--color-muted)]" data-i18n="booking_note">
+        {settings.booking_note_he}
+      </span>
+    </span>
+  )
+}

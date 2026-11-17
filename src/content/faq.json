@@ -24,6 +24,54 @@
       "answer_en": "Four stages. Plan: map the current process and define the goal. Align: agree on the solution, tools and scope before building. Automate: build and test the workflows and agents. Deliver: roll out, train and document so your team can run the system."
     },
     {
+      "question_he": "כמה זה עולה?",
+      "answer_he": "תלוי בהיקף: כמה תהליכים, אילו מערכות צריך לחבר והאם נדרש סוכן AI. אחרי שיחת ההיכרות ומיפוי קצר של התהליך תקבלו הצעת מחיר סגורה להיקף מוגדר, לפני שמתחילים לעבוד.",
+      "question_en": "How much does it cost?",
+      "answer_en": "It depends on the scope: how many processes, which systems need to be connected and whether an AI agent is needed. After the intro call and a short mapping of the process, you get a fixed quote for a defined scope before any work starts."
+    },
+    {
+      "question_he": "תוך כמה זמן זה עובד?",
+      "answer_he": "אוטומציה ממוקדת לתהליך אחד עולה לאוויר בדרך כלל בתוך ימים עד שבועות ספורים, תלוי במערכות ובגישה אליהן. פרויקטים רחבים מחולקים לשלבים, כך שהתועלת מתחילה כבר מהשלב הראשון.",
+      "question_en": "How soon will it be working?",
+      "answer_en": "A focused automation for one process usually goes live within days to a few weeks, depending on the systems involved and access to them. Larger projects are split into stages, so you start benefiting from the first one."
+    },
+    {
+      "question_he": "צריך להחליף את המערכות שלנו?",
+      "answer_he": "ברוב המקרים לא. העבודה היא לחבר בין הכלים שכבר יש לכם – CRM, גיליונות, מייל, וואטסאפ, הנהלת חשבונות – באמצעות אוטומציה וחיבורי API. אם אמליץ להחליף מערכת, זה יהיה רק כשזה באמת משתלם, ועם הנימוק.",
+      "question_en": "Do we need to replace our systems?",
+      "answer_en": "In most cases, no. The work is connecting the tools you already use - CRM, spreadsheets, email, WhatsApp, accounting - through automation and API integrations. If I recommend replacing a system, it will only be where it clearly pays off, and with the reasoning."
+    },
+    {
+      "question_he": "מה לגבי אבטחת מידע ופרטיות?",
+      "answer_he": "הפתרונות נבנים בתוך החשבונות והמערכות שלכם, עם ההרשאות המינימליות שכל תהליך צריך, כך שהמידע נשאר אצלכם. מפתחות גישה נשמרים באזור המאובטח של כלי האוטומציה ולא בקבצים או במסמכים. כשמשתמשים במודלי AI, מגדירים מראש איזה מידע עובר אליהם ובוחרים שירותים שלא מאמנים מודלים על המידע שלכם.",
+      "question_en": "What about data security and privacy?",
+      "answer_en": "Solutions are built inside your own accounts and systems, with only the permissions each process needs, so your data stays with you. Access keys are kept in the automation tool's secure credential store, not in files or documents. When AI models are involved, we decide up front which data is sent to them and use services that do not train models on your data."
+    },
+    {
+      "question_he": "איך הפתרון מותאם לתחום שלנו?",
+      "answer_he": "מתחילים ממיפוי של איך העבודה מתבצעת אצלכם בפועל, ולא מתבנית מוכנה. יותר מ-20 שנות ניסיון בתהליכים עסקיים – שירות שטח (FSM), ERP, שרשרת אספקה ולוגיסטיקה – עוזרות לזהות מהר איפה העבודה נתקעת ומה כדאי לאטמט קודם.",
+      "question_en": "How is the solution tailored to our field?",
+      "answer_en": "We start by mapping how the work is actually done in your business, not from a ready-made template. More than 20 years in business processes - field service (FSM), ERP, supply chain and logistics - help spot quickly where work gets stuck and what is worth automating first."
+    },
+    {
+      "question_he": "מי עושה את העבודה בפועל?",
+      "answer_he": "אני, באופן אישי – מהמיפוי ועד הבנייה, ההטמעה וההדרכה.",
+      "question_en": "Who actually does the work?",
+      "answer_en": "I do, personally - from mapping through building, rollout and training."
+    },
+    {
+      "question_he": "צריך להבין ב-AI כדי להתחיל?",
+      "answer_he": "לא. אתם מכירים את העסק, ואני מתרגם את זה לתהליכים ולכלים. במסירה תקבלו הדרכה ותיעוד בשפה פשוטה, כדי שתדעו לעבוד עם המערכת ולזהות מתי משהו צריך עדכון.",
+      "question_en": "Do we need to understand AI to get started?",
+      "answer_en": "No. You know your business; I translate it into processes and tools. At handover you get training and plain-language documentation, so you can work with the system and recognise when something needs an update."
+    },
+    {
+      "question_he": "מה קורה אחרי ההטמעה?",
+      "answer_he": "מקבלים תיעוד של כל תהליך והדרכה לצוות. אחרי העלייה לאוויר יש תקופת מעקב שבה מתקנים ומשפרים לפי השימוש בפועל, ואפשר להמשיך בליווי ותחזוקה שוטפים לפי הצורך.",
+      "question_en": "What happens after rollout?",
+      "answer_en": "You get documentation for every process and training for your team. After go-live there is a follow-up period to fix and improve things based on real use, and ongoing support and maintenance are available as needed."
+    },
+    {
       "question_he": "מה ההבדל בין אוטומציה רגילה לסוכן AI?",
       "answer_he": "אוטומציה רגילה מבצעת רצף קבוע של צעדים: כשקורה X, עשה Y. סוכן AI מסוגל להבין טקסט חופשי, לקבל החלטות בתוך גבולות שהוגדרו לו ולבחור באיזה כלי להשתמש – למשל לענות לפנייה של לקוח, לסווג אותה ולהעביר לגורם הנכון. ברוב הפרויקטים משלבים בין השניים.",
       "question_en": "What is the difference between a regular automation and an AI agent?",
