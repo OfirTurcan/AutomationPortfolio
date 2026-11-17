@@ -35,6 +35,14 @@ export function homeJsonLd(site: URL, lang: Lang = "he") {
       sameAs: [about.linkedin_url],
       worksFor: { "@id": id("business") },
       knowsAbout: skills,
+      hasCredential: (about.certificates ?? []).map((c) => ({
+        "@type": "EducationalOccupationalCredential",
+        name: c.title_en || c.title_he,
+        credentialCategory: "certificate",
+        dateCreated: c.date,
+        image: new URL(c.image, site).href,
+        recognizedBy: { "@type": "Organization", name: (c.issuer_en || c.issuer_he).split(" – ")[0], url: c.issuer_url },
+      })),
     },
     {
       "@type": "ProfessionalService",

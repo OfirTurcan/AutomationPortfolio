@@ -2,11 +2,12 @@
   "description_he": "צימר קטן עונה כל יום על אותן שאלות. העוזר עונה לאורחים מתוך מאגר ידע שהבעלים אישרו, מזהה כמה בקשות בהודעה אחת ורושם כל אחת בנפרד למטבח, לניקיון או לבעלים, ומעביר לבעלים ב-Slack כל שאלה שהוא לא יודע, במקום לנחש. הבעלים עונה ידנית, והתשובה חוזרת לצ'אט של האורח. סוכני AI צרים רצים ב-n8n באירוח עצמי (Docker, מאחורי Cloudflare Tunnel) עם חוקי העסק בקוד, ואפליקציית Next.js משרתת אורחים, צוות ובעלים. זהו אב טיפוס על נתונים מומצאים.",
   "title_he": "שקט בגליל: עוזר AI ותפעול לצימר",
   "highlights_en": [
-    "Recognizes several requests in one message and records each one separately",
-    "with its own number Never invents an answer: unknown questions are escalated to the owners in Slack within seconds The owner replies manually in Slack and the answer returns to the guest chat Role-based screens: staff see their day without guest contact details Business rules (assignee",
-    "dates",
-    "verification) live in code",
-    "not in prompts Outputs in Slack and a read-only Google Sheets mirror in Drive"
+    "Recognizes several requests in one message and records each one separately, with its own number",
+    "Never invents an answer: unknown questions are escalated to the owners in Slack within seconds",
+    "The owner replies manually in Slack and the answer returns to the guest chat",
+    "Role-based screens: staff see their day without guest contact details",
+    "Business rules (assignee, dates, verification) live in code, not in prompts",
+    "Outputs in Slack and a read-only Google Sheets mirror in Drive"
   ],
   "outcome_he": "נבדק מקצה לקצה על נתונים מומצאים: 10 מתוך 10 שאלות שאין להן תשובה במאגר הועברו לבעלים במקום לקבל תשובה מומצאת; כל 23 הבקשות בהודעות עם כמה בקשות זוהו ונרשמו נכון, אף אחת לא נרשמה פעמיים (אחרי תיקונים שנמצאו בבדיקות); דייג'סט הבוקר תאם לספירה ידנית של 7 סועדים; ההודעה ב-Slack הופיעה 1.2 עד 2.5 שניות אחרי רישום ההעברה לבעלים. לא הושג: יעד זמן התגובה של 8 שניות (נמדד p95 של כ-17 שניות). בהקלטת הדמו על n8n באירוח עצמי (26.10.2026) תשובת הבעלים הגיעה לצ'אט של האורח כ-3 שניות אחרי שהופיעה ב-Slack. זהו PoC; מכסת ההרצות של n8n Cloud עצרה את הבדיקות הסופיות, ואחריה המערכת עברה ל-n8n באירוח עצמי.",
   "slug": "sheket-bagalil-ai-concierge",
@@ -47,10 +48,11 @@
     "Cloudflare Tunnel"
   ],
   "highlights_he": [
-    "מזהה כמה בקשות בהודעה אחת ורושם כל אחת בנפרד",
-    "עם מספר משלה לא ממציא תשובות: שאלה לא מוכרת מועברת לבעלים ב-Slack תוך שניות הבעלים עונה ידנית ב-Slack",
-    "והתשובה חוזרת לצ'אט של האורח מסכים לפי תפקיד: הצוות רואה את היום שלו בלי פרטי קשר של אורחים חוקי העסק (שיוך",
-    "תאריכים",
-    "אימות) נמצאים בקוד ולא בפרומפט פלט ב-Slack וגיבוי לקריאה בלבד ב-Google Sheets ב-Drive"
+    "מזהה כמה בקשות בהודעה אחת ורושם כל אחת בנפרד, עם מספר משלה",
+    "לא ממציא תשובות: שאלה לא מוכרת מועברת לבעלים ב-Slack תוך שניות",
+    "הבעלים עונה ידנית ב-Slack, והתשובה חוזרת לצ'אט של האורח",
+    "מסכים לפי תפקיד: הצוות רואה את היום שלו בלי פרטי קשר של אורחים",
+    "חוקי העסק (שיוך, תאריכים, אימות) נמצאים בקוד ולא בפרומפט",
+    "פלט ב-Slack וגיבוי לקריאה בלבד ב-Google Sheets ב-Drive"
   ]
 }

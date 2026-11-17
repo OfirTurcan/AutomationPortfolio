@@ -120,13 +120,13 @@
         "Netlify: אחסון האתר ושמירת הגשות הטופס. השרתים עשויים להימצא מחוץ לישראל, כולל בארצות הברית.",
         "WhatsApp (Meta): כשאתם שולחים את ההודעה היא עוברת דרך וואטסאפ, בכפוף לתנאי השירות ולמדיניות הפרטיות שלו.",
         "Google Calendar: אם תקבעו שיחה דרך קישור היומן באתר, הקביעה מתבצעת בדף של Google, והפרטים שתמסרו שם נשמרים אצל Google בכפוף למדיניות הפרטיות שלה.",
-        "YouTube / Vimeo: סרטוני הדגמה של פרויקטים וסרטוני המלצות נטענים מהשירותים הללו רק כשתלחצו על ההפעלה. מרגע זה הם עשויים לאסוף מידע ולהציב עוגיות, לפי מדיניות הפרטיות שלהם."
+        "YouTube / Vimeo / Cap: סרטוני הדגמה של פרויקטים וסרטוני המלצות נטענים מהשירותים הללו רק כשתלחצו על ההפעלה. מרגע זה הם עשויים לאסוף מידע ולהציב עוגיות, לפי מדיניות הפרטיות שלהם."
       ],
       "bullets_en": [
         "Netlify: hosts the site and stores form submissions. Its servers may be located outside Israel, including in the United States.",
         "WhatsApp (Meta): when you send the message it travels through WhatsApp, subject to its terms and privacy policy.",
         "Google Calendar: if you book a call through the calendar link on the site, the booking happens on a Google page, and the details you enter there are stored by Google under its privacy policy.",
-        "YouTube / Vimeo: project demo videos and video testimonials load from these services only when you press play. From that point they may collect information and set cookies, under their own privacy policies."
+        "YouTube / Vimeo / Cap: project demo videos and video testimonials load from these services only when you press play. From that point they may collect information and set cookies, under their own privacy policies."
       ],
       "closing_he": [
         "מעבר לכך נעביר מידע רק אם החוק או צו שיפוטי מחייבים זאת, או בהסכמתכם."

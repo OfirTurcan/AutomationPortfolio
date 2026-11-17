@@ -64,5 +64,16 @@
   "about_en": "I help businesses turn manual, complex, and time-consuming processes into smart, connected, and reliable workflows. I bring more than 20 years of experience bridging technology and business processes - across FSM and field service, ERP, supply chain, logistics, reverse logistics, system integrations, and approval processes.\n\nMy advantage is that I don’t start with AI or a specific tool - I start with the business process. I first understand how the work is actually done, identify what can be improved or automated, and then build the right solution using automation, APIs, and AI agents.",
   "summary_he": "SyncMoto, בהובלת Ofir Turcan, היא שירות ייעוץ ובנייה של אוטומציות עסקיות וסוכני AI לעסקים בישראל, מרחוק ובאתר הלקוח. העבודה מתחילה במיפוי התהליך העסקי ונבנית בכלים כמו n8n, Make.com ו-Claude Code, על בסיס יותר מ-20 שנות ניסיון בחיבור בין טכנולוגיה לתהליכים עסקיים (FSM, ERP, שרשרת אספקה ולוגיסטיקה).",
   "summary_en": "SyncMoto, led by Ofir Turcan, is a business process and automation consultancy in Israel that designs and builds automated workflows and AI agents for businesses, remotely and on-site. Work starts from mapping the business process and is built with tools such as n8n, Make.com and Claude Code, drawing on more than 20 years of experience bridging technology and business processes (FSM, ERP, supply chain and logistics).",
-  "email": "ofir.turcan@gmail.com"
+  "email": "ofir.turcan@gmail.com",
+  "certificates": [
+    {
+      "title_he": "אוטומציות עסקיות וסוכני AI",
+      "title_en": "Business Automations & AI Agents",
+      "issuer_he": "Let's AI – מרכז הידע לבינה מלאכותית",
+      "issuer_en": "Let's AI – AI Knowledge Center",
+      "issuer_url": "https://www.letsai.co.il",
+      "date": "2026-11-17",
+      "image": "/assets/certificates/letsai-business-automations-ai-agents.webp"
+    }
+  ]
 }

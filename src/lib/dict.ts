@@ -126,6 +126,21 @@ export function coreDict(): Dict {
     ...collectPairs(cookies as Record<string, unknown>),
     ...STATIC_LABELS,
   };
+  // Certifications (About section): title, issuer and a localized "Month YYYY" date.
+  d.cert_heading = { he: "הסמכות", en: "Certifications" };
+  d.cert_view = { he: "צפייה בתעודה", en: "View certificate" };
+  d.cert_close = { he: "סגירה", en: "Close" };
+  (about.certificates ?? []).forEach((c, i) => {
+    const date = new Date(`${c.date}T12:00:00`);
+    const month = (locale: string) => date.toLocaleDateString(locale, { month: "long", year: "numeric" });
+    d[`cert_${i}_title`] = { he: c.title_he, en: c.title_en || c.title_he };
+    d[`cert_${i}_issuer`] = { he: c.issuer_he, en: c.issuer_en || c.issuer_he };
+    d[`cert_${i}_date`] = { he: month("he-IL"), en: month("en-US") };
+    d[`cert_${i}_alt`] = {
+      he: `תעודה: ${c.title_he}, ${c.issuer_he}`,
+      en: `Certificate: ${c.title_en || c.title_he}, ${c.issuer_en || c.issuer_he}`,
+    };
+  });
   about.skills.forEach((g, i) => {
     d[`skill_group_${i}`] = { he: g.title_he, en: g.title_en };
   });

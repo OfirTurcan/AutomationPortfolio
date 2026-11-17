@@ -1,10 +1,10 @@
 // Turns whatever URL an editor pastes into the CMS (a normal YouTube/Vimeo "watch"
-// link, a youtu.be short link, a Shorts link, or an /embed/ link) into a privacy-friendly
+// link, a youtu.be short link, a Shorts link, an /embed/ link, or a Cap share link) into a privacy-friendly
 // embed URL. The embed is only loaded after the visitor clicks play (see Testimonials),
 // so no third-party cookies are set just by viewing the page.
 
 export interface ParsedVideo {
-  provider: "youtube" | "vimeo";
+  provider: "youtube" | "vimeo" | "cap";
   id: string;
   /** Iframe src to use once the visitor presses play. */
   embedUrl: string;
@@ -53,6 +53,14 @@ export function parseVideoUrl(raw: string | undefined | null): ParsedVideo | nul
       id,
       embedUrl: `https://player.vimeo.com/video/${id}?${query.toString()}`,
     };
+  }
+
+  // ---- Cap (cap.so) --------------------------------------------------------
+  // Share links look like cap.so/s/<id>; the player lives at cap.so/embed/<id>.
+  if (host === "cap.so") {
+    const id = (parts[0] === "s" || parts[0] === "embed" ? parts[1] : "") ?? "";
+    if (!/^[\w-]{6,}$/.test(id)) return null;
+    return { provider: "cap", id, embedUrl: `https://cap.so/embed/${id}` };
   }
 
   return null;

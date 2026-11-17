@@ -29,6 +29,14 @@ export const GET: APIRoute = async ({ site }) => {
     "",
     about.about_en,
     "",
+    ...((about.certificates ?? []).length
+      ? [
+          "## Certifications",
+          "",
+          ...(about.certificates ?? []).map((c) => `- ${c.title_en} - ${c.issuer_en} (${c.date})`),
+          "",
+        ]
+      : []),
     "## Capabilities",
     "",
     ...about.skills.map((g) => `- ${g.title_en}: ${g.items.join(", ")}`),

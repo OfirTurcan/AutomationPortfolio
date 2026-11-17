@@ -54,13 +54,13 @@ collections:
       - { label: Featured, name: featured, widget: boolean, default: false }
       - { label: Order (lower = earlier), name: order, widget: number, required: false, value_type: int }
       - { label: Thumbnail, name: thumbnail, widget: image, hint: "Always shown: it is the card image, and the video's cover when there is a video. Use a 16:9 JPG or WebP, ideally under 200 KB (around 1280×720)." }
-      - { label: Video link (YouTube or Vimeo), name: video_url, widget: string, required: false, hint: "Paste the normal link (watch, youtu.be, Shorts, /embed/ or vimeo.com all work). The video only loads when a visitor presses play. Leave empty to show the 'demo on request' note." }
+      - { label: Video link (YouTube, Vimeo or Cap), name: video_url, widget: string, required: false, hint: "Paste the normal link (watch, youtu.be, Shorts, /embed/, vimeo.com or a cap.so share link all work). The video only loads when a visitor presses play. Leave empty to show the 'demo on request' note." }
       - { label: Gallery image paths, name: gallery, widget: list, required: false, hint: "Optional. e.g. /assets/shot1.png" }
       - { label: Live link, name: link_live, widget: string, required: false }
       - { label: Repository link, name: link_repo, widget: string, required: false }
       - { label: Case study link, name: link_caseStudy, widget: string, required: false }
-      - { label: Highlights (EN), name: highlights_en, widget: list, required: false }
-      - { label: Highlights (HE), name: highlights_he, widget: list, required: false }
+      - { label: Highlights (EN), name: highlights_en, widget: list, required: false, field: { label: Highlight, name: highlight, widget: string }, hint: "One highlight per row; commas inside a highlight are fine." }
+      - { label: Highlights (HE), name: highlights_he, widget: list, required: false, field: { label: Highlight, name: highlight, widget: string }, hint: "One highlight per row; commas inside a highlight are fine." }
 
   # ------------------------------------------------------------ Testimonials
   - name: testimonials
@@ -179,6 +179,21 @@ collections:
           - { label: Short factual summary (EN), name: summary_en, widget: text, hint: "2-3 plain sentences: who you are, what you do, for whom and where. Not shown on the page; search engines and AI assistants read it (structured data and /llms.txt). Facts, not marketing language." }
           - { label: Short factual summary (HE), name: summary_he, widget: text, hint: "The same summary in Hebrew." }
           - { label: Profile image, name: profile_image, widget: image }
+          - label: Certifications
+            name: certificates
+            widget: list
+            required: false
+            label_singular: Certificate
+            summary: "{{fields.title_he}}"
+            hint: "Shown in the About section. Upload an image (JPG or WebP), not the PDF, and hide personal details such as your ID number before uploading."
+            fields:
+              - { label: Title (HE), name: title_he, widget: string }
+              - { label: Title (EN), name: title_en, widget: string }
+              - { label: Issuer (HE), name: issuer_he, widget: string }
+              - { label: Issuer (EN), name: issuer_en, widget: string }
+              - { label: Issuer website, name: issuer_url, widget: string, required: false }
+              - { label: Date, name: date, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+              - { label: Certificate image, name: image, widget: image }
           - { label: LinkedIn URL, name: linkedin_url, widget: string }
           - { label: Email, name: email, widget: string }
           - { label: Location (EN), name: location_en, widget: string }

@@ -1,0 +1,46 @@
+{
+  "slug": "yoavtours-gmail-inquiry-automation",
+  "title_he": "YoavTours: מענה AI לפניות במייל לסוכנות נסיעות",
+  "title_en": "YoavTours: AI-assisted email inquiries for a travel agency",
+  "tagline_he": "מענה ראשון תוך דקה, תשובות רק ממידע מאושר, ושום התחייבות בלי אישור אנושי.",
+  "tagline_en": "A first reply within a minute, answers only from approved information, and no commitment without a human.",
+  "description_he": "סוכנות לחופשות בהתאמה אישית מאבדת לקוחות כי פניות במייל מחכות שעות לתשובה ראשונה. בניתי ב-n8n מערכת שמחברת את תיבת ה-Gmail המרכזית של הסוכנות, כולל טופס האתר, למענה חכם: כל פנייה מסווגת ומפורקת לנושאים בעזרת Gemini, מקבלת אישור קבלה אוטומטי תוך דקה, ושאלות פשוטות נענות רק מתוך מאגר ידע מאושר ובתוקף ב-Google Sheets, בעברית או באנגלית. כל השאר עובר לצוות כטיוטה ב-Gmail עם תווית שיוך, ומקרה חירום אמיתי של לקוח בחו\"ל שולח התראת Telegram לכונן, עם הסלמה לבעלים אם אין אישור תוך 10 דקות. זהו פרויקט הגמר שלי בקורס אוטומציות עסקיות וסוכני AI של Let's AI: אב טיפוס על תרחיש לקוח, עם PRD מלא, הצעת מחיר ותוכנית בדיקות.",
+  "description_en": "A bespoke-holiday travel agency loses customers because email inquiries wait hours for a first reply. I built an n8n system that connects the agency's central Gmail inbox, including the website form, to smart handling: Gemini classifies each inquiry and splits it into topics, every inquiry gets an automatic acknowledgment within a minute, and simple questions are answered only from an approved, in-date knowledge base in Google Sheets, in Hebrew or English. Everything else goes to the team as a Gmail draft with a routing label, and a genuine emergency of a customer abroad sends a Telegram alert to the on-call staff member, escalating to the owner if nobody confirms within 10 minutes. This is my capstone project in Let's AI's Business Automations & AI Agents course: a prototype built on a client scenario, with a full PRD, a quote and a test plan.",
+  "outcome_he": "נמסר אב טיפוס עובד ב-n8n בארבעה תהליכים: הקמה, קליטה ומיון פניות, תפעול מתוזמן (בדיקת תוקף המאגר ומדדים) וטיפול בשגיאות, עם סרטון הדגמה. יעדי הקבלה שהוגדרו לפיילוט: אישור קבלה תוך דקה ל-90% מהפניות, 90% דיוק, קיצור זמן הטיפול ב-25% ואפס התחייבויות מסחריות שגויות. היעדים טרם נמדדו על פניות אמיתיות.",
+  "outcome_en": "Delivered a working n8n prototype in four workflows: setup, inquiry intake and triage, scheduled operations (knowledge-base validity checks and metrics) and error handling, with a demo video. Acceptance targets set for the pilot: acknowledgment within a minute for 90% of inquiries, 90% accuracy, 25% less handling time and zero incorrect commercial commitments. The targets have not yet been measured on real inquiries.",
+  "tools": [
+    "n8n",
+    "Gemini API",
+    "Gmail API",
+    "Google Sheets",
+    "Telegram Bot",
+    "Claude Code"
+  ],
+  "tags": [
+    "n8n",
+    "ai-agents",
+    "customer-service",
+    "travel",
+    "gmail",
+    "capstone"
+  ],
+  "status": "prototype",
+  "featured": true,
+  "order": 0,
+  "thumbnail": "/assets/yoavtours/yoavtours-cover.webp",
+  "video_url": "https://cap.so/s/9t2z0bwtjb0t1bd",
+  "highlights_he": [
+    "עונה רק מתוך מאגר ידע מאושר ובתוקף; תשובה שפג תוקפה או ששונתה בלי אישור נחסמת אוטומטית",
+    "בדיקת בטיחות קבועה לפני כל שליחה: בלי מחירים, הנחות, תאריכים או התחייבויות ללא עין אנושית",
+    "פנייה עם כמה שאלות: מתייחס לכל חלק, ומה שאין עליו תשובה מאושרת עובר כטיוטה לנציג",
+    "רק חירום אמיתי בחו\"ל מעיר את הכונן; \"דחוף\" לבד או הצעת מחיר דחופה לא",
+    "השחרת פרטים רגישים לפני ה-AI, תקרת שימוש ותקציב חודשי, ומתגי עצירה"
+  ],
+  "highlights_en": [
+    "Answers only from an approved, in-date knowledge base; an expired answer, or one edited without re-approval, is blocked automatically",
+    "A fixed safety check before every send: no prices, discounts, dates or commitments without a human",
+    "Multi-question emails: every part is addressed, and anything without an approved answer goes to staff as a draft",
+    "Only a genuine emergency abroad wakes the on-call person; \"urgent\" alone or an urgent quote does not",
+    "Sensitive details redacted before the AI, usage and monthly budget caps, and kill switches"
+  ]
+}
