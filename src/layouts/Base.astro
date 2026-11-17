@@ -3,6 +3,7 @@ import "@fontsource-variable/heebo";
 import "../styles/global.css";
 import A11yMenu from "../components/A11yMenu.astro";
 import ContactModal from "../components/ContactModal.astro";
+import CookieConsent from "../components/CookieConsent.astro";
 import { basePath, langOf, localePath, type Dict } from "../lib/i18n";
 
 interface Props {
@@ -78,6 +79,7 @@ const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
 
     <A11yMenu />
     <ContactModal />
+    <CookieConsent />
 
     <div class="relative z-10">
       <slot />

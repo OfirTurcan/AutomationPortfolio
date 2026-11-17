@@ -1,6 +1,7 @@
 import type { Dict } from "./i18n";
 import settings from "../content/settings.json";
 import about from "../content/about.json";
+import cookies from "../content/cookies.json";
 
 /** Every `<base>_he` / `<base>_en` pair on a flat object becomes a `<base>` key. */
 export function collectPairs(obj: Record<string, unknown>): Dict {
@@ -122,6 +123,7 @@ export function coreDict(): Dict {
   const d: Dict = {
     ...collectPairs(settings as Record<string, unknown>),
     ...collectPairs(about as Record<string, unknown>),
+    ...collectPairs(cookies as Record<string, unknown>),
     ...STATIC_LABELS,
   };
   about.skills.forEach((g, i) => {

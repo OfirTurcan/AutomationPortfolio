@@ -1,0 +1,100 @@
+---
+// Cookie preferences, rendered once from the Base layout.
+//
+// - The full panel (a native modal <dialog>) opens from "Cookie settings" in the footer,
+//   or from "Customize" in the bar. Essential storage is always on; measurement and
+//   marketing are OFF until the visitor turns them on (no pre-ticked boxes).
+// - The small non-modal bar appears on a first visit ONLY when a measurement tool is
+//   configured in the CMS (Site Content → Cookies & analytics). Today none is, so visitors
+//   are not interrupted to approve cookies the site doesn't use.
+// - Google Analytics 4 / Microsoft Clarity load only after "measurement" is allowed.
+// Text is edited in the CMS (src/content/cookies.json).
+import ck from "../content/cookies.json";
+import { langOf, localePath } from "../lib/i18n";
+
+const lang = langOf(Astro.url);
+const ga4 = String(ck.ga4_id ?? "").trim();
+const clarity = String(ck.clarity_id ?? "").trim();
+const closeIcon = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>`;
+---
+
+<dialog
+  id="ck-dialog"
+  class="ck-dialog"
+  aria-labelledby="ck-title"
+  closedby="any"
+  data-ga4={ga4 || undefined}
+  data-clarity={clarity || undefined}
+>
+  <div class="ck-panel">
+    <button type="button" class="ck-close" data-ck-close aria-label="סגירה" data-i18n-attr="aria-label:ck_close">
+      <Fragment set:html={closeIcon} />
+    </button>
+
+    <h2 id="ck-title" class="ck-title" data-i18n="ck_title">{ck.ck_title_he}</h2>
+    <p class="ck-intro" data-i18n="ck_intro">{ck.ck_intro_he}</p>
+
+    <div class="ck-cats">
+      <div class="ck-cat">
+        <span class="ck-cat-head">
+          <span data-i18n="ck_essential_title">{ck.ck_essential_title_he}</span>
+          <span class="ck-always" data-i18n="ck_always_on">{ck.ck_always_on_he}</span>
+        </span>
+        <span class="ck-cat-desc" data-i18n="ck_essential_desc">{ck.ck_essential_desc_he}</span>
+      </div>
+
+      <label class="ck-cat ck-cat--toggle">
+        <span class="ck-cat-head">
+          <span data-i18n="ck_analytics_title">{ck.ck_analytics_title_he}</span>
+          <input type="checkbox" name="analytics" class="ck-check" aria-describedby="ck-analytics-desc" />
+        </span>
+        <span id="ck-analytics-desc" class="ck-cat-desc" data-i18n="ck_analytics_desc">{ck.ck_analytics_desc_he}</span>
+      </label>
+
+      <label class="ck-cat ck-cat--toggle">
+        <span class="ck-cat-head">
+          <span data-i18n="ck_marketing_title">{ck.ck_marketing_title_he}</span>
+          <input type="checkbox" name="marketing" class="ck-check" aria-describedby="ck-marketing-desc" />
+        </span>
+        <span id="ck-marketing-desc" class="ck-cat-desc" data-i18n="ck_marketing_desc">{ck.ck_marketing_desc_he}</span>
+      </label>
+    </div>
+
+    <label class="ck-agree" id="ck-agree-label">
+      <input type="checkbox" id="ck-agree" />
+      <span>
+        <span data-i18n="ck_agree">{ck.ck_agree_he}</span><a
+          href={localePath("/privacy/", lang)}
+          target="_blank"
+          rel="noopener"
+          data-i18n="ck_agree_link">{ck.ck_agree_link_he}</a>.
+      </span>
+    </label>
+
+    <div class="ck-actions">
+      <button type="button" class="ck-btn ck-btn--primary" data-ck="all" disabled aria-describedby="ck-agree-label" data-i18n="ck_accept_all">
+        {ck.ck_accept_all_he}
+      </button>
+      <button type="button" class="ck-btn ck-btn--outline" data-ck="essential" data-i18n="ck_reject">
+        {ck.ck_reject_he}
+      </button>
+      <button type="button" class="ck-btn" data-ck="save" data-i18n="ck_save">
+        {ck.ck_save_he}
+      </button>
+    </div>
+  </div>
+</dialog>
+
+<div id="ck-bar" class="ck-bar" role="region" aria-labelledby="ck-bar-text" hidden>
+  <p id="ck-bar-text" data-i18n="ck_bar_text">{ck.ck_bar_text_he}</p>
+  <div class="ck-bar-actions">
+    <button type="button" class="ck-btn ck-btn--primary" data-ck="bar-all" data-i18n="ck_bar_accept">{ck.ck_bar_accept_he}</button>
+    <button type="button" class="ck-btn ck-btn--outline" data-ck="essential" data-i18n="ck_bar_reject">{ck.ck_bar_reject_he}</button>
+    <button type="button" class="ck-btn" data-ck-open data-i18n="ck_bar_customize">{ck.ck_bar_customize_he}</button>
+  </div>
+</div>
+
+<script>
+  import { initCookieConsent } from "../lib/cookie-consent";
+  initCookieConsent();
+</script>

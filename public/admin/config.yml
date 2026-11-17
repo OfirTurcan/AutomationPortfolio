@@ -93,6 +93,54 @@ collections:
   - name: site
     label: Site Content
     files:
+      # ------------------------------------------------------- Cookies & analytics
+      - name: cookies
+        label: Cookies & analytics
+        file: src/content/cookies.json
+        format: json
+        fields:
+          - { label: Google Analytics 4 measurement ID, name: ga4_id, widget: string, required: false, hint: "e.g. G-XXXXXXXXXX. Leave empty for none. When an ID is set, first-time visitors see a small consent bar and the tool loads only after they allow measurement. Also update the measurement description below and the privacy policy." }
+          - { label: Microsoft Clarity project ID, name: clarity_id, widget: string, required: false, hint: "Leave empty for none. Same consent rules as Google Analytics." }
+          - { label: "Panel title (HE)", name: ck_title_he, widget: string }
+          - { label: "Panel title (EN)", name: ck_title_en, widget: string }
+          - { label: "Panel intro (HE)", name: ck_intro_he, widget: text }
+          - { label: "Panel intro (EN)", name: ck_intro_en, widget: text }
+          - { label: "Essential: title (HE)", name: ck_essential_title_he, widget: string }
+          - { label: "Essential: title (EN)", name: ck_essential_title_en, widget: string }
+          - { label: "Essential: description (HE)", name: ck_essential_desc_he, widget: text }
+          - { label: "Essential: description (EN)", name: ck_essential_desc_en, widget: text }
+          - { label: 'Essential: "always on" badge (HE)', name: ck_always_on_he, widget: string }
+          - { label: 'Essential: "always on" badge (EN)', name: ck_always_on_en, widget: string }
+          - { label: "Measurement: title (HE)", name: ck_analytics_title_he, widget: string }
+          - { label: "Measurement: title (EN)", name: ck_analytics_title_en, widget: string }
+          - { label: "Measurement: description (HE)", name: ck_analytics_desc_he, widget: text }
+          - { label: "Measurement: description (EN)", name: ck_analytics_desc_en, widget: text }
+          - { label: "Marketing: title (HE)", name: ck_marketing_title_he, widget: string }
+          - { label: "Marketing: title (EN)", name: ck_marketing_title_en, widget: string }
+          - { label: "Marketing: description (HE)", name: ck_marketing_desc_he, widget: text }
+          - { label: "Marketing: description (EN)", name: ck_marketing_desc_en, widget: text }
+          - { label: "Consent checkbox text (before the link) (HE)", name: ck_agree_he, widget: string }
+          - { label: "Consent checkbox text (before the link) (EN)", name: ck_agree_en, widget: string }
+          - { label: "Consent checkbox: privacy link text (HE)", name: ck_agree_link_he, widget: string }
+          - { label: "Consent checkbox: privacy link text (EN)", name: ck_agree_link_en, widget: string }
+          - { label: "Button: accept all (HE)", name: ck_accept_all_he, widget: string }
+          - { label: "Button: accept all (EN)", name: ck_accept_all_en, widget: string }
+          - { label: "Button: essential only (HE)", name: ck_reject_he, widget: string }
+          - { label: "Button: essential only (EN)", name: ck_reject_en, widget: string }
+          - { label: "Button: save choices (HE)", name: ck_save_he, widget: string }
+          - { label: "Button: save choices (EN)", name: ck_save_en, widget: string }
+          - { label: "Close button (screen readers) (HE)", name: ck_close_he, widget: string }
+          - { label: "Close button (screen readers) (EN)", name: ck_close_en, widget: string }
+          - { label: "Footer link (HE)", name: ck_settings_link_he, widget: string }
+          - { label: "Footer link (EN)", name: ck_settings_link_en, widget: string }
+          - { label: "Bar: text (HE)", name: ck_bar_text_he, widget: text }
+          - { label: "Bar: text (EN)", name: ck_bar_text_en, widget: text }
+          - { label: "Bar: accept (HE)", name: ck_bar_accept_he, widget: string }
+          - { label: "Bar: accept (EN)", name: ck_bar_accept_en, widget: string }
+          - { label: "Bar: decline (HE)", name: ck_bar_reject_he, widget: string }
+          - { label: "Bar: decline (EN)", name: ck_bar_reject_en, widget: string }
+          - { label: "Bar: customize (HE)", name: ck_bar_customize_he, widget: string }
+          - { label: "Bar: customize (EN)", name: ck_bar_customize_en, widget: string }
       # ------------------------------------------------------------------ FAQ
       - name: faq
         label: FAQ (also read by search engines & AI assistants)

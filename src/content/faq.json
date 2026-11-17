@@ -25,9 +25,9 @@
     },
     {
       "question_he": "כמה זה עולה?",
-      "answer_he": "תלוי בהיקף: כמה תהליכים, אילו מערכות צריך לחבר והאם נדרש סוכן AI. אחרי שיחת ההיכרות ומיפוי קצר של התהליך תקבלו הצעת מחיר סגורה להיקף מוגדר, לפני שמתחילים לעבוד.",
+      "answer_he": "תלוי בהיקף הפרויקט ובמה שנסכם יחד: כמה תהליכים, אילו מערכות צריך לחבר והאם נדרש סוכן AI. לפי זה נבחר את מודל התמחור המתאים – מחיר קבוע לפרויקט מוגדר, בנק שעות, ריטיינר חודשי לליווי שוטף, או שילוב ביניהם. ההצעה מוגשת אחרי שיחת ההיכרות ומיפוי קצר של התהליך, לפני שמתחילים לעבוד.",
       "question_en": "How much does it cost?",
-      "answer_en": "It depends on the scope: how many processes, which systems need to be connected and whether an AI agent is needed. After the intro call and a short mapping of the process, you get a fixed quote for a defined scope before any work starts."
+      "answer_en": "It depends on the project scope and what we agree on: how many processes, which systems need to be connected and whether an AI agent is needed. Based on that we choose the right pricing model - a fixed price for a defined project, a bank of hours, a monthly retainer for ongoing support, or a combination. You get the proposal after the intro call and a short mapping of the process, before any work starts."
     },
     {
       "question_he": "תוך כמה זמן זה עובד?",
