@@ -2,21 +2,26 @@
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 
-// Local dev/preview only: serve the CMS at /admin and /admin/ like Netlify does
-// (Astro's dev server doesn't map public/admin/ to its index.html by itself).
+// Local dev/preview only: serve the CMS at /admin like Netlify does. Astro's dev server
+// doesn't map public/admin/ to its index.html, so /admin redirects to /admin/ (keeping
+// relative URLs right) and /admin/ is served from /admin/index.html.
+function adminRoutes(req, res, next) {
+  if (req.url === "/admin") {
+    res.statusCode = 302;
+    res.setHeader("Location", "/admin/");
+    res.end();
+    return;
+  }
+  if (req.url === "/admin/") req.url = "/admin/index.html";
+  next();
+}
 const adminIndex = {
   name: "admin-index",
   configureServer(server) {
-    server.middlewares.use((req, _res, next) => {
-      if (req.url === "/admin" || req.url === "/admin/") req.url = "/admin/index.html";
-      next();
-    });
+    server.middlewares.use(adminRoutes);
   },
   configurePreviewServer(server) {
-    server.middlewares.use((req, _res, next) => {
-      if (req.url === "/admin" || req.url === "/admin/") req.url = "/admin/index.html";
-      next();
-    });
+    server.middlewares.use(adminRoutes);
   },
 };
 
