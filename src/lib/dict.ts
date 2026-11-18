@@ -30,6 +30,13 @@ const STATIC_LABELS: Dict = {
   label_view_live: { he: "צפייה באתר", en: "View live" },
   label_case: { he: "מקרה בוחן", en: "Case study" },
   label_repo: { he: "מאגר קוד", en: "Repository" },
+  // Project case-study window
+  cs_open: { he: "לסיפור המלא", en: "Full case study" },
+  cs_challenge: { he: "האתגר", en: "The challenge" },
+  cs_built: { he: "מה בניתי", en: "What I built" },
+  cs_result: { he: "התוצאה", en: "The result" },
+  cs_tools: { he: "כלים וטכנולוגיות", en: "Tools & tech" },
+  cs_close: { he: "סגירה", en: "Close" },
   status_live: { he: "פעיל", en: "Live" },
   "status_in-progress": { he: "בפיתוח", en: "In progress" },
   status_prototype: { he: "פרוטוטייפ", en: "Prototype" },
