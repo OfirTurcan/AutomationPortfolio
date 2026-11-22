@@ -26,6 +26,7 @@ const video = parseVideoUrl(p.video_url);
 const hasVideo = !!video;
 const playIcon = `<svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>`;
 const dict = coreDict();
+const lockIcon = `<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>`;
 // Each card opens a case-study window (native modal <dialog>); its id doubles as a
 // shareable link: /#case-<slug> opens it on load (see src/lib/case-study.ts).
 const caseId = `case-${p.slug}`;
@@ -70,29 +71,20 @@ const links = [
             decoding="async"
             class="h-full w-full object-cover opacity-90 transition group-hover:scale-105"
           />
-          <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent p-3">
-            <span
-              class="chip !bg-black/40 !text-[var(--color-text)]"
-              data-i18n="demo_note"
-            >
-              פרוטוטייפ פרטי / דמו זמין לפי בקשה
-            </span>
+          <div class="media-note">
+            <Fragment set:html={lockIcon} />
+            <span data-i18n="demo_note">פרוטוטייפ פרטי / דמו זמין לפי בקשה</span>
           </div>
         </>
       )
     }
-    <span
-      class={`chip absolute top-3 ${badgeClass}`}
-      style="inset-inline-end: 0.75rem;"
-    >
+    <span class={`media-badge media-badge--${p.status}`} style="inset-inline-end: 0.75rem;">
+      <span class="media-badge__dot" aria-hidden="true"></span>
       <span data-i18n={`status_${p.status}`}>{statusLabel}</span>
     </span>
     {
       p.featured && (
-        <span
-          class="chip absolute top-3 !border-[var(--color-violet)] !bg-[color-mix(in_srgb,var(--color-violet)_16%,transparent)] !text-[var(--color-text)]"
-          style="inset-inline-start: 0.75rem;"
-        >
+        <span class="media-badge media-badge--featured" style="inset-inline-start: 0.75rem;">
           <span aria-hidden="true">★</span>
           <span data-i18n="label_featured">מומלץ</span>
         </span>
