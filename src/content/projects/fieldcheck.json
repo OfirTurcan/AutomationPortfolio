@@ -1,0 +1,56 @@
+{
+  "slug": "fieldcheck",
+  "title_he": "ביקורית: מטופס סרוק לצ'קליסט ביקור בית בנייד",
+  "title_en": "Bikorit: from a scanned form to a mobile home-visit checklist",
+  "tagline_he": "מצלמים את הטופס, ה-AI בונה צ'קליסט, ממלאים בביקור, והסיכום מגיע למייל מוכן להעתקה.",
+  "tagline_en": "Snap the form, AI builds the checklist, fill it in during the visit, and get a copy-ready summary by email.",
+  "description_he": "מטפלים, פיזיותרפיסטים ואחיות שעושים ביקורי בית ממלאים טפסי הערכה על נייר, ואחר כך מקלידים הכול שוב למערכת הארגונית. בניתי את ביקורית, אפליקציית רשת לנייד שהופכת כל טופס קיים, PDF או צילום מהטלפון, לצ'קליסט דיגיטלי: Gemini קורא את הטופס, מיישר סריקות מסובבות, מתעלם מכתב יד, מזהה סולמות דירוג והוראות, ומפצל סעיפי ימין/שמאל לסעיפים נפרדים. המשתמש בודק ועורך כל סעיף במקום, קובע מה חובה ומה רשות, ויכול לשתף את הצ'קליסט עם שאר המשתמשים. בביקור עונים בהקשה, מדלגים על סעיף כשהמטופל לא יכול לבצע אותו וחוזרים אליו מפס \"לא נענו\", והשמירה נחסמת עד שכל סעיפי החובה מולאו. בסיום נשלח למייל של המשתמש סיכום כטבלה וכקובץ CSV, מוכן להדבקה במערכת הארגונית, גם דרך Citrix.",
+  "description_en": "Therapists, physiotherapists and nurses on home visits fill in assessment forms on paper, then retype everything into their organization's system. I built Bikorit (a Hebrew play on \"visit\" and \"inspection\"), a mobile web app that turns any existing form, a PDF or a phone photo, into a digital checklist: Gemini reads the form, straightens rotated scans, ignores handwriting, detects rating scales and instructions, and splits right/left items into separate items. The user reviews and edits each item in place, marks what is required, and can share the checklist with the other users. During the visit you answer with a tap, skip an item the patient cannot do yet and come back to it from a \"not answered\" bar, and saving is blocked until every required item is filled. At the end the user receives a summary by email, as a table and a CSV file, ready to paste into the organization's system, including over Citrix.",
+  "outcome_he": "האפליקציה באוויר ועובדת מקצה לקצה: כניסה בקוד חד-פעמי למייל, ניהול משתמשים, יצירת צ'קליסט מסריקה אמיתית של טופס הערכה בן 18 סעיפים, ביקור ושליחת סיכום. היא רצה על Cloudflare בעלות קבועה אפסית, ומשלמים רק על קריאת ה-AI בעת יצירת צ'קליסט. מהאפיון ועד ההעלאה לאוויר: כמה ימים. השימוש עדיין לא נמדד עם מטפלים בשטח.",
+  "outcome_en": "The app is live and works end to end: one-time email-code login, user management, building a checklist from a real scan of an 18-item assessment form, the visit itself and the emailed summary. It runs on Cloudflare at zero fixed cost; the only cost is the AI call when a checklist is created. From spec to live: a few days. Usage has not yet been measured with therapists in the field.",
+  "tools": [
+    "Gemini API",
+    "React 19",
+    "Vite",
+    "Tailwind CSS v4",
+    "Hono",
+    "Cloudflare Pages",
+    "Cloudflare D1 (SQLite)",
+    "Resend",
+    "Claude Code"
+  ],
+  "tags": [
+    "ai-document-extraction",
+    "healthcare",
+    "home-visits",
+    "mobile-first",
+    "hebrew-rtl",
+    "privacy-by-design"
+  ],
+  "status": "live",
+  "featured": true,
+  "order": 0.5,
+  "thumbnail": "/assets/fieldcheck/fieldcheck-cover.webp",
+  "gallery": [
+    "/assets/fieldcheck/fieldcheck-visit.webp",
+    "/assets/fieldcheck/fieldcheck-map.webp",
+    "/assets/fieldcheck/fieldcheck-editor.webp",
+    "/assets/fieldcheck/fieldcheck-home.webp",
+    "/assets/fieldcheck/fieldcheck-summary.webp"
+  ],
+  "link_live": "https://bikur.o-turcan.com",
+  "highlights_he": [
+    "AI שקורא טפסים סרוקים בעברית: מיישר עמודים מסובבים, מתעלם מכתב יד ומפצל סעיפי ימין/שמאל",
+    "דילוג וחזרה: פס \"לא נענו\" ומפת שאלות, והשמירה נחסמת עד שכל סעיפי החובה מולאו",
+    "פרטיות מובנית: ביקורים לא נשמרים בשרת, קוד ביקור במקום שם מטופל, והסיכום נשלח רק למשתמש עצמו",
+    "כניסה בלי סיסמה, רק לכתובות שברשימת המורשים, עם חסימה מיידית והגנה על מנהל המערכת ברמת מסד הנתונים",
+    "שיתוף צ'קליסטים בין משתמשים: רק הבעלים עורך, והאחרים משתמשים או מעתיקים לעצמם"
+  ],
+  "highlights_en": [
+    "AI that reads scanned Hebrew forms: straightens rotated pages, ignores handwriting and splits right/left items",
+    "Skip and return: a \"not answered\" bar and a question map, and saving is blocked until every required item is filled",
+    "Privacy by design: visits are not stored on the server, a visit code instead of a patient name, and the summary goes only to the user",
+    "Passwordless login limited to an allowlist, with instant revocation and super-admin protection at the database level",
+    "Checklist sharing between users: only the owner edits, others use it as is or copy it for themselves"
+  ]
+}
