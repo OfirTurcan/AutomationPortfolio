@@ -756,6 +756,16 @@ body::before {
   border-bottom: 1px solid var(--color-border);
   box-shadow: 0 4px 18px rgba(11, 31, 77, 0.08);
 }
+/* Menu links jump to sections; stop the sticky header from covering their headings.
+   The header has a second row of links on mobile, so it's taller there. */
+section[id] {
+  scroll-margin-top: 4.5rem;
+}
+@media (max-width: 47.99rem) {
+  section[id] {
+    scroll-margin-top: 6.5rem;
+  }
+}
 .a11y-contrast .site-header {
   background: #000000;
   -webkit-backdrop-filter: none;
