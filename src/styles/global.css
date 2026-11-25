@@ -157,6 +157,48 @@ body::before {
 }
 
 /* ============================================================
+   Light hero band (home page). Uses the site's light tokens; only adds a soft
+   blue/cyan wash and a faint grid so it still reads as a "tech" band.
+   Light chosen over dark for legibility on phones in bright daylight.
+   ============================================================ */
+.hero-light {
+  /* Darker cyan than the page token so small text and the headline gradient
+     keep readable contrast on the light background (≥4.5:1 for small text). */
+  --color-cyan: #0a7f89;
+  position: relative;
+  overflow: hidden;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+.hero-light::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(1100px 620px at 85% -15%, rgba(47, 111, 237, 0.14), transparent 60%),
+    radial-gradient(900px 560px at -10% 5%, rgba(20, 184, 196, 0.14), transparent 55%),
+    radial-gradient(900px 600px at 50% 125%, rgba(20, 58, 143, 0.08), transparent 60%);
+  pointer-events: none;
+}
+.hero-light .buzz-layer {
+  /* Floating keywords are decoration; on light they'd compete with the headline. */
+  opacity: 0.45;
+}
+.hero-light::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(47, 111, 237, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47, 111, 237, 0.07) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(circle at 50% 30%, black, transparent 75%);
+  pointer-events: none;
+}
+
+/* ============================================================
    Ambient buzzwords
    ============================================================ */
 .buzz-layer {
@@ -1902,7 +1944,9 @@ html[dir="rtl"] .cf-ltr {
   --color-lime: #00ff00;
 }
 .a11y-contrast .theme-dark::before,
-.a11y-contrast .theme-dark::after {
+.a11y-contrast .theme-dark::after,
+.a11y-contrast .hero-light::before,
+.a11y-contrast .hero-light::after {
   display: none !important;
 }
 
